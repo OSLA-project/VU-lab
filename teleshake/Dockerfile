@@ -10,6 +10,5 @@ RUN python -m pip install -r dev-requirements.txt && \
 
 RUN ./codegen.sh
 
-# Start driver on port 50050
-CMD python -m sila2_driver.thermoscientific.teleshake1536 --port $PORT
+CMD python -m sila2_driver.thermoscientific.teleshake1536 --port $PORT --insecure --debug
 
