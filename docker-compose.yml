@@ -7,6 +7,8 @@ services:
     environment:
       - PORT=50050
       - ADDRESS=teleshake
+      - PRIVATE_KEY=/certs/teleshake.key
+      - CERT_FILE=/certs/teleshake.crt
     ports:
         - "50050:50050"
     dns:
@@ -17,6 +19,8 @@ services:
     networks:
       server_net:
         ipv4_address: 192.168.200.3
+    volumes:
+      - ./teleshake/certs:/certs
 
 
   universal-sila-client:

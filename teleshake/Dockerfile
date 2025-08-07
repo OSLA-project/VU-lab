@@ -1,7 +1,10 @@
 FROM python:3.11
 
 ENV PORT=50050
+ENV PRIVATE_KEY=/certs/teleshake.key
+ENV CERT_FILE=/certs/teleshake.crt
 ENV ADDRESS=teleshake
+
 RUN python -m pip install --upgrade pip
 RUN git clone https://gitlab.com/sila-driver-group/teleshake.git /opt/teleshake
 COPY codegen.sh /opt/teleshake/codegen.sh
