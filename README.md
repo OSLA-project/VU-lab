@@ -4,8 +4,8 @@
 
 | fair-software.eu recommendations | |
 | :-- | :--  |
-| (1/5) code repository              | [![github repo badge](https://img.shields.io/badge/github-repo-000.svg?logo=github&labelColor=gray&color=blue)](https://github.com/OSLA-project/openlab_vu) |
-| (2/5) license                      | [![github license badge](https://img.shields.io/github/license/OSLA-project/openlab_vu)](https://github.com/OSLA-project/openlab_vu) |
+| (1/5) code repository              | [![github repo badge](https://img.shields.io/badge/github-repo-000.svg?logo=github&labelColor=gray&color=blue)](https://github.com/OSLA-project/VU-lab) |
+| (2/5) license                      | [![github license badge](https://img.shields.io/github/license/OSLA-project/openlab_vu)](https://github.com/OSLA-project/VU-lab) |
 | (3/5) community registry           | [![RSD](https://img.shields.io/badge/rsd-openlab_vu-00a3e3.svg)](https://www.research-software.nl/software/openlab_vu) [![workflow pypi badge](https://img.shields.io/pypi/v/openlab_vu.svg?colorB=blue)](https://pypi.python.org/project/openlab_vu/) |
 | (4/5) citation                     | [![DOI](https://zenodo.org/badge/DOI/<replace-with-created-DOI>.svg)](https://doi.org/<replace-with-created-DOI>)|
 | (5/5) checklist                    | [![workflow cii badge](https://bestpractices.coreinfrastructure.org/projects/<replace-with-created-project-identifier>/badge)](https://bestpractices.coreinfrastructure.org/projects/<replace-with-created-project-identifier>) |
