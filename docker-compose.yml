@@ -1,0 +1,9 @@
+
+services:
+#  robot-arm:
+
+  teleshake:
+    build: ./teleshake/
+    network_mode: host
+
+#  gen5:
