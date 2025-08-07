@@ -21,7 +21,7 @@ Configuration of openlab for VU lab
 The project setup is documented in [project_setup.md](project_setup.md). Feel free to remove this document (and/or the link to this document) if you don't need it.
 
 This repo integrates the following SiLa connectors:
-- [teleshake]https://gitlab.com/sila-driver-group/teleshake)
+- [teleshake](https://gitlab.com/sila-driver-group/teleshake)
 - Gen5 (private connector)
 - [Generic robot arm](https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm)
 
