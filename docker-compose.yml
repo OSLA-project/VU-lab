@@ -5,5 +5,11 @@ services:
   teleshake:
     build: ./teleshake/
     network_mode: host
+    environment:
+      - PORT=50050
 
-#  gen5:
+  universal_sila_client:
+    image: registry.gitlab.com/sila2/universal-sila-client/sila_universal_client
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    network_mode: host
