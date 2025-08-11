@@ -5,14 +5,12 @@ services:
     build: ./teleshake/
     environment:
       - PORT=50050
-      - ADDRESS=teleshake
     ports:
         - "50050:50050"
     dns:
       - 172.17.0.1
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    container_name: server
     networks:
       server_net:
         ipv4_address: 192.168.200.3
