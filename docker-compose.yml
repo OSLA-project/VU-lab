@@ -1,11 +1,26 @@
+
 services:
-  #  robot-arm:
   teleshake:
     build: ./teleshake/
     environment:
       - PORT=50050
     ports:
-      - "50050:50050"
+        - "50050:50050"
+    dns:
+      - 172.17.0.1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      server_net:
+        ipv4_address: 192.168.200.4
+
+  gen5:
+    build:
+      context: ./gen5/
+    environment:
+      - SILA_SERVER__PORT=50053
+    ports:
+        - "50053:50053"
     dns:
       - 172.17.0.1
     extra_hosts:

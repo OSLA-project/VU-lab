@@ -211,3 +211,6 @@ __marimo__/
 *.csr
 *.key
 *.pem
+
+# Proprietary files
+gen5/gen5/
