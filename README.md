@@ -11,10 +11,10 @@
 | (5/5) checklist                    | [![workflow cii badge](https://bestpractices.coreinfrastructure.org/projects/<replace-with-created-project-identifier>/badge)](https://bestpractices.coreinfrastructure.org/projects/<replace-with-created-project-identifier>) |
 | howfairis                          | [![fair-software badge](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B-yellow)](https://fair-software.eu) |
 | **Other best practices**           | &nbsp; |
-| Static analysis                    | [![workflow scq badge](https://sonarcloud.io/api/project_badges/measure?project=OSLA-project_openlab_vu&metric=alert_status)](https://sonarcloud.io/dashboard?id=OSLA-project_openlab_vu) |
-| Coverage                           | [![workflow scc badge](https://sonarcloud.io/api/project_badges/measure?project=OSLA-project_openlab_vu&metric=coverage)](https://sonarcloud.io/dashboard?id=OSLA-project_openlab_vu) || **GitHub Actions**                 | &nbsp; |
-| Build                              | [![build](https://github.com/OSLA-project/openlab_vu/actions/workflows/build.yml/badge.svg)](https://github.com/OSLA-project/openlab_vu/actions/workflows/build.yml) |
-| Citation data consistency          | [![cffconvert](https://github.com/OSLA-project/openlab_vu/actions/workflows/cffconvert.yml/badge.svg)](https://github.com/OSLA-project/openlab_vu/actions/workflows/cffconvert.yml) || SonarCloud                         | [![sonarcloud](https://github.com/OSLA-project/openlab_vu/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/OSLA-project/openlab_vu/actions/workflows/sonarcloud.yml) |## How to use openlab_vu
+| Static analysis                    | [![workflow scq badge](https://sonarcloud.io/api/project_badges/measure?project=OSLA-project_VU-lab&metric=alert_status)](https://sonarcloud.io/dashboard?id=OSLA-project_VU-lab) |
+| Coverage                           | [![workflow scc badge](https://sonarcloud.io/api/project_badges/measure?project=OSLA-project_VU-lab&metric=coverage)](https://sonarcloud.io/dashboard?id=OSLA-project_VU-lab) || **GitHub Actions**                 | &nbsp; |
+| Build                              | [![build](https://github.com/OSLA-project/VU-lab/actions/workflows/build.yml/badge.svg)](https://github.com/OSLA-project/VU-lab/actions/workflows/build.yml) |
+| Citation data consistency          | [![cffconvert](https://github.com/OSLA-project/VU-lab/actions/workflows/cffconvert.yml/badge.svg)](https://github.com/OSLA-project/VU-lab/actions/workflows/cffconvert.yml) || SonarCloud                         | [![sonarcloud](https://github.com/OSLA-project/VU-lab/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/OSLA-project/VU-lab/actions/workflows/sonarcloud.yml) |## How to use VU-lab
 
 Configuration of openlab for VU lab
 
