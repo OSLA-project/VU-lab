@@ -1,15 +1,11 @@
 
 services:
 #  robot-arm:
-
   teleshake:
-    hostname: teleshake
     build: ./teleshake/
     environment:
       - PORT=50050
       - ADDRESS=teleshake
-      - PRIVATE_KEY=/certs/teleshake.key
-      - CERT_FILE=/certs/teleshake.pem
     ports:
         - "50050:50050"
     dns:
@@ -20,11 +16,6 @@ services:
     networks:
       server_net:
         ipv4_address: 192.168.200.3
-        aliases:
-          - teleshake
-    volumes:
-      - ./teleshake/certs:/certs
-
 
   universal-sila-client:
     image: registry.gitlab.com/sila2/universal-sila-client/sila_universal_client:latest
