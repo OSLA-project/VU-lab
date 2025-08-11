@@ -25,19 +25,21 @@ This repo integrates the following SiLa connectors:
 - Gen5 (private connector)
 - [Generic robot arm](https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm)
 
-## Installation
+## Prerequisites
+In order to use this setup, you will need to have the following prerequisites installed:
+- Either [[docker desktop](https://docs.docker.com/get-started/get-docker/) or [docker engine](https://docs.docker.com/engine/install/)
 
-To install openlab_vu from GitHub repository, do:
-
-```console
-git clone git@github.com:OSLA-project/openlab_vu.git
-cd openlab_vu
-python -m pip install .
+## How to use
+To use this package, you should first clone it from github
+```shell
+git clone https://github.com/OSLA-project/VU-lab.git
 ```
 
-## Documentation
+Then, use the following command to start all sila servers and the universal sila client: 
 
-Include a link to your project's full documentation here.
+```shell
+docker compose up
+```
 
 ## Contributing
 
