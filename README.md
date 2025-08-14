@@ -1,20 +1,4 @@
-## Badges
-
-(Customize these badges with your own links, and check https://shields.io/ or https://badgen.net/ to see which other badges are available.)
-
-| fair-software.eu recommendations | |
-| :-- | :--  |
-| (1/5) code repository              | [![github repo badge](https://img.shields.io/badge/github-repo-000.svg?logo=github&labelColor=gray&color=blue)](https://github.com/OSLA-project/VU-lab) |
-| (2/5) license                      | [![github license badge](https://img.shields.io/github/license/OSLA-project/VU-lab)](https://github.com/OSLA-project/VU-lab) |
-| (3/5) community registry           | [![RSD](https://img.shields.io/badge/rsd-openlab_vu-00a3e3.svg)](https://www.research-software.nl/software/openlab_vu) [![workflow pypi badge](https://img.shields.io/pypi/v/openlab_vu.svg?colorB=blue)](https://pypi.python.org/project/openlab_vu/) |
-| (4/5) citation                     | [![DOI](https://zenodo.org/badge/DOI/<replace-with-created-DOI>.svg)](https://doi.org/<replace-with-created-DOI>)|
-| (5/5) checklist                    | [![workflow cii badge](https://bestpractices.coreinfrastructure.org/projects/<replace-with-created-project-identifier>/badge)](https://bestpractices.coreinfrastructure.org/projects/<replace-with-created-project-identifier>) |
-| howfairis                          | [![fair-software badge](https://img.shields.io/badge/fair--software.eu-%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8F%20%20%E2%97%8B-yellow)](https://fair-software.eu) |
-| **Other best practices**           | &nbsp; |
-| Static analysis                    | [![workflow scq badge](https://sonarcloud.io/api/project_badges/measure?project=OSLA-project_VU-lab&metric=alert_status)](https://sonarcloud.io/dashboard?id=OSLA-project_VU-lab) |
-| Coverage                           | [![workflow scc badge](https://sonarcloud.io/api/project_badges/measure?project=OSLA-project_VU-lab&metric=coverage)](https://sonarcloud.io/dashboard?id=OSLA-project_VU-lab) || **GitHub Actions**                 | &nbsp; |
-| Build                              | [![build](https://github.com/OSLA-project/VU-lab/actions/workflows/build.yml/badge.svg)](https://github.com/OSLA-project/VU-lab/actions/workflows/build.yml) |
-| Citation data consistency          | [![cffconvert](https://github.com/OSLA-project/VU-lab/actions/workflows/cffconvert.yml/badge.svg)](https://github.com/OSLA-project/VU-lab/actions/workflows/cffconvert.yml) || SonarCloud                         | [![sonarcloud](https://github.com/OSLA-project/VU-lab/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/OSLA-project/VU-lab/actions/workflows/sonarcloud.yml) |## How to use VU-lab
+[![github repo badge](https://img.shields.io/badge/github-repo-000.svg?logo=github&labelColor=gray&color=blue)](https://github.com/OSLA-project/VU-lab) [![github license badge](https://img.shields.io/github/license/OSLA-project/VU-lab)](https://github.com/OSLA-project/VU-lab) [![workflow scq badge](https://sonarcloud.io/api/project_badges/measure?project=OSLA-project_VU-lab&metric=alert_status)](https://sonarcloud.io/dashboard?id=OSLA-project_VU-lab)  [![build](https://github.com/OSLA-project/VU-lab/actions/workflows/build.yml/badge.svg)](https://github.com/OSLA-project/VU-lab/actions/workflows/build.yml) 
 
 Configuration of openlab for VU lab
 
