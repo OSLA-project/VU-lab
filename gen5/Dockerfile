@@ -8,6 +8,5 @@ ENV SILA_SERVER__PORT = 50001
 COPY ./gen5 /opt/gen5/
 
 RUN python -m pip install /opt/gen5
-RUN pip install "unitelabs-sila<0.2"
 
 CMD connector start
