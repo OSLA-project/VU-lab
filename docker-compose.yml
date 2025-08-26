@@ -51,6 +51,13 @@ services:
         ipv4_address: 192.168.200.5
       outside:
 
+  laborchestrator:
+    image: laborchestrator
+    networks:
+      server_net:
+        ipv4_address: 192.168.200.6
+
+
 networks:
   server_net:
     driver: bridge
