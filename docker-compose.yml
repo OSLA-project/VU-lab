@@ -6,15 +6,11 @@ services:
       - PORT=50050
     ports:
       - "50050:50050"
-
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     network_mode: host
 
 
   sila-browser:
     image: registry.gitlab.com/unitelabs/sila2/sila-browser:latest
-
     network_mode: host
     ports:
       - "3000:3000"
