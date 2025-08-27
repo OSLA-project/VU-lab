@@ -1,0 +1,9 @@
+<BTIProcedure Version="1.00">
+  <Labware>
+    <Type>Microplate</Type>
+    <Name>96 WELL PLATE</Name>
+    <UseLid>true</UseLid>
+  </Labware>
+  <StepList>
+  </StepList>
+</BTIProcedure>

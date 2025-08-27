@@ -1,0 +1,48 @@
+stages:
+  - test
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+    - .venv/
+
+.standard-rules:
+  image: python:3.9.18-slim-bullseye
+  before_script:
+    - pip install poetry
+    - poetry config virtualenvs.in-project true
+    - poetry install
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+
+format:
+  stage: test
+  extends:
+    - .standard-rules
+  script:
+    - poetry run black --check src
+
+lint:
+  stage: test
+  extends:
+    - .standard-rules
+  script:
+    - poetry run pylint --disable C,R src
+
+test:
+  stage: test
+  extends:
+    - .standard-rules
+  script:
+    - poetry run pytest --cov=src --cov-report=term --cov-report=xml
+  coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
