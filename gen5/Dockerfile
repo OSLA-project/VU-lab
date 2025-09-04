@@ -1,12 +1,15 @@
 FROM python:3.11
 
 ENV SILA_SERVER__NAME='Gen5'
-ENV SILA_SERVER__UUID = 5d902dfb-f4e6-41b4-8fa7-4fc5c6ff555a
-ENV SILA_SERVER__HOST = 0.0.0.0
-ENV SILA_SERVER__PORT = 50001
+ENV CLOUD_SERVER_ENDPOINT__ENDPOINT=localhost:443
+ENV CLOUD_SERVER_ENDPOINT__SECURE=True
+ENV SILA_SERVER__UUID=0797536e-1e6e-478e-983b-38425a7bf1d5
+ENV SILA_SERVER__HOST=0.0.0.0
+ENV SILA_SERVER__PORT=50001
 
 COPY ./gen5 /opt/gen5/
+WORKDIR /opt/gen5
 
-RUN python -m pip install /opt/gen5
+RUN pip install .
 
-CMD connector start
+CMD connector start --app connector:create_app -vvv

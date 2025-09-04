@@ -16,13 +16,8 @@ services:
       - SILA_SERVER__PORT=50053
     ports:
         - "50053:50053"
-    dns:
-      - 172.17.0.1
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    networks:
-      server_net:
-        ipv4_address: 192.168.200.3
+    network_mode: host
+
   sila-browser:
     image: registry.gitlab.com/unitelabs/sila2/sila-browser:latest
     network_mode: host
