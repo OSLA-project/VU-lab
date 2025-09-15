@@ -30,5 +30,48 @@ services:
     network_mode: host
 
   laborchestrator:
-    image: laborchestrator
+    image: registry.gitlab.com/openlabautomation/lab-automation-packages/laborchestrator
+    network_mode: host
+    volumes:
+      - ./laborchestrator/:/opt/vu_lab/
+      - ./settings.py:/opt/vu_lab/settings.py
+    environment:
+      - "DJANGO_SETTINGS_MODULE=settings"
+    depends_on:
+      - platform_status_db
+    working_dir: /opt/vu_lab/
+    command: ./start_orchestrator.sh
+
+  labscheduler:
+    image: registry.gitlab.com/openlabautomation/lab-automation-packages/lab-scheduler/labscheduler
+    network_mode: host
+    volumes:
+      - ./:/opt/adaptation_template/
+    command: >
+      labscheduler     
+
+  database:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: platform_status
+      POSTGRES_PASSWORD: platform_status
+      POSTGRES_DB: platform_status_db
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    network_mode: host
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U platform_status -d platform_status_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  platform_status_db:
+    image: registry.gitlab.com/openlabautomation/lab-automation-packages/platform_status_db
+    environment:
+      DJANGO_SETTINGS_MODULE: settings
+    volumes:
+      - ./settings.py:/opt/platform_status_db/settings.py
+    depends_on:
+      database:
+        condition: service_healthy
     network_mode: host
