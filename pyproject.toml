@@ -24,13 +24,14 @@ classifiers = [
 ]
 dependencies = [
     "sila2>=0.12.2",
+    "unitelabs-cdk>=0.3.8",
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
 license = {file = "LICENSE"}
 name = "openlab_vu"
 readme = {file = "README.md", content-type = "text/markdown"}
-requires-python = ">=3.8"
+requires-python = "~=3.11"
 version = "0.1.0"
 
 [project.optional-dependencies]

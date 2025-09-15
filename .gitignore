@@ -212,4 +212,7 @@ __marimo__/
 *.key
 *.pem
 
+# Proprietary files
+gen5/gen5/
+
 pgdata/
