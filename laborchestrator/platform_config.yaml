@@ -1,0 +1,29 @@
+description:
+    - "An exemplary robotic lab description. Add devices at will"
+sila_servers:
+    storage:
+        Hotel1:
+            capacity: 20
+        Hotel2:
+            capacity: 20
+        Hotel3:
+            capacity: 20
+    movers:
+        GenericArm:
+            capacity: 1
+    humans:
+        Human:
+            process_capacity: 99 # can do multitasking?
+            capacity: 2  # has two hands
+    greeters:
+        Greeter:
+            capacity: 1
+            process_capacity: 1
+
+# ------ Translation to used resources in the process description ------
+# the key must match the categories above and the values must match the required resources in the workflow description
+pythonlab_translation:
+    storage: LabwareStorageResource
+    movers: MoverServiceResource
+    humans: HumanServiceResource
+    greeters: GreeterServiceResource
