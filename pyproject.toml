@@ -25,6 +25,7 @@ classifiers = [
 dependencies = [
     "sila2>=0.12.2",
     "unitelabs-cdk>=0.3.8",
+    "pythonlab @ https://gitlab.com/api/v4/projects/70367030/packages/pypi/files/9312964aa599654c73e5f62a3c7bf0ae77d91cbbae8a0e93a8f7bac2dadb63b9/pythonlab-0.2.2-py3-none-any.whl",
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
@@ -126,5 +127,3 @@ filename = "pyproject.toml"
 
 [[tool.bumpversion.files]]
 filename = "CITATION.cff"
-
-
