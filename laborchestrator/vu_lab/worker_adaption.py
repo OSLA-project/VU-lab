@@ -3,11 +3,8 @@
 import logging
 from random import randint
 from typing import Any
-from typing import Dict
 from typing import NamedTuple
 from typing import Optional
-from typing import Tuple
-from sila2.client import SilaClient
 from laborchestrator.database_integration import StatusDBInterface
 from laborchestrator.engine import ScheduleManager
 from laborchestrator.engine.worker_interface import DummyHandler
@@ -16,6 +13,7 @@ from laborchestrator.engine.worker_interface import WorkerInterface
 from laborchestrator.structures import MoveStep
 from laborchestrator.structures import SchedulingInstance
 from laborchestrator.structures import SMProcess
+from sila2.client import SilaClient
 from vu_lab.wrappers import GenericRobotArmWrapper
 from vu_lab.wrappers.device_interface import DeviceInterface
 
@@ -50,7 +48,7 @@ class Worker(WorkerInterface):
         self.clients = {}
 
     def execute_process_step(
-        self, step_id: str, device: str, device_kwargs: Dict[str, Any],
+        self, step_id: str, device: str, device_kwargs: dict[str, Any],
     ) -> Observable:
         print(f"Execute {step_id} on device {device}")
         # get all information about the process step
@@ -112,12 +110,12 @@ class Worker(WorkerInterface):
             self.db_client.set_barcode(container)
         super().process_step_finished(step_id, result)
 
-    def check_prerequisites(self, process: SMProcess) -> Tuple[bool, str]:
+    def check_prerequisites(self, process: SMProcess) -> tuple[bool, str]:
         # TODO implement your custom checks here.
         # For example whether need protocols exists or all devices are online
         return True, "Nothing to report."
 
-    def determine_destination_position(self, step: MoveStep) -> Optional[int]:
+    def determine_destination_position(self, step: MoveStep) -> int | None:
         # TODO change this to  customized positioning if necessary
 
         # checks the database for the free position with the lowest index

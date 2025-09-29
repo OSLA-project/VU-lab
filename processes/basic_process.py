@@ -1,18 +1,16 @@
 from abc import ABC
-
-from pythonlab.resources.services.moving import MoverServiceResource
-from pythonlab.resources.services.human import HumanServiceResource
-from pythonlab.resources.services.hello_world import GreeterServiceResource
-from pythonlab.resources.services.labware_storage import LabwareStorageResource
-from pythonlab.resource import LabwareResource
-
 # TODO: add whatever resources you need
 from pythonlab.process import PLProcess
+from pythonlab.resource import LabwareResource
+from pythonlab.resources.services.hello_world import GreeterServiceResource
+from pythonlab.resources.services.human import HumanServiceResource
+from pythonlab.resources.services.labware_storage import LabwareStorageResource
+from pythonlab.resources.services.moving import MoverServiceResource
 
 
 class BasicProcess(PLProcess, ABC):
     def __init__(
-        self, process_name: str, num_plates: int = 0, priority=7
+        self, process_name: str, num_plates: int = 0, priority=7,
     ):  # 0 has highest priority
         self.num_mw_plates = num_plates
         self.name = process_name
@@ -32,7 +30,7 @@ class BasicProcess(PLProcess, ABC):
         # the continers are automatically named/enumerated. You can change the naming without causing problems
         self.containers = [
             LabwareResource(
-                proc=self, name=f"{self.name}_cont_{cont}", lidded=True, filled=False
+                proc=self, name=f"{self.name}_cont_{cont}", lidded=True, filled=False,
             )
             for cont in range(self.num_mw_plates)
         ]
