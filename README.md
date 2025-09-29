@@ -23,10 +23,11 @@ Then, use the following command to start all sila servers and the universal sila
 docker compose up
 ```
 
-## Contributing
+You can reach the services at the following addresses:
+- [Sila Browser](http://localhost:3000)
+- [Orchestrator webinterface](http://localhost:8050)
+- [Robot arm webinterface](http://localhost:8055)]
 
-If you want to contribute to the development of openlab_vu,
-have a look at the [contribution guidelines](CONTRIBUTING.md).
 
 ## Credits
 
