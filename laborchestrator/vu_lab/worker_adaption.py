@@ -48,7 +48,10 @@ class Worker(WorkerInterface):
         self.clients = {}
 
     def execute_process_step(
-        self, step_id: str, device: str, device_kwargs: dict[str, Any],
+        self,
+        step_id: str,
+        device: str,
+        device_kwargs: dict[str, Any],
     ) -> Observable:
         print(f"Execute {step_id} on device {device}")
         # get all information about the process step
@@ -60,7 +63,10 @@ class Worker(WorkerInterface):
                 wrapper = device_wrappers[device]
                 # starts the command on the device and returns an Observable
                 observable = wrapper.get_SiLA_handler(
-                    step, cont, client, **device_kwargs,
+                    step,
+                    cont,
+                    client,
+                    **device_kwargs,
                 )
                 return observable
         # for all simulated devices, this simply wraps a sleep command into an Observable
@@ -89,7 +95,9 @@ class Worker(WorkerInterface):
             # try to discover the matching server by its server name
             try:
                 client = SilaClient.discover(
-                    server_name=server_name, insecure=True, timeout=timeout,
+                    server_name=server_name,
+                    insecure=True,
+                    timeout=timeout,
                 )
                 self.clients[device_name] = client
                 return client

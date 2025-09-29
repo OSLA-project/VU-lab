@@ -30,9 +30,7 @@ def main():
         scheduler = SchedulerClient.discover(insecure=True, timeout=5)
         if config.scheduling_algorithm:
             available_algorithms = scheduler.SchedulingService.AvailableAlgorithms.get()
-            if config.scheduling_algorithm in [
-                algo.Name for algo in available_algorithms
-            ]:
+            if config.scheduling_algorithm in [algo.Name for algo in available_algorithms]:
                 scheduler.SchedulingService.SelectAlgorithm(config.scheduling_algorithm)
             else:
                 Logger.warning(

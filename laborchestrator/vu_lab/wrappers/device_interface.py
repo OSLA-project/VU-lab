@@ -12,7 +12,10 @@ class DeviceInterface(ABC):
     @staticmethod
     @abstractmethod
     def get_SiLA_handler(
-        step: ProcessStep, cont: ContainerInfo, sila_client: SilaClient, **kwargs,
+        step: ProcessStep,
+        cont: ContainerInfo,
+        sila_client: SilaClient,
+        **kwargs,
     ) -> Observable:
         """Provides an Observable(, i.e., ClientObservableCommandInstance or ObservableProtocolHandler which emulates
         a ClientObservableCommandInstance),

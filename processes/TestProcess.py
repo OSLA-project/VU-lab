@@ -1,5 +1,4 @@
-"""Duplicate this file and add/modify the missing parts to create new processes
-"""
+"""Duplicate this file and add/modify the missing parts to create new processes"""
 
 from lab_adaption.processes.basic_process import BasicProcess
 
@@ -29,7 +28,8 @@ class InterestingExample(BasicProcess):
             self.robot_arm.move(cont, self.human)
             # have the human assign a number to each container
             answer = self.human.request_number(
-                cont, message=f"assign number to {cont.name}!",
+                cont,
+                message=f"assign number to {cont.name}!",
             )
             # do some computation on the result
             judgement = self.judge_answer(answer)
