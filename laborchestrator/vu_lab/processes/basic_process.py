@@ -1,5 +1,5 @@
 from abc import ABC
-
+from typing import Never
 # TODO: add whatever resources you need
 from pythonlab.process import PLProcess
 from pythonlab.resource import LabwareResource
@@ -19,7 +19,7 @@ class BasicProcess(PLProcess, ABC):
 
         super().__init__(priority=priority)
 
-    def create_resources(self):
+    def create_resources(self) -> None:
         # the device names should match the ones in the platform_config
         self.hotel1 = LabwareStorageResource(proc=self, name="Hotel1")
         self.hotel2 = LabwareStorageResource(proc=self, name="Hotel2")
@@ -36,5 +36,5 @@ class BasicProcess(PLProcess, ABC):
             for cont in range(self.num_mw_plates)
         ]
 
-    def process(self):
+    def process(self) -> Never:
         raise NotImplementedError

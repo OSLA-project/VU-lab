@@ -2,10 +2,13 @@ from __future__ import annotations
 import time
 from abc import ABC
 from abc import abstractmethod
-from laborchestrator.engine.worker_interface import Observable
-from laborchestrator.structures import ContainerInfo
-from laborchestrator.structures import ProcessStep
-from sila2.client import SilaClient
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from sila2.client import SilaClient
+    from laborchestrator.engine.worker_interface import Observable
+    from laborchestrator.structures import ContainerInfo
+    from laborchestrator.structures import ProcessStep
 
 
 class DeviceInterface(ABC):
@@ -21,14 +24,15 @@ class DeviceInterface(ABC):
         a ClientObservableCommandInstance),
         for the specified function on this device which
         provides functions to enquiry the status and remaining time of this protocol
+
         :param sila_client:
         :param step:
         :param cont:
-        :return: An ObservableProtocolHandler or ClientObservableCommandInstance
+        :return: An ObservableProtocolHandler or ClientObservableCommandInstance.
         """
 
 
-def finish_observable_command(cmd: Observable):
+def finish_observable_command(cmd: Observable) -> None:
     """Utility function that waits until the command finishes
     :param cmd:
     :return:

@@ -1,10 +1,7 @@
 import os
 from platform_status_db.larastatus.settings import *  # noqa: F403
 
-if os.name == "posix":
-    db_host = "172.17.0.1"
-else:
-    db_host = "host.docker.internal"
+db_host = "172.17.0.1" if os.name == "posix" else "host.docker.internal"
 
 DATABASES = {
     "default": {
