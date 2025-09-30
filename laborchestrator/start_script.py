@@ -7,7 +7,7 @@ from laborchestrator.old_dash_app import SMDashApp
 from laborchestrator.orchestrator_implementation import Orchestrator
 
 
-def main():
+def main() -> None:
     if config.worker:
         orchestrator = Orchestrator(reader="PythonLab", worker_type=config.worker)
     else:

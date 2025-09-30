@@ -1,5 +1,4 @@
 from abc import ABC
-
 # TODO: add whatever resources you need
 from pythonlab.process import PLProcess
 from pythonlab.resource import LabwareResource
