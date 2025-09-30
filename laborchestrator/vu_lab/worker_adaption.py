@@ -23,15 +23,15 @@ USE_REAL_SERVERS = [
 ]
 
 # maps the device names (from the platform_config and process description) to the correct wrappers
-device_wrappers: dict[str, type[DeviceInterface]] = dict(
-    GenericArm=GenericRobotArmWrapper,
-)
+device_wrappers: dict[str, type[DeviceInterface]] = {
+    "GenericArm": GenericRobotArmWrapper,
+}
 
 # maps the device names (from the platform_config and process description) to the correct sila server names
 # those without a sila server can be left out
-sila_server_name: dict[str, str] = dict(
-    GenericArm="Dummy",
-)
+sila_server_name: dict[str, str] = {
+    "GenericArm": "Dummy",
+}
 
 
 class Worker(WorkerInterface):
@@ -62,13 +62,12 @@ class Worker(WorkerInterface):
             if client:
                 wrapper = device_wrappers[device]
                 # starts the command on the device and returns an Observable
-                observable = wrapper.get_SiLA_handler(
+                return wrapper.get_SiLA_handler(
                     step,
                     cont,
                     client,
                     **device_kwargs,
                 )
-                return observable
         # for all simulated devices, this simply wraps a sleep command into an Observable
         # TODO you can change the time to for example step.duration/2
         handler = DummyHandler(randint(2, 12))
@@ -105,7 +104,7 @@ class Worker(WorkerInterface):
                 logging.exception(f"Could not connect to {server_name}:\n{error}")
         return None
 
-    def process_step_finished(self, step_id: str, result: Optional[NamedTuple]):
+    def process_step_finished(self, step_id: str, result: Optional[NamedTuple]) -> None:
         # get all information about the process step
         step = self.jssp.step_by_id[step_id]
         container = self.jssp.container_info_by_name[step.cont]

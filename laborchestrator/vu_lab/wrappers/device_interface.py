@@ -24,11 +24,11 @@ class DeviceInterface(ABC):
         :param sila_client:
         :param step:
         :param cont:
-        :return: An ObservableProtocolHandler or ClientObservableCommandInstance
+        :return: An ObservableProtocolHandler or ClientObservableCommandInstance.
         """
 
 
-def finish_observable_command(cmd: Observable):
+def finish_observable_command(cmd: Observable) -> None:
     """Utility function that waits until the command finishes
     :param cmd:
     :return:
