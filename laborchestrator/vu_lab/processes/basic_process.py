@@ -3,8 +3,6 @@ from abc import ABC
 # TODO: add whatever resources you need
 from pythonlab.process import PLProcess
 from pythonlab.resource import LabwareResource
-from pythonlab.resources.services.hello_world import GreeterServiceResource
-from pythonlab.resources.services.human import HumanServiceResource
 from pythonlab.resources.services.labware_storage import LabwareStorageResource
 from pythonlab.resources.services.moving import MoverServiceResource
 
@@ -25,11 +23,7 @@ class BasicProcess(PLProcess, ABC):
         # the device names should match the ones in the platform_config
         self.hotel1 = LabwareStorageResource(proc=self, name="Hotel1")
         self.hotel2 = LabwareStorageResource(proc=self, name="Hotel2")
-        self.hotel3 = LabwareStorageResource(proc=self, name="Hotel3")
-        self.robot_arm = MoverServiceResource(proc=self, name="GenericArm")
-        self.human = HumanServiceResource(proc=self, name="Human")
-        self.greeter = GreeterServiceResource(proc=self, name="Greeter")
-        # TODO: add your resources here with names matching the platform_config
+        self.robot_arm = MoverServiceResource(proc=self, name="robot_arm")
 
         # the continers are automatically named/enumerated. You can change the naming without causing problems
         self.containers = [
