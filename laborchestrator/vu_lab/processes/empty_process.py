@@ -6,10 +6,11 @@ from pythonlab.resource import DynamicLabwareResource as ReagentResource  # noqa
 
 # todo change process name
 class MyProcess(BasicProcess):
+    """Example process to be modified."""
     def __init__(self):
         # todo change platenumber and name
         super().__init__(
-            # priority=5,  # change as needed
+            # priority=5,  # change as needed noqa: ERA001
             num_plates=4,
             process_name="MyProcess",
         )

@@ -8,6 +8,7 @@ from laborchestrator.orchestrator_implementation import Orchestrator
 
 
 def main() -> None:
+    """Main function to start the orchestrator and scheduler with a dash app."""
     if config.worker:
         orchestrator = Orchestrator(reader="PythonLab", worker_type=config.worker)
     else:
@@ -37,7 +38,7 @@ def main() -> None:
                     f"Algorithm {config.scheduling_algorithm} is not available in scheduler.",
                 )
         # get the absolute filepath
-        with open(config.lab_config_file) as reader:
+        with config.lab_config_file.open() as reader:
             scheduler.LabConfigurationController.LoadJobShopFromFile(reader.read())
         Logger.info("Configured the lab of the scheduling service")
     except ModuleNotFoundError as mnfe:

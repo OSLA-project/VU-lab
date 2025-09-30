@@ -1,10 +1,10 @@
-""" """
+"""TODO: Add module docstring"""
 
 import logging
 from random import randint
 from typing import Any
 from typing import NamedTuple
-from typing import Optional
+from sila2.client import SilaClient
 from laborchestrator.database_integration import StatusDBInterface
 from laborchestrator.engine import ScheduleManager
 from laborchestrator.engine.worker_interface import DummyHandler
@@ -13,9 +13,10 @@ from laborchestrator.engine.worker_interface import WorkerInterface
 from laborchestrator.structures import MoveStep
 from laborchestrator.structures import SchedulingInstance
 from laborchestrator.structures import SMProcess
-from sila2.client import SilaClient
 from vu_lab.wrappers import GenericRobotArmWrapper
 from vu_lab.wrappers.device_interface import DeviceInterface
+
+logger = logging.getLogger(__name__)
 
 # Out comment those you want to simulate the steps instead of calling an actual sila server
 USE_REAL_SERVERS = [
@@ -53,7 +54,6 @@ class Worker(WorkerInterface):
         device: str,
         device_kwargs: dict[str, Any],
     ) -> Observable:
-        print(f"Execute {step_id} on device {device}")
         # get all information about the process step
         step = self.jssp.step_by_id[step_id]
         cont = self.jssp.container_info_by_name[step.cont_names[0]]
@@ -75,7 +75,7 @@ class Worker(WorkerInterface):
         handler.run_protocol(None)
         return handler
 
-    def get_client(self, device_name, timeout: float = 5) -> SilaClient | None:
+    def get_client(self, device_name: str, timeout: float = 5) -> SilaClient | None:
         server_name = sila_server_name.get(device_name)
         if server_name:
             client = self.clients.get(device_name, None)
@@ -85,7 +85,7 @@ class Worker(WorkerInterface):
                     name = client.SiLAService.ServerName.get()
                     assert name == server_name
                 except AssertionError:
-                    logging.exception(
+                    logger.exception(
                         f"The server on {client.address}:{client.port} has changed its name",
                     )
                 except ConnectionError:
@@ -101,10 +101,10 @@ class Worker(WorkerInterface):
                 self.clients[device_name] = client
                 return client
             except TimeoutError as error:
-                logging.exception(f"Could not connect to {server_name}:\n{error}")
+                logger.exception(f"Could not connect to {server_name}:\n{error}")
         return None
 
-    def process_step_finished(self, step_id: str, result: Optional[NamedTuple]) -> None:
+    def process_step_finished(self, step_id: str, result: NamedTuple | None) -> None:
         # get all information about the process step
         step = self.jssp.step_by_id[step_id]
         container = self.jssp.container_info_by_name[step.cont]

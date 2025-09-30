@@ -78,6 +78,7 @@ extras = dev
 [tool.ruff]
 line-length = 120
 output-format = "concise"
+exclude = ["laborchestrator/vu_lab/worker_adaption.py"]
 
 [tool.ruff.lint]
 # Allow unused variables when underscore-prefixed.
@@ -109,6 +110,19 @@ pydocstyle.convention = "google"
     "PT011",  # Missing `match` parameter in `pytest.raises()`
     "S101",   # Use of assert is detected
 ]
+
+"laborchestrator/start_script.py" = ["PLC0415"]
+"laborchestrator/vu_lab/processes/empty_process.py" = [
+    "ERA001",
+    "D102",
+]
+"laborchestrator/vu_lab/worker_adaption.py" = [
+    "D101",
+    "D419",
+    "D102",
+    "D415"
+]
+
 
 [tool.ruff.lint.isort]
 known-first-party = ["openlab_vu"]
