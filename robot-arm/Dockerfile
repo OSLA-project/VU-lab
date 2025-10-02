@@ -16,13 +16,9 @@ ARG WORKSPACE_DIR=${HOME}/dev_ws/src
 ARG XARM_ROS_REPO="https://github.com/xArm-Developer/xarm_ros2.git"
 
 # Update the repos and install.
-# RUN apt update
-# RUN apt install ros-${ROS_DISTRO}-moveit ros-${ROS_DISTRO}-ros-gz \
-#     ros-${ROS_DISTRO}-ament-cmake-vendor-package ros-${ROS_DISTRO}-ament-cmake --yes
-
-# Allow sudo without a password
-RUN echo ${USER} ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/${USER}
-RUN chmod 0440 /etc/sudoers.d/${USER}
+RUN apt update
+RUN apt install --yes ros-${ROS_DISTRO}-moveit ros-${ROS_DISTRO}-ros-gz \
+    ros-${ROS_DISTRO}-ament-cmake-vendor-package ros-${ROS_DISTRO}-ament-cmake
 
 # Set up the working environment
 # - Drop to user
@@ -31,9 +27,8 @@ USER ${USER}:${USER}
 RUN mkdir -p ${WORKSPACE_DIR}
 
 RUN echo "==[ Running as user" `whoami`
-RUN source "/opt/ros/${ROS_DISTRO}/setup.bash"
+# RUN source "/opt/ros/${ROS_DISTRO}/setup.bash"
 WORKDIR ${WORKSPACE_DIR}
-RUN echo "==[ Current directory" `pwd`
 
 # Set up the xArm codebase.
 # This follows the instructions from https://github.com/xArm-Developer/xarm_ros2.
@@ -45,12 +40,13 @@ RUN git pull --recurse-submodules
 WORKDIR ${WORKSPACE_DIR}
 
 # Update ROS dependencies
-USER root:root
 RUN rosdep update
+
+USER root:root
 RUN rosdep install --from-paths . --ignore-src --rosdistro ${ROS_DISTRO} -y
 
 USER ${USER}:${USER}
 WORKDIR ${HOME}/dev_ws
 
 # Build all packages
-RUN colcon build
+RUN source "/opt/ros/${ROS_DISTRO}/setup.bash" && colcon build
