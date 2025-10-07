@@ -14,4 +14,9 @@ VU-lab/
 |── ... (other files)
 ``` 
 
+One change has to be made to the gen5 codebase though. The unitelabs-cdk is fixed to an older version that is incompatible
+with the rest of the codebase. To fix this, delete the version of unitelabs-cdk in `gen5/gen5/pyproject.toml` and replace it with:
 
+```toml
+unitelabs-cdk = {source = "unitelabs"}
+```
