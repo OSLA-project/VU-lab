@@ -26,13 +26,15 @@ dependencies = [
     "sila2>=0.12.2",
     "unitelabs-cdk>=0.3.8",
     "pythonlab @ https://gitlab.com/api/v4/projects/70367030/packages/pypi/files/9312964aa599654c73e5f62a3c7bf0ae77d91cbbae8a0e93a8f7bac2dadb63b9/pythonlab-0.2.2-py3-none-any.whl",
+    "laborchestrator @ https://gitlab.com/api/v4/projects/70366855/packages/pypi/files/8cc4fd7d1cce3f04a4260f89f8bc659be5a3a99061e15db3b4344c186035e530/laborchestrator-0.2.7-py3-none-any.whl#sha256=8cc4fd7d1cce3f04a4260f89f8bc659be5a3a99061e15db3b4344c186035e530"
+
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
 license = {file = "LICENSE"}
 name = "openlab_vu"
 readme = {file = "README.md", content-type = "text/markdown"}
-requires-python = "~=3.11"
+requires-python = "~=3.11.0"
 version = "0.1.0"
 
 [project.optional-dependencies]
@@ -51,6 +53,9 @@ publishing = [
     "twine",
     "wheel",
 ]
+
+[[tool.pip.index-urls]]
+url = "https://gitlab.com/api/v4/projects/70366855/packages/pypi/simple"
 
 [project.urls]
 Repository = "https://github.com/OSLA-project/openlab_vu"

@@ -24,9 +24,14 @@ docker compose up
 ```
 
 You can reach the services at the following addresses:
-- [Sila Browser](http://localhost:3000)
-- [Orchestrator webinterface](http://localhost:8050)
-- [Robot arm webinterface](http://localhost:8055)]
+
+| Service                                            | Address |
+|----------------------------------------------------|---------|
+| [Sila Browser](http://localhost:3000)              | http://localhost:3000 |
+| [Orchestrator webinterface](http://localhost:8050) | http://localhost:8050 |
+| [Robot arm webinterface](http://localhost:8055)    | http://localhost:8055 |
+| Teleshake                                          | http://localhost:50050 |
+| Gen5 microplate reader                             | http://localhost:50053 |
 
 
 ## Credits

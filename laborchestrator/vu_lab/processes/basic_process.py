@@ -5,6 +5,7 @@ from pythonlab.process import PLProcess
 from pythonlab.resource import LabwareResource
 from pythonlab.resources.services.labware_storage import LabwareStorageResource
 from pythonlab.resources.services.moving import MoverServiceResource
+from pythonlab.resources.services.analysis import PlateReaderServiceResource
 
 
 class BasicProcess(PLProcess, ABC):
@@ -24,8 +25,9 @@ class BasicProcess(PLProcess, ABC):
         self.hotel1 = LabwareStorageResource(proc=self, name="Hotel1")
         self.hotel2 = LabwareStorageResource(proc=self, name="Hotel2")
         self.robot_arm = MoverServiceResource(proc=self, name="robot_arm")
+        self.plate_reader = PlateReaderServiceResource(proc=self, name="plate_reader")
 
-        # the continers are automatically named/enumerated. You can change the naming without causing problems
+        # the containers are automatically named/enumerated. You can change the naming without causing problems
         self.containers = [
             LabwareResource(
                 proc=self,

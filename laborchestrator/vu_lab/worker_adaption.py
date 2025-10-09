@@ -4,17 +4,18 @@ import logging
 from random import randint
 from typing import Any
 from typing import NamedTuple
-from sila2.client import SilaClient
+
 from laborchestrator.database_integration import StatusDBInterface
 from laborchestrator.engine import ScheduleManager
 from laborchestrator.engine.worker_interface import DummyHandler
 from laborchestrator.engine.worker_interface import Observable
 from laborchestrator.engine.worker_interface import WorkerInterface
 from laborchestrator.structures import MoveStep
-from laborchestrator.structures import SchedulingInstance
 from laborchestrator.structures import SMProcess
-from vu_lab.wrappers import GenericRobotArmWrapper
-from vu_lab.wrappers.device_interface import DeviceInterface
+from laborchestrator.structures import SchedulingInstance
+from sila2.client import SilaClient
+
+from vu_lab.wrappers import GenericRobotArmWrapper, DeviceInterface
 
 logger = logging.getLogger(__name__)
 
@@ -40,19 +41,19 @@ class Worker(WorkerInterface):
     clients: dict[str, SilaClient]
 
     def __init__(
-        self,
-        jssp: SchedulingInstance,
-        schedule_manager: ScheduleManager,
-        db_client: StatusDBInterface,
+            self,
+            jssp: SchedulingInstance,
+            schedule_manager: ScheduleManager,
+            db_client: StatusDBInterface,
     ):
         super().__init__(jssp, schedule_manager, db_client)
         self.clients = {}
 
     def execute_process_step(
-        self,
-        step_id: str,
-        device: str,
-        device_kwargs: dict[str, Any],
+            self,
+            step_id: str,
+            device: str,
+            device_kwargs: dict[str, Any],
     ) -> Observable:
         # get all information about the process step
         step = self.jssp.step_by_id[step_id]
