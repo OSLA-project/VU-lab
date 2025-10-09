@@ -27,6 +27,24 @@ docker compose up
 docker compose up --build
 ```
 
+### SELinux Configuration (Fedora/RHEL)
+
+On systems with SELinux enabled (Fedora, RHEL, CentOS), Docker bind mounts require special handling:
+
+1. **Volume mounts must use SELinux labels**: Add `:z` (shared) or `:Z` (private) suffix to bind mounts
+   ```yaml
+   volumes:
+     - ./laborchestrator/:/opt/vu_lab/:z  # :z for shared access
+   ```
+
+2. **Database volumes**: Use Docker-managed named volumes instead of bind mounts to avoid permission issues
+   ```yaml
+   volumes:
+     - pgdata:/var/lib/postgresql/data  # Named volume, not ./pgdata
+   ```
+
+All bind mounts in this repository are already configured with `:z` flags. The postgres database uses a named volume (`pgdata`) to avoid SELinux mount propagation errors.
+
 ### Testing and Linting
 ```bash
 # Install development dependencies
