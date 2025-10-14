@@ -1,8 +1,8 @@
 FROM python:3.11
 
 ENV PORT=50050
-ENV PRIVATE_KEY=/certs/teleshake.key
-ENV CERT_FILE=/certs/teleshake.pem
+#ENV PRIVATE_KEY=/certs/teleshake.key
+#ENV CERT_FILE=/certs/teleshake.pem
 ENV ADDRESS=teleshake
 
 RUN python -m pip install --upgrade pip
@@ -14,5 +14,4 @@ RUN python -m pip install -r dev-requirements.txt && \
 
 RUN ./codegen.sh
 
-CMD python -m sila2_driver.thermoscientific.teleshake1536 --port $PORT --debug
-
+CMD python -m sila2_driver.thermoscientific.teleshake1536 --port $PORT --debug --insecure
