@@ -9,10 +9,15 @@ sila_servers:
     movers:
         robot_arm:
             capacity: 1
-
+    shakers:
+        shaker1:
+            capacity: 1
+        shaker2:
+            capacity: 1
 
 # ------ Translation to used resources in the process description ------
 # the key must match the categories above and the values must match the required resources in the workflow description
 pythonlab_translation:
     storage: LabwareStorageResource
     movers: MoverServiceResource
+    shakers: ShakerServiceResource

@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.11, <4"
 
 [[package]]
@@ -848,6 +848,7 @@ source = { editable = "." }
 dependencies = [
     { name = "pythonlab" },
     { name = "sila2" },
+    { name = "sila2-drv-shaker-thermoscientific-teleshake1536" },
     { name = "unitelabs-cdk" },
 ]
 
@@ -880,6 +881,7 @@ requires-dist = [
     { name = "pythonlab", url = "https://gitlab.com/api/v4/projects/70367030/packages/pypi/files/9312964aa599654c73e5f62a3c7bf0ae77d91cbbae8a0e93a8f7bac2dadb63b9/pythonlab-0.2.2-py3-none-any.whl" },
     { name = "ruff", marker = "extra == 'dev'" },
     { name = "sila2", specifier = ">=0.12.2" },
+    { name = "sila2-drv-shaker-thermoscientific-teleshake1536", git = "https://gitlab.com/sila-driver-group/teleshake.git" },
     { name = "tox", marker = "extra == 'dev'" },
     { name = "twine", marker = "extra == 'publishing'" },
     { name = "unitelabs-cdk", specifier = ">=0.3.8" },
@@ -1333,6 +1335,11 @@ dependencies = [
 wheels = [
     { url = "https://files.pythonhosted.org/packages/1f/86/9eb5241e197eca4b59756a8589c6b35ea35ec03b093f0f4e2c1c281e94a8/sila2-0.12.2-py3-none-any.whl", hash = "sha256:c7538f34d738bc92f63fa8349e7f40b2f60d02b5143935d740a5963cd6fdf878", size = 194542, upload-time = "2024-04-17T05:25:17.854Z" },
 ]
+
+[[package]]
+name = "sila2-drv-shaker-thermoscientific-teleshake1536"
+version = "1.0.1"
+source = { git = "https://gitlab.com/sila-driver-group/teleshake.git#077ed89d558e980f00dcd8ff93ddeb7abff31959" }
 
 [[package]]
 name = "sniffio"

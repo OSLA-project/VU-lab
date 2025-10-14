@@ -5,6 +5,7 @@ from pythonlab.process import PLProcess
 from pythonlab.resource import LabwareResource
 from pythonlab.resources.services.labware_storage import LabwareStorageResource
 from pythonlab.resources.services.moving import MoverServiceResource
+from pythonlab.resources.services.shaker import ShakerServiceResource
 
 
 class BasicProcess(PLProcess, ABC):
@@ -24,6 +25,8 @@ class BasicProcess(PLProcess, ABC):
         self.hotel1 = LabwareStorageResource(proc=self, name="Hotel1")
         self.hotel2 = LabwareStorageResource(proc=self, name="Hotel2")
         self.robot_arm = MoverServiceResource(proc=self, name="robot_arm")
+        self.shaker1 = ShakerServiceResource(proc=self, name="shaker1")
+        self.shaker2 = ShakerServiceResource(proc=self, name="shaker2")
 
         # the continers are automatically named/enumerated. You can change the naming without causing problems
         self.containers = [
