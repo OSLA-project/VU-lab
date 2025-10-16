@@ -1,8 +1,12 @@
 """Duplicate this file and add/modify the missing parts to create new processes
 """
+from pythonlab.resources.services.shaker import ShakerServiceResource
 
 from .basic_process import BasicProcess
+from ..wrappers.shaker_wrapper import ShakerWrapper
 
+DURATION = 10
+FREQUENCY = 10
 
 class VUTestProcess(BasicProcess):
     def __init__(self):
@@ -16,8 +20,11 @@ class VUTestProcess(BasicProcess):
 
     def process(self):
         # loop through all containers
-        for cont in self.containers:
-            # move all containers to hotel2 and read their barcodes
+        for idx, cont in enumerate(self.containers):
+            shaker: ShakerServiceResource = self.shaker1 if idx % 2 == 0 else self.shaker2
+
+            # Move all containers to shaker
+            self.robot_arm.move(cont, shaker)
+            shaker.shake_plate(cont, DURATION, FREQUENCY)
             self.robot_arm.move(cont, self.hotel2)
-            # move all containers to the human for inspection (it can hold up to two)
-            self.robot_arm.move(cont, self.hotel1)
+

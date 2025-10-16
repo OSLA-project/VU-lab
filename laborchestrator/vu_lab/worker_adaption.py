@@ -1,5 +1,4 @@
 """TODO: Add module docstring"""
-
 import logging
 from random import randint
 from typing import Any
@@ -15,6 +14,7 @@ from laborchestrator.structures import SchedulingInstance
 from laborchestrator.structures import SMProcess
 from vu_lab.wrappers import GenericRobotArmWrapper
 from vu_lab.wrappers.device_interface import DeviceInterface
+
 
 logger = logging.getLogger(__name__)
 
@@ -104,7 +104,7 @@ class Worker(WorkerInterface):
                 logger.exception(f"Could not connect to {server_name}:\n{error}")
         return None
 
-    def process_step_finished(self, step_id: str, result: NamedTuple | None) -> None:
+    def process_step_finished(self, step_id: str, result: NamedTuple) -> None:
         # get all information about the process step
         step = self.jssp.step_by_id[step_id]
         container = self.jssp.container_info_by_name[step.cont]

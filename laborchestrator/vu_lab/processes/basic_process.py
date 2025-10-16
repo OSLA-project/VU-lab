@@ -28,7 +28,7 @@ class BasicProcess(PLProcess, ABC):
         self.shaker1 = ShakerServiceResource(proc=self, name="shaker1")
         self.shaker2 = ShakerServiceResource(proc=self, name="shaker2")
 
-        # the continers are automatically named/enumerated. You can change the naming without causing problems
+        # the containers are automatically named/enumerated. You can change the naming without causing problems
         self.containers = [
             LabwareResource(
                 proc=self,
