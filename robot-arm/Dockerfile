@@ -10,6 +10,8 @@ RUN python -m pip install xarm-python-sdk
 
 RUN git clone https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git /opt/genericroboticarm
 
+COPY ./default_graphs/* /opt/genericroboticarm/genericroboticarm/graphs/
+
 WORKDIR /opt/genericroboticarm
 
 RUN pip install -e .
