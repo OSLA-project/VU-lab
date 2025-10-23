@@ -25,7 +25,10 @@ classifiers = [
 dependencies = [
     "sila2>=0.12.2",
     "unitelabs-cdk>=0.3.8",
-    "pythonlab @ https://gitlab.com/api/v4/projects/70367030/packages/pypi/files/9312964aa599654c73e5f62a3c7bf0ae77d91cbbae8a0e93a8f7bac2dadb63b9/pythonlab-0.2.2-py3-none-any.whl",
+    "pythonlab",
+    "sila2-drv-shaker-thermoscientific-teleshake1536 @ https://gitlab.com/sila-driver-group/teleshake.git",
+    "laborchestrator",
+    "labscheduler>=0.3.1",
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
@@ -52,10 +55,19 @@ publishing = [
     "wheel",
 ]
 
+[[tool.uv.index]]
+url = "https://gitlab.com/api/v4/projects/70366720/packages/pypi/simple"
+
 [project.urls]
 Repository = "https://github.com/OSLA-project/openlab_vu"
 Issues = "https://github.com/OSLA-project/openlab_vu/issues"
 Changelog = "https://github.com/OSLA-project/openlab_vu/CHANGELOG.md"
+
+[[tool.uv.index]]
+url = "https://gitlab.com/api/v4/projects/70367030/packages/pypi/simple"
+
+[[tool.uv.index]]
+url = "https://gitlab.com/api/v4/projects/70366855/packages/pypi/simple"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -141,3 +153,8 @@ filename = "pyproject.toml"
 
 [[tool.bumpversion.files]]
 filename = "CITATION.cff"
+
+# Configure setuptools to find packages in the laborchestrator directory
+[tool.setuptools]
+package-dir = {"vu_lab" = "laborchestrator/vu_lab"}
+packages = ["vu_lab", "vu_lab.processes", "vu_lab.wrappers"]
