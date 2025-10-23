@@ -1,14 +1,48 @@
 #!/usr/bin/env python3
-
+import sys
 import time
 import config
 from laborchestrator.logging_manager import StandardLogger as Logger
 from laborchestrator.old_dash_app import SMDashApp
 from laborchestrator.orchestrator_implementation import Orchestrator
 
+from platform_status_db.larastatus.status_db_implementation import (
+    StatusDBImplementation,
+)
+from pathlib import Path
+
+
+def add_lab_setup_to_db(platform_config_path) -> None:
+    """
+    Use this script to populate the database with devices and positions according to the lab_config file.
+    It does not check whether devices already exists. So, running this multiple times results in duplicate database entries.
+    You can remove all present devices and positions running the wipe_lab command.
+    """
+    lab_config_file = Path(platform_config_path).resolve()
+    # creates a client got the database
+    db_client = StatusDBImplementation()
+    # clear the database, if necessary
+    db_client.wipe_lab()
+
+    print("Populating the database with config from:", lab_config_file)
+    # populates the database
+    db_client.create_lab_from_config(lab_config_file.as_posix())
+
+
 
 def main() -> None:
     """Main function to start the orchestrator and scheduler with a dash app."""
+
+    # Fill the database
+    platform_config_path = None
+
+    if len(sys.argv) > 1:
+        platform_config_path = sys.argv[1]
+    else:
+        raise Exception("Please provide the platform config path as first argument.")
+
+    add_lab_setup_to_db(platform_config_path)
+
     if config.worker:
         orchestrator = Orchestrator(reader="PythonLab", worker_type=config.worker)
     else:

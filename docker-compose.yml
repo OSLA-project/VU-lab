@@ -32,7 +32,7 @@ services:
 #    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
     command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --simulation
     volumes:
-        - ./robot-arm/saved_graphs:/opt/genericroboticarm/genericroboticarm/control/saved_graphs:z
+        - ./robot-arm/new_graphs:/root/.config/GenericRoboticArm/:z
 
   # Container for testing purposes
   python:
