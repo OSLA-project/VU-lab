@@ -7,7 +7,8 @@ from laborchestrator.old_dash_app import SMDashApp
 from laborchestrator.orchestrator_implementation import Orchestrator
 
 
-def main():
+def main() -> None:
+    """Main function to start the orchestrator and scheduler with a dash app."""
     if config.worker:
         orchestrator = Orchestrator(reader="PythonLab", worker_type=config.worker)
     else:
@@ -30,16 +31,14 @@ def main():
         scheduler = SchedulerClient.discover(insecure=True, timeout=5)
         if config.scheduling_algorithm:
             available_algorithms = scheduler.SchedulingService.AvailableAlgorithms.get()
-            if config.scheduling_algorithm in [
-                algo.Name for algo in available_algorithms
-            ]:
+            if config.scheduling_algorithm in [algo.Name for algo in available_algorithms]:
                 scheduler.SchedulingService.SelectAlgorithm(config.scheduling_algorithm)
             else:
                 Logger.warning(
                     f"Algorithm {config.scheduling_algorithm} is not available in scheduler.",
                 )
         # get the absolute filepath
-        with open(config.lab_config_file) as reader:
+        with config.lab_config_file.open() as reader:
             scheduler.LabConfigurationController.LoadJobShopFromFile(reader.read())
         Logger.info("Configured the lab of the scheduling service")
     except ModuleNotFoundError as mnfe:

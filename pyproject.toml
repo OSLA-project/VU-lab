@@ -25,6 +25,7 @@ classifiers = [
 dependencies = [
     "sila2>=0.12.2",
     "unitelabs-cdk>=0.3.8",
+    "pythonlab @ https://gitlab.com/api/v4/projects/70367030/packages/pypi/files/9312964aa599654c73e5f62a3c7bf0ae77d91cbbae8a0e93a8f7bac2dadb63b9/pythonlab-0.2.2-py3-none-any.whl",
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
@@ -78,6 +79,7 @@ extras = dev
 [tool.ruff]
 line-length = 120
 output-format = "concise"
+exclude = ["laborchestrator/vu_lab/worker_adaption.py"]
 
 [tool.ruff.lint]
 # Allow unused variables when underscore-prefixed.
@@ -110,6 +112,19 @@ pydocstyle.convention = "google"
     "S101",   # Use of assert is detected
 ]
 
+"laborchestrator/start_script.py" = ["PLC0415"]
+"laborchestrator/vu_lab/processes/empty_process.py" = [
+    "ERA001",
+    "D102",
+]
+"laborchestrator/vu_lab/worker_adaption.py" = [
+    "D101",
+    "D419",
+    "D102",
+    "D415"
+]
+
+
 [tool.ruff.lint.isort]
 known-first-party = ["openlab_vu"]
 force-single-line = true
@@ -126,5 +141,3 @@ filename = "pyproject.toml"
 
 [[tool.bumpversion.files]]
 filename = "CITATION.cff"
-
-

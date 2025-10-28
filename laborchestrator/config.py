@@ -1,4 +1,4 @@
-""" """
+"""Config file for vu lab orchestrator.""" # noqa: INP001
 
 from pathlib import Path
 # Change db_client to None to not use any database or
@@ -7,15 +7,12 @@ from platform_status_db.larastatus.status_db_implementation import StatusDBImple
 from vu_lab.worker_adaption import Worker
 
 db_client = StatusDBImplementation()
-# db_client = None
 
-# worker = None  # uncomment to use the default worker (i.e., just simulation)
+# worker = None  # uncomment to use the default worker (i.e., just simulation) # noqa: ERA001
 worker = Worker  # uncomment to use your customized worker
 
 # lab_config to be sent to the scheduler
-lab_config_file = (
-    Path(__file__).resolve().parent.parent / "lab_adaption" / "platform_config.yaml"
-)
+lab_config_file = Path(__file__).resolve().parent.parent / "lab_adaption" / "platform_config.yaml"
 
 # controls the default time limit the orchestrator gives the scheduler for computing new schedules
 # It can be changed via GUI at runtime

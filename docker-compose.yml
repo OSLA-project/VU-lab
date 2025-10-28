@@ -29,7 +29,10 @@ services:
     network_mode: host
     environment:
       - ROBOT_IP=192.168.1.4 # Change
-    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
+#    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
+    command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --simulation
+    volumes:
+        - ./robot-arm/saved_graphs:/opt/genericroboticarm/genericroboticarm/control/saved_graphs
 
   # Container for testing purposes
   python:
@@ -42,6 +45,7 @@ services:
     volumes:
       - ./laborchestrator/:/opt/vu_lab/
       - ./settings.py:/opt/vu_lab/settings.py
+      - ./platform_config.yaml:/opt/vu_lab/platform_config.yaml
     environment:
       - "DJANGO_SETTINGS_MODULE=settings"
     depends_on:
@@ -55,7 +59,7 @@ services:
     volumes:
       - ./:/opt/adaptation_template/
     command: >
-      labscheduler     
+      labscheduler --lab-config-path /opt/adaptation_template/platform_config.yaml
 
   database:
     image: postgres:latest
