@@ -28,18 +28,30 @@ This step does the following:
 
 ### Run
 
-To enter the container and spawn a shell, run:
+If you are on Linux, first you need to allow `podman` to access your display:
 
 ```sh
-podman run -e DISPLAY --device /dev/dri --net=host -v `pwd`/controller:/home/$USER/controller --userns=keep-id:uid=1000,gid=1000 -ti xarm /bin/bash
+xhost +local:podman
 ```
 
-<span style="color:red;">NOTE</span> Mounting the `controller` is necessary to be able to share files between the host and the container. By default, both `podman` and `docker` change the permissions of mounted volumes so that they become inaccessbile on the host. This is mitigated by the above command (combined with some logic in the `Dockerfile`). However, the first time you run this, it will take a rather long time, although subsequent runs will be fast. We are currently investigating why this is happening.
-
-To make things faster for now, just skip the volume part:
+Or respectively for `docker`:
 
 ```sh
-podman run -e DISPLAY --device /dev/dri --net=host -ti xarm /bin/bash
+xhost +local:docker
+```
+
+To spawn a shell inside the container, run:
+
+```sh
+podman run -e DISPLAY --device /dev/dri --net=host -v /tmp/.X11-unix:/tmp/.X11-unix:rw -ti xarm /bin/bash
+```
+
+<span style="color: #ff0000;">NOTE</span>: Mounting the `controller` is necessary to be able to seamlessly share files between the host and the container. By default, both `podman` and `docker` change the permissions of mounted volumes so that they become inaccessbile on the host. This is mitigated by the above command (combined with some logic in the `Dockerfile`). However, the first time you run this, it will take a rather long time, although subsequent runs will be fast. We are currently investigating why this is happening.
+
+To mount the `controller` directory as a volume at runtime:
+
+```sh
+podman run -e DISPLAY --device /dev/dri --net=host -v `pwd`/controller:/home/$USER/controller -v /tmp/.X11-unix:/tmp/.X11-unix:rw --userns=keep-id -ti xarm /bin/bash
 ```
 
 If everything goes smoothly, `podman` (or `docker`) should now have access to the display of the host so that you can run GUI programs. You can now fire up the simulated xArm in RViz from inside the container:
