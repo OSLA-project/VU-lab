@@ -40,7 +40,7 @@ services:
     network_mode: host
 
   laborchestrator:
-    image: registry.gitlab.com/openlabautomation/lab-automation-packages/laborchestrator
+    build: ./laborchestrator/
     network_mode: host
     volumes:
       - ./laborchestrator/:/opt/vu_lab/:z
