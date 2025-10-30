@@ -1,0 +1,1 @@
+FROM registry.gitlab.com/openlabautomation/lab-automation-packages/laborchestrator

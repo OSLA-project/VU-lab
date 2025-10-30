@@ -12,7 +12,7 @@ In order to use this setup, you will need to have the following prerequisites in
 - Either [[docker desktop](https://docs.docker.com/get-started/get-docker/) or [docker engine](https://docs.docker.com/engine/install/)
 
 ## How to use
-To use this package, you should first clone it from github
+To use this package, you shouhotel1ld first clone it from github
 ```shell
 git clone https://github.com/OSLA-project/VU-lab.git
 ```
@@ -27,6 +27,7 @@ You can reach the services at the following addresses:
 - [Sila Browser](http://localhost:3000)
 - [Orchestrator webinterface](http://localhost:8050)
 - [Robot arm webinterface](http://localhost:8055)]
+- [Platform status db](http://localhost:8000)
 
 
 ## Credits
