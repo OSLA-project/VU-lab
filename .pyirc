@@ -1,8 +1,0 @@
-[gitlab1]
-repository = https://gitlab.com/api/v4/projects/70367030/packages/pypi
-
-[gitlab2]
-repository = https://gitlab.com/api/v4/projects/70366720/packages/pypi
-
-[gitlab3]
-repository = https://gitlab.com/api/v4/projects/70366855/packages/pypi
