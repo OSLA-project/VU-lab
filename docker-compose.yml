@@ -9,15 +9,6 @@ services:
       - "50050:50050"
     network_mode: host
 
-  gen5:
-    build:
-      context: ./gen5/
-    environment:
-      - SILA_SERVER__PORT=50053
-    ports:
-        - "50053:50053"
-    network_mode: host
-
   sila-browser:
     image: registry.gitlab.com/unitelabs/sila2/sila-browser:latest
     network_mode: host

@@ -23,7 +23,7 @@ class ShakerWrapper(DeviceInterface):
     # Stop shaking
     # Start shaking runtime
 
-    def start_shake(self, client: ShakerClient, mode: int, duration: float, displacement) -> Observable:
+    def start_shake(self, client: ShakerClient, mode: int, duration: float, displacement: float) -> Observable:
         """
         Start shaking with the specified mode, duration, and displacement.
         :param client: SiLA client for the shaker device

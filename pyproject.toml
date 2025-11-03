@@ -25,7 +25,7 @@ classifiers = [
 dependencies = [
     "sila2>=0.12.2",
     "unitelabs-cdk>=0.3.8",
-    "pythonlab @ git+https://gitlab.com/api/v4/projects/70367030/packages/pypi/files/8343bd3a8ed255c9e47e2cba859bd0545639b02e148993b82c3a4d8c9952ec1a/pythonlab-0.2.3-py3-none-any.whl",
+    "pythonlab", # Package index defined in  .pyirc
     "sila2-drv-shaker-thermoscientific-teleshake1536 @ https://gitlab.com/sila-driver-group/teleshake.git",
     "laborchestrator",
     "labscheduler>=0.3.1",
@@ -59,19 +59,10 @@ where = ["."]
 include = ["laborchestrator*"]
 exclude = ["gen5*", "teleshake*"]
 
-[[tool.uv.index]]
-url = "https://gitlab.com/api/v4/projects/70366720/packages/pypi/simple"
-
 [project.urls]
 Repository = "https://github.com/OSLA-project/openlab_vu"
 Issues = "https://github.com/OSLA-project/openlab_vu/issues"
 Changelog = "https://github.com/OSLA-project/openlab_vu/CHANGELOG.md"
-
-[[tool.uv.index]]
-url = "https://gitlab.com/api/v4/projects/70367030/packages/pypi/simple"
-
-[[tool.uv.index]]
-url = "https://gitlab.com/api/v4/projects/70366855/packages/pypi/simple"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -19,7 +19,7 @@ def add_lab_setup_to_db(platform_config_path) -> None:
     You can remove all present devices and positions running the wipe_lab command.
     """
     lab_config_file = Path(platform_config_path).resolve()
-    # creates a client got the database
+    # creates a client for the database
     db_client = StatusDBImplementation()
     # clear the database, if necessary
     db_client.wipe_lab()
