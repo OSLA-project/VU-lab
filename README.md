@@ -27,6 +27,7 @@ You can reach the services at the following addresses:
 - [Sila Browser](http://localhost:3000)
 - [Orchestrator webinterface](http://localhost:8050)
 - [Robot arm webinterface](http://localhost:8055)]
+- [Platform status db](http://localhost:8000)
 
 
 ## Credits

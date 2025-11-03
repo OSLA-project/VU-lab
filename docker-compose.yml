@@ -9,15 +9,6 @@ services:
       - "50050:50050"
     network_mode: host
 
-  gen5:
-    build:
-      context: ./gen5/
-    environment:
-      - SILA_SERVER__PORT=50053
-    ports:
-        - "50053:50053"
-    network_mode: host
-
   sila-browser:
     image: registry.gitlab.com/unitelabs/sila2/sila-browser:latest
     network_mode: host
@@ -32,7 +23,7 @@ services:
 #    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
     command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --simulation
     volumes:
-        - ./robot-arm/saved_graphs:/opt/genericroboticarm/genericroboticarm/control/saved_graphs
+        - ./robot-arm/new_graphs:/root/.config/GenericRoboticArm/:z
 
   # Container for testing purposes
   python:
@@ -40,12 +31,12 @@ services:
     network_mode: host
 
   laborchestrator:
-    image: registry.gitlab.com/openlabautomation/lab-automation-packages/laborchestrator
+    build: ./laborchestrator/
     network_mode: host
     volumes:
-      - ./laborchestrator/:/opt/vu_lab/
-      - ./settings.py:/opt/vu_lab/settings.py
-      - ./platform_config.yaml:/opt/vu_lab/platform_config.yaml
+      - ./laborchestrator/:/opt/vu_lab/:z
+      - ./settings.py:/opt/vu_lab/settings.py:z
+      - ./platform_config.yaml:/opt/vu_lab/platform_config.yaml:z
     environment:
       - "DJANGO_SETTINGS_MODULE=settings"
     depends_on:
@@ -57,7 +48,7 @@ services:
     image: registry.gitlab.com/openlabautomation/lab-automation-packages/lab-scheduler/labscheduler
     network_mode: host
     volumes:
-      - ./:/opt/adaptation_template/
+      - ./:/opt/adaptation_template/:z
     command: >
       labscheduler --lab-config-path /opt/adaptation_template/platform_config.yaml
 
@@ -68,21 +59,24 @@ services:
       POSTGRES_PASSWORD: platform_status
       POSTGRES_DB: platform_status_db
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
-    network_mode: host
+      - pgdata:/var/lib/postgresql/data
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U platform_status -d platform_status_db" ]
       interval: 10s
       timeout: 5s
       retries: 5
+    network_mode: host
 
   platform_status_db:
     image: registry.gitlab.com/openlabautomation/lab-automation-packages/platform_status_db
     environment:
       DJANGO_SETTINGS_MODULE: settings
     volumes:
-      - ./settings.py:/opt/platform_status_db/settings.py
+      - ./settings.py:/opt/platform_status_db/settings.py:z
     depends_on:
       database:
         condition: service_healthy
     network_mode: host
+
+volumes:
+  pgdata:

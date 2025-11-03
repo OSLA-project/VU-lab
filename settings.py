@@ -9,7 +9,7 @@ DATABASES = {
         "NAME": "platform_status_db",
         "USER": "platform_status",
         "PASSWORD": "platform_status",
-        "HOST": "172.17.0.1",
+        "HOST": db_host,
         "PORT": "5432",
     },
 }
