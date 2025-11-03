@@ -148,8 +148,3 @@ filename = "pyproject.toml"
 
 [[tool.bumpversion.files]]
 filename = "CITATION.cff"
-
-# Configure setuptools to find packages in the laborchestrator directory
-[tool.setuptools]
-package-dir = {"vu_lab" = "laborchestrator/vu_lab"}
-packages = ["vu_lab", "vu_lab.processes", "vu_lab.wrappers"]
