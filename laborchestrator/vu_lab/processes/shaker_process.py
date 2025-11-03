@@ -1,18 +1,20 @@
 """Duplicate this file and add/modify the missing parts to create new processes
 """
-from pythonlab.resources.services.shaker import ShakerServiceResource
 
 from vu_lab.processes.basic_process import BasicProcess
-from vu_lab.wrappers.shaker_wrapper import ShakerWrapper
 
 DURATION = 10
 FREQUENCY = 10
+NUM_PLATES = 3
+PRIORITY = 3
 
-class VUTestProcess(BasicProcess):
-    def __init__(self):
-        super().__init__(priority=3, num_plates=3, process_name="Vu Test Process")
-        self.duration = DURATION
-        self.frequency = FREQUENCY
+class ShakerProcess(BasicProcess):
+    """A simple test process that moves plates to shakers, shakes them, and returns them to  the hotel."""
+    def __init__(self, priority:int=PRIORITY, num_plates:int=NUM_PLATES,
+                 duration:float=DURATION, frequency:float=FREQUENCY):
+        super().__init__(priority=priority, num_plates=num_plates, process_name="Vu Test Process")
+        self.duration = duration
+        self.frequency = frequency
 
     def init_service_resources(self):
         # setting start position of containers

@@ -29,6 +29,8 @@ dependencies = [
     "sila2-drv-shaker-thermoscientific-teleshake1536 @ git+https://gitlab.com/sila-driver-group/teleshake.git",
     "laborchestrator @ https://gitlab.com/api/v4/projects/70366855/packages/pypi/files/1f0c741a0a5b064431522114381bf45b381fe9c1bed72bf2d37f4f843ef6f5ff/laborchestrator-0.3.2-py3-none-any.whl",
     "labscheduler @ https://gitlab.com/api/v4/projects/70366720/packages/pypi/files/5c79f11d874b379db96f9930f1fcc4f8245dc99fdfc0b83c8f0261c0273fd9b5/labscheduler-0.2.48.tar.gz",
+    "ruff>=0.14.1",
+    "pytest>=8.4.2",
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
@@ -65,7 +67,9 @@ Issues = "https://github.com/OSLA-project/openlab_vu/issues"
 Changelog = "https://github.com/OSLA-project/openlab_vu/CHANGELOG.md"
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["laborchestrator/tests"]
+ignore = ["venv", "env", ".venv", ".env"]
+pythonpath = ["laborchestrator"]
 
 
 [tool.coverage.run]
