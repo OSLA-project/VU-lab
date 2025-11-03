@@ -29,7 +29,7 @@ dependencies = [
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
-license = {file = "LICENSE"}
+license = "Apache-2.0"
 name = "openlab_vu"
 readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = "~=3.11"
@@ -51,6 +51,10 @@ publishing = [
     "twine",
     "wheel",
 ]
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["laborchestrator*"]
+exclude = ["gen5*", "teleshake*"]
 
 [project.urls]
 Repository = "https://github.com/OSLA-project/openlab_vu"
