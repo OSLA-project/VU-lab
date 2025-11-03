@@ -25,10 +25,10 @@ classifiers = [
 dependencies = [
     "sila2>=0.12.2",
     "unitelabs-cdk>=0.3.8",
-    "pythonlab @ https://gitlab.com/api/v4/projects/70367030/packages/pypi/files/8343bd3a8ed255c9e47e2cba859bd0545639b02e148993b82c3a4d8c9952ec1a/pythonlab-0.2.3-py3-none-any.whl#sha256=8343bd3a8ed255c9e47e2cba859bd0545639b02e148993b82c3a4d8c9952ec1a",
-    "sila2-drv-shaker-thermoscientific-teleshake1536 @ https://gitlab.com/sila-driver-group/teleshake.git",
-    "laborchestrator @ https://gitlab.com/api/v4/projects/70366855/packages/pypi/files/1f0c741a0a5b064431522114381bf45b381fe9c1bed72bf2d37f4f843ef6f5ff/laborchestrator-0.3.2-py3-none-any.whl#sha256=1f0c741a0a5b064431522114381bf45b381fe9c1bed72bf2d37f4f843ef6f5ff",
-    "labscheduler @ https://gitlab.com/api/v4/projects/70366720/packages/pypi/files/5c79f11d874b379db96f9930f1fcc4f8245dc99fdfc0b83c8f0261c0273fd9b5/labscheduler-0.2.48.tar.gz#sha256=5c79f11d874b379db96f9930f1fcc4f8245dc99fdfc0b83c8f0261c0273fd9b5",
+    "pythonlab @ https://gitlab.com/api/v4/projects/70367030/packages/pypi/files/8343bd3a8ed255c9e47e2cba859bd0545639b02e148993b82c3a4d8c9952ec1a/pythonlab-0.2.3-py3-none-any.whl",
+    "sila2-drv-shaker-thermoscientific-teleshake1536 @ git+https://gitlab.com/sila-driver-group/teleshake.git",
+    "laborchestrator @ https://gitlab.com/api/v4/projects/70366855/packages/pypi/files/1f0c741a0a5b064431522114381bf45b381fe9c1bed72bf2d37f4f843ef6f5ff/laborchestrator-0.3.2-py3-none-any.whl",
+    "labscheduler @ https://gitlab.com/api/v4/projects/70366720/packages/pypi/files/5c79f11d874b379db96f9930f1fcc4f8245dc99fdfc0b83c8f0261c0273fd9b5/labscheduler-0.2.48.tar.gz",
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
