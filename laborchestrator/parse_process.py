@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 from pythonlab.pythonlab_reader import PLProcessReader
 import argparse
 
