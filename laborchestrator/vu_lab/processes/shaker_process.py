@@ -5,7 +5,7 @@ from vu_lab.processes.basic_process import BasicProcess
 
 DURATION = 10
 FREQUENCY = 10
-NUM_PLATES = 3
+NUM_PLATES = 6
 PRIORITY = 3
 
 class ShakerProcess(BasicProcess):
@@ -27,10 +27,7 @@ class ShakerProcess(BasicProcess):
         for idx in range(self.num_mw_plates):
             cont = self.containers[idx]
 
-            shaker_idx = idx % len(self.shakers)
-
             # Move all containers to shaker
-            self.robot_arm.move(cont, self.shakers[shaker_idx])
-            self.shakers[shaker_idx].shake_plate(cont, self.duration, self.frequency)
+            self.robot_arm.move(cont, self.shaker_pool)
+            self.shaker_pool.shake_plate(cont, self.duration, self.frequency)
             self.robot_arm.move(cont, self.hotel1)
-
