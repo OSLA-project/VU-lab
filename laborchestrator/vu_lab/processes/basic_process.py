@@ -30,6 +30,8 @@ class BasicProcess(PLProcess, ABC):
         self.shaker4 = ShakerServiceResource(proc=self, name="shaker4")
         self.shaker5 = ShakerServiceResource(proc=self, name="shaker5")
         self.shaker6 = ShakerServiceResource(proc=self, name="shaker6")
+        self.shaker7 = ShakerServiceResource(proc=self, name="shaker7")
+        self.shaker8 = ShakerServiceResource(proc=self, name="shaker8")
 
         self.shaker_pool = ShakerServiceResource(proc=self, name=None)
 

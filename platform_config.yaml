@@ -3,7 +3,7 @@ description:
 sila_servers:
     storage:
         hotel1:
-            capacity: 5
+            capacity: 10
     movers:
         robot_arm:
             capacity: 1
@@ -11,6 +11,18 @@ sila_servers:
         shaker1:
             capacity: 1
         shaker2:
+            capacity: 1
+        shaker3:
+            capacity: 1
+        shaker4:
+            capacity: 1
+        shaker5:
+            capacity: 1
+        shaker6:
+            capacity: 1
+        shaker7:
+            capacity: 1
+        shaker8:
             capacity: 1
 
 # ------ Translation to used resources in the process description ------

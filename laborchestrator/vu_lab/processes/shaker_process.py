@@ -3,9 +3,9 @@
 
 from vu_lab.processes.basic_process import BasicProcess
 
-DURATION = 10
+DURATION = 30*60  # 30 minutes
 FREQUENCY = 10
-NUM_PLATES = 6
+NUM_PLATES = 3
 PRIORITY = 3
 
 class ShakerProcess(BasicProcess):

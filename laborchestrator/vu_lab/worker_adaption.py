@@ -31,7 +31,7 @@ device_wrappers: dict[str, type[DeviceInterface]] = {
 # maps the device names (from the platform_config and process description) to the correct sila server names
 # those without a sila server can be left out
 sila_server_name: dict[str, str] = {
-    "GenericArm": "Dummy",
+    "GenericArm": "XArm",
 }
 
 
