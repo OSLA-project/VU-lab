@@ -26,7 +26,12 @@ class BasicProcess(PLProcess, ABC):
         self.robot_arm = MoverServiceResource(proc=self, name="robot_arm")
         self.shaker1 = ShakerServiceResource(proc=self, name="shaker1")
         self.shaker2 = ShakerServiceResource(proc=self, name="shaker2")
-        self.shakers: list[ShakerServiceResource] = [self.shaker1, self.shaker2]
+        self.shaker3 = ShakerServiceResource(proc=self, name="shaker3")
+        self.shaker4 = ShakerServiceResource(proc=self, name="shaker4")
+        self.shaker5 = ShakerServiceResource(proc=self, name="shaker5")
+        self.shaker6 = ShakerServiceResource(proc=self, name="shaker6")
+
+        self.shaker_pool = ShakerServiceResource(proc=self, name=None)
 
         # the containers are automatically named/enumerated. You can change the naming without causing problems
         self.containers = [
