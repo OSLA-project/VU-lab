@@ -1,6 +1,6 @@
 FROM python:3.11
 
-COPY ./microplate /opt/microplate/
+RUN git clone --depth 1 https://github.com/OSLA-project/microplate.git /opt/microplate/
 WORKDIR /opt/microplate
 
 RUN pip install .

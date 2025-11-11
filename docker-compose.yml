@@ -30,15 +30,6 @@ services:
     image: python:3.12
     network_mode: host
 
-  gen5:
-    build:
-      context: ./gen5/
-    environment:
-      - SILA_SERVER__PORT=50053
-    ports:
-        - "50053:50053"
-    network_mode: host
-
   microplate:
     build:
       context: ./microplate/
