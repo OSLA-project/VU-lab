@@ -34,9 +34,7 @@ services:
     build: ./laborchestrator
     network_mode: host
     volumes:
-      - ./laborchestrator/:/opt/vu_lab/:z
-      - ./settings.py:/opt/vu_lab/settings.py:z
-      - ./platform_config.yaml:/opt/vu_lab/platform_config.yaml:z
+      - ./laborchestrator:/opt/vu_lab:z
     environment:
       - "DJANGO_SETTINGS_MODULE=settings"
     depends_on:
@@ -48,7 +46,7 @@ services:
     image: registry.gitlab.com/openlabautomation/lab-automation-packages/lab-scheduler/labscheduler
     network_mode: host
     volumes:
-      - ./:/opt/adaptation_template/:z
+      - ./laborchestrator/platform_config.yaml:/opt/adaptation_template/platform_config.yaml:z
     command: >
       labscheduler --lab-config-path /opt/adaptation_template/platform_config.yaml
 
@@ -72,7 +70,7 @@ services:
     environment:
       DJANGO_SETTINGS_MODULE: settings
     volumes:
-      - ./settings.py:/opt/platform_status_db/settings.py:z
+      - ./laborchestrator/settings.py:/opt/platform_status_db/settings.py:z
     depends_on:
       database:
         condition: service_healthy
