@@ -39,6 +39,15 @@ services:
         - "50053:50053"
     network_mode: host
 
+  microplate:
+    build:
+      context: ./microplate/
+    environment:
+      - SILA_SERVER__PORT=50099
+    ports:
+        - "50099:50099"
+    network_mode: host
+
   laborchestrator:
     build: ./laborchestrator
     network_mode: host
