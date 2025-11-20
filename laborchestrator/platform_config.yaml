@@ -2,22 +2,22 @@ description:
   - "An exemplary robotic lab description. Add devices at will"
 sila_servers:
   storage:
-    hotel1:
-      capacity: 5
+    hotel_1_d_pos_:
+      capacity: 8
   movers:
     robot_arm:
       capacity: 1
 
   shakers:
-    shaker1:
+    shaker_1_d_pos_:
       capacity: 1
-    shaker2:
+    shaker_2_d_pos_:
       capacity: 1
-    shaker3:
+    shaker_3_d_pos_:
       capacity: 1
-    shaker5:
+    shaker_5_d_pos_:
       capacity: 1
-    shaker6:
+    shaker_6_d_pos_:
       capacity: 1
 
 # ------ Translation to used resources in the process description ------
