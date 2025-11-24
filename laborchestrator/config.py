@@ -12,7 +12,7 @@ db_client = StatusDBImplementation()
 worker = Worker  # uncomment to use your customized worker
 
 # lab_config to be sent to the scheduler
-lab_config_file = Path(__file__).resolve().parent.parent / "lab_adaption" / "platform_config.yaml"
+lab_config_file = "/opt/vu_lab/platform_config.yaml"
 
 # controls the default time limit the orchestrator gives the scheduler for computing new schedules
 # It can be changed via GUI at runtime

@@ -41,7 +41,7 @@ services:
       - platform_status_db
       - labscheduler
     working_dir: /opt/vu_lab/
-    command: ./start_script.py platform_config.yaml
+    command: ./start_script.py
 
   labscheduler:
     image: registry.gitlab.com/openlabautomation/lab-automation-packages/lab-scheduler/labscheduler
