@@ -1,207 +1,1710 @@
 graph [
   node [
     id 0
-    label "neutral"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
+    label "robotarm_entrypoint"
+    x 149.60000610351562
+    y -0.8999999761581421
+    z 238.1999969482422
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
   ]
   node [
     id 1
-    label "hotel11"
-    x 0.0
-    y 0.0
-    z 0.0
-    roll 0.0
+    label "photobooth_entrypoint"
+    x 248.10000610351562
+    y 262.6000061035156
+    z 170.0
+    roll -180.0
     pitch 0.0
-    yaw 0.0
+    yaw 90.0
   ]
   node [
     id 2
-    label "hotel1-intermediate"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
+    label "photobooth_pos_1"
+    x 248.10000610351562
+    y 392.6000061035156
+    z 140.0
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
   ]
   node [
     id 3
-    label "hotel15"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
+    label "node_1_entrypoint"
+    x 280.0
+    y 0.0
+    z 226.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
   ]
   node [
     id 4
-    label "hotel12"
-    x 0.0
+    label "node_2_entrypoint"
+    x 350.0
     y 0.0
-    z 0.0
-    roll 0.0
+    z 226.0
+    roll 180.0
     pitch 0.0
-    yaw 0.0
+    yaw 90.0
   ]
   node [
     id 5
-    label "hotel13"
-    x 0.0
-    y 0.0
-    z 0.0
-    roll 0.0
+    label "node_3_entrypoint"
+    x 300.0
+    y 200.0
+    z 226.0
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 6
+    label "rot_short_entrypoint"
+    x 292.8999938964844
+    y -315.29998779296875
+    z 106.5
+    roll -180.0
     pitch 0.0
     yaw 0.0
   ]
   node [
-    id 6
-    label "shaker-intermediate"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
-  ]
-  node [
     id 7
-    label "shaker1"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
+    label "rot_short_pos_1"
+    x 292.8999938964844
+    y -315.29998779296875
+    z 106.5
+    roll -180.0
+    pitch 0.0
+    yaw 0.0
   ]
   node [
     id 8
-    label "shaker2"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
+    label "rot_long_entrypoint"
+    x 423.0
+    y -180.0
+    z 106.19999694824219
+    roll 180.0
+    pitch 0.0
+    yaw -90.0
   ]
   node [
     id 9
-    label "hotel14"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
+    label "rot_long_pos_1"
+    x 423.0
+    y -180.0
+    z 106.19999694824219
+    roll 180.0
+    pitch 0.0
+    yaw -90.0
   ]
   node [
     id 10
-    label "shaker3"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
+    label "hotel_1_shortside_d_entrypoint"
+    x 637.0
+    y 43.0
+    z 115.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
   ]
   node [
     id 11
-    label "shaker4"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
+    label "hotel_1_shortside_d_pos_1"
+    x 637.0
+    y 43.0
+    z 115.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
   ]
   node [
     id 12
-    label "shaker5"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
+    label "hotel_1_shortside_d_pos_2"
+    x 637.0
+    y 43.0
+    z 200.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
   ]
   node [
     id 13
-    label "shaker6"
-    x 0
-    y 0
-    z 0
-    roll 0
-    pitch 0
-    yaw 0
+    label "hotel_1_shortside_d_pos_3"
+    x 637.0
+    y 43.0
+    z 283.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 14
+    label "hotel_1_shortside_d_pos_4"
+    x 637.0
+    y 43.0
+    z 367.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 15
+    label "hotel_1_shortside_d_pos_5"
+    x 637.0
+    y 43.0
+    z 451.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 16
+    label "hotel_1_shortside_d_pos_6"
+    x 637.0
+    y 43.0
+    z 535.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 17
+    label "hotel_1_shortside_d_pos_7"
+    x 637.0
+    y 43.0
+    z 618.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 18
+    label "hotel_1_shortside_d_pos_8"
+    x 637.0
+    y 43.0
+    z 701.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 19
+    label "hotel_1_shortside_p_entrypoint"
+    x 637.0
+    y 43.0
+    z 115.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 20
+    label "hotel_1_shortside_p_pos_1"
+    x 637.0
+    y 43.0
+    z 115.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 21
+    label "hotel_1_shortside_p_pos_2"
+    x 637.0
+    y 43.0
+    z 200.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 22
+    label "hotel_1_shortside_p_pos_3"
+    x 637.0
+    y 43.0
+    z 283.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 23
+    label "hotel_1_shortside_p_pos_4"
+    x 637.0
+    y 43.0
+    z 367.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 24
+    label "hotel_1_shortside_p_pos_5"
+    x 637.0
+    y 43.0
+    z 451.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 25
+    label "hotel_1_shortside_p_pos_6"
+    x 637.0
+    y 43.0
+    z 535.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 26
+    label "hotel_1_shortside_p_pos_7"
+    x 637.0
+    y 43.0
+    z 618.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 27
+    label "hotel_1_shortside_p_pos_8"
+    x 637.0
+    y 43.0
+    z 701.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 28
+    label "hotel_2_shortside_d_entrypoint"
+    x 637.0
+    y -124.0
+    z 115.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 29
+    label "hotel_2_shortside_d_pos_1"
+    x 637.0
+    y -124.0
+    z 115.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 30
+    label "hotel_2_shortside_d_pos_2"
+    x 637.0
+    y -124.0
+    z 200.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 31
+    label "hotel_2_shortside_d_pos_3"
+    x 637.0
+    y -124.0
+    z 283.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 32
+    label "hotel_2_shortside_d_pos_4"
+    x 637.0
+    y -124.0
+    z 367.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 33
+    label "hotel_2_shortside_d_pos_5"
+    x 637.0
+    y -124.0
+    z 451.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 34
+    label "hotel_2_shortside_d_pos_6"
+    x 637.0
+    y -124.0
+    z 535.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 35
+    label "hotel_2_shortside_d_pos_7"
+    x 637.0
+    y -124.0
+    z 618.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 36
+    label "hotel_2_shortside_d_pos_8"
+    x 637.0
+    y -124.0
+    z 701.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 37
+    label "hotel_2_shortside_p_entrypoint"
+    x 637.0
+    y -124.0
+    z 115.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 38
+    label "hotel_2_shortside_p_pos_1"
+    x 637.0
+    y -124.0
+    z 115.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 39
+    label "hotel_2_shortside_p_pos_2"
+    x 637.0
+    y -124.0
+    z 200.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 40
+    label "hotel_2_shortside_p_pos_3"
+    x 637.0
+    y -124.0
+    z 283.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 41
+    label "hotel_2_shortside_p_pos_4"
+    x 637.0
+    y -124.0
+    z 367.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 42
+    label "hotel_2_shortside_p_pos_5"
+    x 637.0
+    y -124.0
+    z 451.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 43
+    label "hotel_2_shortside_p_pos_6"
+    x 637.0
+    y -124.0
+    z 535.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 44
+    label "hotel_2_shortside_p_pos_7"
+    x 637.0
+    y -124.0
+    z 618.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 45
+    label "hotel_2_shortside_p_pos_8"
+    x 637.0
+    y -124.0
+    z 701.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 46
+    label "hotel_1_d_entrypoint"
+    x -198.0
+    y 265.0
+    z 212.0
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 47
+    label "hotel_1_d_pos_1"
+    x -197.6999969482422
+    y 425.0
+    z 112.5
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 48
+    label "hotel_1_d_pos_2"
+    x -197.6999969482422
+    y 425.0
+    z 196.39999389648438
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 49
+    label "hotel_1_d_pos_3"
+    x -197.39999389648438
+    y 425.0
+    z 280.20001220703125
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 50
+    label "hotel_1_d_pos_4"
+    x -197.10000610351562
+    y 425.0
+    z 364.1000061035156
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 51
+    label "hotel_1_d_pos_5"
+    x -196.89999389648438
+    y 425.0
+    z 447.8999938964844
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 52
+    label "hotel_1_d_pos_6"
+    x -196.60000610351562
+    y 425.0
+    z 531.7999877929688
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 53
+    label "hotel_1_d_pos_7"
+    x -196.3000030517578
+    y 425.0
+    z 615.5999755859375
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 54
+    label "hotel_1_d_pos_8"
+    x -196.0
+    y 425.0
+    z 699.5
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 55
+    label "hotel_1_p_entrypoint"
+    x -198.0
+    y 265.0
+    z 212.0
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 56
+    label "hotel_1_p_pos_1"
+    x -197.6999969482422
+    y 425.0
+    z 112.0
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 57
+    label "hotel_1_p_pos_2"
+    x -197.6999969482422
+    y 425.0
+    z 195.89999389648438
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 58
+    label "hotel_1_p_pos_3"
+    x -197.39999389648438
+    y 425.0
+    z 279.70001220703125
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 59
+    label "hotel_1_p_pos_4"
+    x -197.10000610351562
+    y 425.0
+    z 363.6000061035156
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 60
+    label "hotel_1_p_pos_5"
+    x -196.89999389648438
+    y 425.0
+    z 447.3999938964844
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 61
+    label "hotel_1_p_pos_6"
+    x -196.60000610351562
+    y 425.0
+    z 531.2999877929688
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 62
+    label "hotel_1_p_pos_7"
+    x -196.3000030517578
+    y 425.0
+    z 615.0999755859375
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 63
+    label "hotel_1_p_pos_8"
+    x -196.0
+    y 425.0
+    z 699.0
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 64
+    label "hotel_2_d_entrypoint"
+    x -22.5
+    y 265.0
+    z 296.29998779296875
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 65
+    label "hotel_2_d_pos_1"
+    x -22.5
+    y 425.0
+    z 196.8000030517578
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 66
+    label "hotel_2_d_pos_2"
+    x -22.5
+    y 425.0
+    z 280.70001220703125
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 67
+    label "hotel_2_d_pos_3"
+    x -22.399999618530273
+    y 424.8999938964844
+    z 364.5
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 68
+    label "hotel_2_d_pos_4"
+    x -22.299999237060547
+    y 424.79998779296875
+    z 448.4000244140625
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 69
+    label "hotel_2_d_pos_5"
+    x -22.200000762939453
+    y 424.70001220703125
+    z 532.2999877929688
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 70
+    label "hotel_2_d_pos_6"
+    x -22.100000381469727
+    y 424.6000061035156
+    z 616.0999755859375
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 71
+    label "hotel_2_d_pos_7"
+    x -22.0
+    y 424.5
+    z 700.0
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 72
+    label "hotel_2_p_entrypoint"
+    x -22.5
+    y 265.0
+    z 296.29998779296875
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 73
+    label "hotel_2_p_pos_1"
+    x -22.5
+    y 425.0
+    z 196.3000030517578
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 74
+    label "hotel_2_p_pos_2"
+    x -22.5
+    y 425.0
+    z 280.20001220703125
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 75
+    label "hotel_2_p_pos_3"
+    x -22.399999618530273
+    y 424.8999938964844
+    z 364.0
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 76
+    label "hotel_2_p_pos_4"
+    x -22.299999237060547
+    y 424.79998779296875
+    z 447.9000244140625
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 77
+    label "hotel_2_p_pos_5"
+    x -22.200000762939453
+    y 424.70001220703125
+    z 531.7999877929688
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 78
+    label "hotel_2_p_pos_6"
+    x -22.100000381469727
+    y 424.6000061035156
+    z 615.5999755859375
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 79
+    label "hotel_2_p_pos_7"
+    x -22.0
+    y 424.5
+    z 699.5
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 80
+    label "platereader_d_entrypoint"
+    x 583.5
+    y 7.5
+    z 240.5
+    roll -180.39999389648438
+    pitch -0.6000000238418579
+    yaw 90.0
+  ]
+  node [
+    id 81
+    label "platereader_d_pos_1"
+    x 583.5
+    y 112.5
+    z 211.0
+    roll -180.39999389648438
+    pitch -0.6000000238418579
+    yaw 90.0
+  ]
+  node [
+    id 82
+    label "platereader_p_entrypoint"
+    x 583.5
+    y 7.5
+    z 240.5
+    roll -180.39999389648438
+    pitch -0.6000000238418579
+    yaw 90.0
+  ]
+  node [
+    id 83
+    label "platereader_p_pos_1"
+    x 583.5
+    y 112.5
+    z 210.5
+    roll -180.39999389648438
+    pitch -0.6000000238418579
+    yaw 90.0
+  ]
+  node [
+    id 84
+    label "shaker_1_d_entrypoint"
+    x 289.5
+    y 55.5
+    z 124.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 85
+    label "shaker_1_d_pos_1"
+    x 289.5
+    y 55.5
+    z 85.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 86
+    label "shaker_1_p_entrypoint"
+    x 289.5
+    y 55.5
+    z 124.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 87
+    label "shaker_1_p_pos_1"
+    x 289.5
+    y 55.5
+    z 84.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 88
+    label "shaker_2_d_entrypoint"
+    x 399.5
+    y 55.0
+    z 126.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 89
+    label "shaker_2_d_pos_1"
+    x 399.5
+    y 55.0
+    z 86.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 90
+    label "shaker_2_p_entrypoint"
+    x 399.5
+    y 55.0
+    z 126.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 91
+    label "shaker_2_p_pos_1"
+    x 399.5
+    y 55.0
+    z 86.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 92
+    label "shaker_3_d_entrypoint"
+    x 510.0
+    y 54.0
+    z 126.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 93
+    label "shaker_3_d_pos_1"
+    x 510.0
+    y 54.0
+    z 87.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 94
+    label "shaker_3_p_entrypoint"
+    x 510.0
+    y 54.0
+    z 126.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 95
+    label "shaker_3_p_pos_1"
+    x 510.0
+    y 54.0
+    z 86.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 96
+    label "shaker_4_d_entrypoint"
+    x 620.0
+    y 52.0
+    z 126.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 97
+    label "shaker_4_d_pos_1"
+    x 620.0
+    y 52.0
+    z 87.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 98
+    label "shaker_4_p_entrypoint"
+    x 620.0
+    y 52.0
+    z 126.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 99
+    label "shaker_4_p_pos_1"
+    x 620.0
+    y 52.0
+    z 86.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 100
+    label "shaker_5_d_entrypoint"
+    x 288.0
+    y -109.5
+    z 125.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 101
+    label "shaker_5_d_pos_1"
+    x 288.0
+    y -109.5
+    z 85.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 102
+    label "shaker_5_p_entrypoint"
+    x 288.0
+    y -109.5
+    z 125.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 103
+    label "shaker_5_p_pos_1"
+    x 288.0
+    y -109.5
+    z 85.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 104
+    label "shaker_6_d_entrypoint"
+    x 398.0
+    y -110.5
+    z 124.80000305175781
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 105
+    label "shaker_6_d_pos_1"
+    x 398.0
+    y -110.5
+    z 85.30000305175781
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 106
+    label "shaker_6_p_entrypoint"
+    x 398.0
+    y -110.5
+    z 124.80000305175781
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 107
+    label "shaker_6_p_pos_1"
+    x 398.0
+    y -110.5
+    z 84.80000305175781
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 108
+    label "shaker_7_d_entrypoint"
+    x 508.5
+    y -111.5
+    z 126.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 109
+    label "shaker_7_d_pos_1"
+    x 508.5
+    y -111.5
+    z 86.5
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 110
+    label "shaker_7_p_entrypoint"
+    x 508.5
+    y -111.5
+    z 126.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 111
+    label "shaker_7_p_pos_1"
+    x 508.5
+    y -111.5
+    z 86.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 112
+    label "shaker_8_d_entrypoint"
+    x 619.0
+    y -112.0
+    z 126.80000305175781
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 113
+    label "shaker_8_d_pos_1"
+    x 619.0
+    y -112.0
+    z 87.30000305175781
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 114
+    label "shaker_8_p_entrypoint"
+    x 619.0
+    y -112.0
+    z 126.80000305175781
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 115
+    label "shaker_8_p_pos_1"
+    x 619.0
+    y -112.0
+    z 86.80000305175781
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 116
+    label "shaker_9_d_entrypoint"
+    x 242.5
+    y 196.0
+    z 125.0
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 117
+    label "shaker_9_d_pos_1"
+    x 242.5
+    y 196.0
+    z 85.5
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 118
+    label "shaker_9_p_entrypoint"
+    x 242.5
+    y 196.0
+    z 125.0
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 119
+    label "shaker_9_p_pos_1"
+    x 242.5
+    y 196.0
+    z 85.0
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 120
+    label "shaker_10_d_entrypoint"
+    x 89.5
+    y 196.0
+    z 125.0
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 121
+    label "shaker_10_d_pos_1"
+    x 89.5
+    y 196.0
+    z 85.5
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 122
+    label "shaker_10_p_entrypoint"
+    x 89.5
+    y 196.0
+    z 125.0
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 123
+    label "shaker_10_p_pos_1"
+    x 89.5
+    y 196.0
+    z 85.0
+    roll 180.0
+    pitch 0.0
+    yaw 90.0
   ]
   edge [
     source 0
-    target 2
-    dist 0.0
-  ]
-  edge [
-    source 0
-    target 6
-    dist 0.0
+    target 3
   ]
   edge [
     source 1
     target 2
-    dist 0.0
   ]
   edge [
-    source 2
-    target 3
-    dist 0.0
-  ]
-  edge [
-    source 2
+    source 1
     target 4
-    dist 0.0
   ]
   edge [
-    source 2
+    source 3
+    target 4
+  ]
+  edge [
+    source 3
+    target 84
+  ]
+  edge [
+    source 3
+    target 86
+  ]
+  edge [
+    source 3
+    target 88
+  ]
+  edge [
+    source 3
+    target 90
+  ]
+  edge [
+    source 3
+    target 92
+  ]
+  edge [
+    source 3
+    target 94
+  ]
+  edge [
+    source 3
+    target 96
+  ]
+  edge [
+    source 3
+    target 98
+  ]
+  edge [
+    source 3
+    target 100
+  ]
+  edge [
+    source 3
+    target 102
+  ]
+  edge [
+    source 3
+    target 104
+  ]
+  edge [
+    source 3
+    target 106
+  ]
+  edge [
+    source 3
+    target 108
+  ]
+  edge [
+    source 3
+    target 110
+  ]
+  edge [
+    source 3
+    target 112
+  ]
+  edge [
+    source 3
+    target 114
+  ]
+  edge [
+    source 4
     target 5
-    dist 0.0
   ]
   edge [
-    source 2
-    target 9
-    dist 0.0
+    source 4
+    target 80
+  ]
+  edge [
+    source 4
+    target 82
+  ]
+  edge [
+    source 5
+    target 46
+  ]
+  edge [
+    source 5
+    target 55
+  ]
+  edge [
+    source 5
+    target 64
+  ]
+  edge [
+    source 5
+    target 72
+  ]
+  edge [
+    source 5
+    target 116
+  ]
+  edge [
+    source 5
+    target 118
+  ]
+  edge [
+    source 5
+    target 120
+  ]
+  edge [
+    source 5
+    target 122
   ]
   edge [
     source 6
     target 7
-    dist 0.0
   ]
   edge [
-    source 6
-    target 8
-    dist 0.0
+    source 8
+    target 9
   ]
   edge [
-    source 6
-    target 10
-    dist 0.0
-  ]
-  edge [
-    source 6
+    source 10
     target 11
-    dist 0.0
   ]
   edge [
-    source 6
+    source 10
     target 12
-    dist 0.0
   ]
   edge [
-    source 6
+    source 10
     target 13
-    dist 0.0
+  ]
+  edge [
+    source 10
+    target 14
+  ]
+  edge [
+    source 10
+    target 15
+  ]
+  edge [
+    source 10
+    target 16
+  ]
+  edge [
+    source 10
+    target 17
+  ]
+  edge [
+    source 10
+    target 18
+  ]
+  edge [
+    source 19
+    target 20
+  ]
+  edge [
+    source 19
+    target 21
+  ]
+  edge [
+    source 19
+    target 22
+  ]
+  edge [
+    source 19
+    target 23
+  ]
+  edge [
+    source 19
+    target 24
+  ]
+  edge [
+    source 19
+    target 25
+  ]
+  edge [
+    source 19
+    target 26
+  ]
+  edge [
+    source 19
+    target 27
+  ]
+  edge [
+    source 28
+    target 29
+  ]
+  edge [
+    source 28
+    target 30
+  ]
+  edge [
+    source 28
+    target 31
+  ]
+  edge [
+    source 28
+    target 32
+  ]
+  edge [
+    source 28
+    target 33
+  ]
+  edge [
+    source 28
+    target 34
+  ]
+  edge [
+    source 28
+    target 35
+  ]
+  edge [
+    source 28
+    target 36
+  ]
+  edge [
+    source 37
+    target 38
+  ]
+  edge [
+    source 37
+    target 39
+  ]
+  edge [
+    source 37
+    target 40
+  ]
+  edge [
+    source 37
+    target 41
+  ]
+  edge [
+    source 37
+    target 42
+  ]
+  edge [
+    source 37
+    target 43
+  ]
+  edge [
+    source 37
+    target 44
+  ]
+  edge [
+    source 37
+    target 45
+  ]
+  edge [
+    source 46
+    target 47
+  ]
+  edge [
+    source 46
+    target 48
+  ]
+  edge [
+    source 46
+    target 49
+  ]
+  edge [
+    source 46
+    target 50
+  ]
+  edge [
+    source 46
+    target 51
+  ]
+  edge [
+    source 46
+    target 52
+  ]
+  edge [
+    source 46
+    target 53
+  ]
+  edge [
+    source 46
+    target 54
+  ]
+  edge [
+    source 55
+    target 56
+  ]
+  edge [
+    source 55
+    target 57
+  ]
+  edge [
+    source 55
+    target 58
+  ]
+  edge [
+    source 55
+    target 59
+  ]
+  edge [
+    source 55
+    target 60
+  ]
+  edge [
+    source 55
+    target 61
+  ]
+  edge [
+    source 55
+    target 62
+  ]
+  edge [
+    source 55
+    target 63
+  ]
+  edge [
+    source 64
+    target 65
+  ]
+  edge [
+    source 64
+    target 66
+  ]
+  edge [
+    source 64
+    target 67
+  ]
+  edge [
+    source 64
+    target 68
+  ]
+  edge [
+    source 64
+    target 69
+  ]
+  edge [
+    source 64
+    target 70
+  ]
+  edge [
+    source 64
+    target 71
+  ]
+  edge [
+    source 72
+    target 73
+  ]
+  edge [
+    source 72
+    target 74
+  ]
+  edge [
+    source 72
+    target 75
+  ]
+  edge [
+    source 72
+    target 76
+  ]
+  edge [
+    source 72
+    target 77
+  ]
+  edge [
+    source 72
+    target 78
+  ]
+  edge [
+    source 72
+    target 79
+  ]
+  edge [
+    source 80
+    target 81
+  ]
+  edge [
+    source 82
+    target 83
+  ]
+  edge [
+    source 84
+    target 85
+  ]
+  edge [
+    source 86
+    target 87
+  ]
+  edge [
+    source 88
+    target 89
+  ]
+  edge [
+    source 90
+    target 91
+  ]
+  edge [
+    source 92
+    target 93
+  ]
+  edge [
+    source 94
+    target 95
+  ]
+  edge [
+    source 96
+    target 97
+  ]
+  edge [
+    source 98
+    target 99
+  ]
+  edge [
+    source 100
+    target 101
+  ]
+  edge [
+    source 102
+    target 103
+  ]
+  edge [
+    source 104
+    target 105
+  ]
+  edge [
+    source 106
+    target 107
+  ]
+  edge [
+    source 108
+    target 109
+  ]
+  edge [
+    source 110
+    target 111
+  ]
+  edge [
+    source 112
+    target 113
+  ]
+  edge [
+    source 114
+    target 115
+  ]
+  edge [
+    source 116
+    target 117
+  ]
+  edge [
+    source 118
+    target 119
+  ]
+  edge [
+    source 120
+    target 121
+  ]
+  edge [
+    source 122
+    target 123
   ]
 ]
