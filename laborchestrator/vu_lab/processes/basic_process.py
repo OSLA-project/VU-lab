@@ -22,14 +22,14 @@ class BasicProcess(PLProcess, ABC):
 
     def create_resources(self) -> None:
         # the device names should match the ones in the platform_config
-        self.hotel1 = LabwareStorageResource(proc=self, name="hotel1")
+        self.hotel1 = LabwareStorageResource(proc=self, name="hotel_1_d_pos_")
         self.robot_arm = MoverServiceResource(proc=self, name="robot_arm")
-        self.shaker1 = ShakerServiceResource(proc=self, name="shaker1")
-        self.shaker2 = ShakerServiceResource(proc=self, name="shaker2")
-        self.shaker3 = ShakerServiceResource(proc=self, name="shaker3")
-        self.shaker4 = ShakerServiceResource(proc=self, name="shaker4")
-        self.shaker5 = ShakerServiceResource(proc=self, name="shaker5")
-        self.shaker6 = ShakerServiceResource(proc=self, name="shaker6")
+        self.shaker1 = ShakerServiceResource(proc=self, name="shaker_1_d_pos_1")
+        self.shaker2 = ShakerServiceResource(proc=self, name="shaker_2_d_pos_1")
+        self.shaker3 = ShakerServiceResource(proc=self, name="shaker_3_d_pos_1")
+        self.shaker4 = ShakerServiceResource(proc=self, name="shaker_4_d_pos_1")
+        self.shaker5 = ShakerServiceResource(proc=self, name="shaker_5_d_pos_1")
+        self.shaker6 = ShakerServiceResource(proc=self, name="shaker_6_d_pos_1")
 
         self.shaker_pool = ShakerServiceResource(proc=self, name=None)
 
