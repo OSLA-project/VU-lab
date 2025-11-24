@@ -20,18 +20,18 @@ logger = logging.getLogger(__name__)
 
 # Out comment those you want to simulate the steps instead of calling an actual sila server
 USE_REAL_SERVERS = [
-    "GenericArm",
+    "robot_arm",
 ]
 
 # maps the device names (from the platform_config and process description) to the correct wrappers
 device_wrappers: dict[str, type[DeviceInterface]] = {
-    "GenericArm": GenericRobotArmWrapper,
+    "robot_arm": GenericRobotArmWrapper,
 }
 
 # maps the device names (from the platform_config and process description) to the correct sila server names
 # those without a sila server can be left out
 sila_server_name: dict[str, str] = {
-    "GenericArm": "Dummy",
+    "robot_arm": "XArm",
 }
 
 
