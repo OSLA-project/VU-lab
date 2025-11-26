@@ -1,7 +1,5 @@
 """Duplicate this file and add/modify the missing parts to create new processes"""
 
-from pythonlab.process import PLProcess
-from vu_lab.processes.basic_process import BasicProcess
 from pythonlab.resource import LabwareResource
 
 DURATION = 10
