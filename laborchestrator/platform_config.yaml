@@ -20,9 +20,10 @@ sila_servers:
     shaker_6_d_pos_:
       capacity: 1
 
-   scanners:
+  scanners:
     scanner1:
       capacity: 1
+      resolution: 640
 
 # ------ Translation to used resources in the process description ------
 # the key must match the categories above and the values must match the required resources in the workflow description
