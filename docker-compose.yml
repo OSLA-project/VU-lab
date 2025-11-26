@@ -1,25 +1,24 @@
 
 services:
-
   teleshake:
     build: ./teleshake/
     environment:
       - PORT=50050
-    ports:
-      - "50050:50050"
+    # ports:
+    #   - "50050:50050"
     network_mode: host
 
   sila-browser:
     image: registry.gitlab.com/unitelabs/sila2/sila-browser:latest
     network_mode: host
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
 
   robot-arm:
     build: ./robot-arm/
     network_mode: host
-    environment:
-      - ROBOT_IP=192.168.1.4 # Change
+    # environment:
+    #   - ROBOT_IP=192.168.1.4 # Change
 #    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
     command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --simulation
     volumes:
