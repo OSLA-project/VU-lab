@@ -22,21 +22,18 @@ class ScannerProcess(BasicProcess):
         frequency: float = FREQUENCY,
     ):
         super().__init__(
-            priority=priority, num_plates=num_beds, process_name="VU Test Process"
+            priority=priority, num_plates=num_beds, process_name="Vu Test Process"
         )
         self.duration = duration
         self.frequency = frequency
 
     def init_service_resources(self):
-        # setting start position of containers
         super().init_service_resources()
-        for i, cont in enumerate(self.containers):
-            cont.set_start_position(self.hotel1, i + 1)
 
     def process(self):
 
         resolution = 640
-        # loop through all containers
+        # Loop through all containers and scan them
         for idx in range(self.num_mw_plates):
             cont = self.containers[idx]
 
