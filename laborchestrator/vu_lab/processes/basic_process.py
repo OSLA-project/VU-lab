@@ -6,7 +6,7 @@ from pythonlab.resource import LabwareResource
 from pythonlab.resources.services.labware_storage import LabwareStorageResource
 from pythonlab.resources.services.moving import MoverServiceResource
 from pythonlab.resources.services.shaker import ShakerServiceResource
-
+from vu_lab.resources.scanner_resource import ScannerResource
 
 class BasicProcess(PLProcess, ABC):
     def __init__(
@@ -32,6 +32,8 @@ class BasicProcess(PLProcess, ABC):
         self.shaker6 = ShakerServiceResource(proc=self, name="shaker_6_d_pos_1")
 
         self.shaker_pool = ShakerServiceResource(proc=self, name=None)
+
+        self.scanner1 = ScannerResource(proc=self, name="scanner1")
 
         # the containers are automatically named/enumerated. You can change the naming without causing problems
         self.containers = [
