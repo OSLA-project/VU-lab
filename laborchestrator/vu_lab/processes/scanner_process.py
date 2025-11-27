@@ -22,13 +22,15 @@ class ScannerProcess(BasicProcess):
         frequency: float = FREQUENCY,
     ):
         super().__init__(
-            priority=priority, num_plates=num_beds, process_name="Vu Test Process"
+            priority=priority, num_plates=num_beds, process_name="Scanner process"
         )
         self.duration = duration
         self.frequency = frequency
 
     def init_service_resources(self):
         super().init_service_resources()
+        self.container = self.containers[0]
+        self.container.set_start_position(self.hotel1, 1)
 
     def process(self):
 
