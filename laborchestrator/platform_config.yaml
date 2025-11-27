@@ -31,4 +31,4 @@ pythonlab_translation:
   storage: LabwareStorageResource
   movers: MoverServiceResource
   shakers: ShakerServiceResource
-  scanners: LabwareResource
+  scanners: ScannerResource
