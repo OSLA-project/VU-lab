@@ -60,7 +60,7 @@ services:
       POSTGRES_PASSWORD: platform_status
       POSTGRES_DB: platform_status_db
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U platform_status -d platform_status_db" ]
       interval: 10s
