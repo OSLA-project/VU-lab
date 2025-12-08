@@ -22,6 +22,7 @@ services:
       - ROBOT_IP=192.168.1.202 # Change
 #    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
     command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --robot-ip 192.168.1.202
+
     volumes:
         - ./robot-arm/new_graphs:/root/.config/GenericRoboticArm/:z
 
@@ -43,7 +44,7 @@ services:
     working_dir: /opt/vu_lab/
     command: python start_script.py
     extra_hosts:
-      - "127.0.0.1=172.17.0.1"  # Adjust if necessary
+      - "127.0.0.1=172.17.0.1"
 
   labscheduler:
     image: registry.gitlab.com/openlabautomation/lab-automation-packages/lab-scheduler/labscheduler
