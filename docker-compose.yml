@@ -21,7 +21,7 @@ services:
     environment:
       - ROBOT_IP=192.168.1.202 # Change
 #    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
-    command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --simulation
+    command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm
     volumes:
         - ./robot-arm/new_graphs:/root/.config/GenericRoboticArm/:z
 
