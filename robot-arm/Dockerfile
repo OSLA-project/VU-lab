@@ -7,10 +7,12 @@ RUN python -m pip install --upgrade pip
 RUN python -m pip install "xarm-python-sdk==1.16.0"
 
 
-RUN pip install genericroboticarm --index-url https://gitlab.com/api/v4/projects/59230771/packages/pypi/simple
-
-COPY ./default_graphs/* /opt/genericroboticarm/genericroboticarm/graphs/
+COPY ./default_graphs/* /opt/genericroboticarm/graphs/
 
 WORKDIR /opt/genericroboticarm
+RUN git clone https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git
+
+WORKDIR /opt/genericroboticarm/genericroboticarm
+RUN pip install -e .
 
 CMD python -m genericroboticarm --port 50054 -r XArm --address 0.0.0.0 --robot-ip $ROBOT_IP
