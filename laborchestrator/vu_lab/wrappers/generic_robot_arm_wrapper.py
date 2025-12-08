@@ -49,6 +49,7 @@ class GenericRobotArmWrapper(DeviceInterface):
                 client.RobotController.PlacePlate(target_site)
 
         observable = TransferHandler()
+        logger.info("Starting transfer with intermediate actions: %s", intermediate_actions)
         # starts _protocol and handles the status
         observable.run_protocol(sila_client)
         return observable

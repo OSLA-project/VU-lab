@@ -34,12 +34,7 @@ def main() -> None:
     """Main function to start the orchestrator and scheduler with a dash app."""
 
     # Fill the database
-    platform_config_path = None
-
-    if len(sys.argv) > 1:
-        platform_config_path = sys.argv[1]
-    else:
-        raise Exception("Please provide the platform config path as first argument.")
+    platform_config_path = Path(config.lab_config_file)
 
     add_lab_setup_to_db(platform_config_path)
 
@@ -72,7 +67,7 @@ def main() -> None:
                     f"Algorithm {config.scheduling_algorithm} is not available in scheduler.",
                 )
         # get the absolute filepath
-        with config.lab_config_file.open() as reader:
+        with platform_config_path.open() as reader:
             scheduler.LabConfigurationController.LoadJobShopFromFile(reader.read())
         Logger.info("Configured the lab of the scheduling service")
     except ModuleNotFoundError as mnfe:
