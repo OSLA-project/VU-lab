@@ -19,7 +19,7 @@ services:
     build: ./robot-arm/
     network_mode: host
     environment:
-      - ROBOT_IP=192.168.1.4 # Change
+      - ROBOT_IP=192.168.1.202 # Change
 #    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
     command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --simulation
     volumes:
@@ -54,7 +54,7 @@ services:
       labscheduler --lab-config-path /opt/adaptation_template/platform_config.yaml
 
   database:
-    image: postgres:latest
+    image: postgres:18
     environment:
       POSTGRES_USER: platform_status
       POSTGRES_PASSWORD: platform_status
