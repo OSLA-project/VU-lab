@@ -42,6 +42,8 @@ services:
       - labscheduler
     working_dir: /opt/vu_lab/
     command: ./start_script.py
+    extra_hosts:
+      - "127.0.0.1=172.17.0.1"  # Adjust if necessary
 
   labscheduler:
     image: registry.gitlab.com/openlabautomation/lab-automation-packages/lab-scheduler/labscheduler
