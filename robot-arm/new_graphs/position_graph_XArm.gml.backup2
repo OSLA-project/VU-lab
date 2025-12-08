@@ -1,0 +1,208 @@
+graph [
+  node [
+    id 0
+    label "hotel1_d_entrypoint"
+    x -198.0
+    y 265.0
+    z 212.0
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 1
+    label "hotel1_d_pos1"
+    x -197.7
+    y 425.0
+    z 112.5
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 2
+    label "hotel1_d_pos2"
+    x -197.7
+    y 425.0
+    z 196.4
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 3
+    label "hotel1_d_pos3"
+    x -197.4
+    y 425.0
+    z 280.2
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 4
+    label "hotel1_d_pos4"
+    x -197.1
+    y 425.0
+    z 364.1
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 5
+    label "hotel1_d_pos5"
+    x -196.9
+    y 425.0
+    z 447.9
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 6
+    label "hotel1_d_pos6"
+    x -196.6
+    y 425.0
+    z 531.8
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 7
+    label "hotel1_d_pos7"
+    x -196.3
+    y 425.0
+    z 615.6
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 8
+    label "hotel1_d_pos8"
+    x -196.0
+    y 425.0
+    z 699.5
+    roll -180.0
+    pitch 0.0
+    yaw 90.0
+  ]
+  node [
+    id 9
+    label "robotarm_entrypoint"
+    x 149.6
+    y -0.9
+    z 238.2
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 10
+    label "robotarm_entrypoint_old"
+    x 160.0
+    y 0.0
+    z 200.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 11
+    label "robotarm_entrypoint_home"
+    x 149.6
+    y -0.9
+    z 238.2
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 12
+    label "node_1_entrypoint"
+    x 280.0
+    y 0.0
+    z 226.0
+    roll 180.0
+    pitch 0.0
+    yaw 0.0
+  ]
+  node [
+    id 13
+    label "node_2_entrypoint"
+    x 350
+    y 0
+    z 226
+    roll 180
+    pitch 0
+    yaw 90
+  ]
+  node [
+    id 14
+    label "node_3_entrypoint"
+    x 300
+    y 200
+    z 226
+    roll 180
+    pitch 0
+    yaw 90
+  ]
+  edge [
+    source 0
+    target 1
+  ]
+  edge [
+    source 0
+    target 2
+  ]
+  edge [
+    source 0
+    target 3
+  ]
+  edge [
+    source 0
+    target 4
+  ]
+  edge [
+    source 0
+    target 5
+  ]
+  edge [
+    source 0
+    target 6
+  ]
+  edge [
+    source 0
+    target 7
+  ]
+  edge [
+    source 0
+    target 8
+  ]
+  edge [
+    source 0
+    target 14
+  ]
+  edge [
+    source 9
+    target 10
+  ]
+  edge [
+    source 9
+    target 11
+  ]
+  edge [
+    source 9
+    target 12
+  ]
+  edge [
+    source 12
+    target 13
+  ]
+  edge [
+    source 13
+    target 14
+  ]
+]
