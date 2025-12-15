@@ -1,9 +1,18 @@
 FROM python:3.11
 
+
+ENV CLOUD_SERVER_ENDPOINT__HOSTNAME=ffffffff-ffff-ffff-ffff-ffffffffffff.unitelabs.io
+ENV CLOUD_SERVER_ENDPOINT__PORT=443
+ENV CLOUD_SERVER_ENDPOINT__TLS=True
+ENV SILA_SERVER__UUID=00000000-0000-0000-0000-000000000000
+ENV SILA_SERVER__HOSTNAME=0.0.0.0
+ENV SILA_SERVER__PORT=50001
+
 ENV SILA_SERVER__NAME='Gen5'
-ENV SILA_SERVER__UUID=0797536e-1e6e-478e-983b-38425a7bf1d5
-ENV SILA_SERVER__HOST=0.0.0.0
-ENV SILA_SERVER__PORT=50053
+# ENV SILA_SERVER__UUID=0797536e-1e6e-478e-983b-38425a7bf1d5
+# ENV SILA_SERVER__HOST=0.0.0.0
+# ENV SILA_SERVER__PORT=50053
+# ENV READER_TYPE='Synergy H1'
 ENV READER_TYPE='Synergy H1'
 ENV CON_TYPE='USB'
 ENV COM_PORT=0
@@ -12,8 +21,9 @@ ENV PROTOCOL_PATH=/opt/gen5/protocols
 ENV SIMULATION=True
 
 RUN unlink /bin/sh && ln -s /bin/bash /bin/sh
-
-RUN apt update && apt install -y g++ gfortran libgfortran5 zlib1g:i386 libstdc++6:i386 libgfortran5:i386 iproute2
+RUN dpkg --add-architecture i386
+RUN apt update
+RUN apt install -y bash-completion nano iproute2 g++ gfortran libgfortran5 zlib1g:i386 libstdc++6:i386 libgfortran5:i386
 
 COPY ./gen5 /opt/gen5/
 WORKDIR /opt/gen5

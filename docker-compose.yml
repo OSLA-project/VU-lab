@@ -35,8 +35,8 @@ services:
       context: ./gen5/
     environment:
       - SILA_SERVER__PORT=50053
-    ports:
-        - "50053:50053"
+    # ports:
+    #     - "50053:50053"
     network_mode: host
 
   laborchestrator:
