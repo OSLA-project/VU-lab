@@ -11,10 +11,16 @@ ENV READER_SERIAL_NUMBER=''
 ENV PROTOCOL_PATH=/opt/gen5/protocols
 ENV SIMULATION=True
 
+RUN unlink /bin/sh && ln -s /bin/bash /bin/sh
+
+RUN apt update && apt install -y g++ gfortran libgfortran5 zlib1g:i386 libstdc++6:i386 libgfortran5:i386 iproute2
 
 COPY ./gen5 /opt/gen5/
 WORKDIR /opt/gen5
 
-RUN pip install .
+RUN pip install pythonnet
+RUN pip install uv && uv venv
+RUN source .venv/bin/activate && uv pip install -e .
 
-CMD connector start --app connector:create_app -vvv
+# CMD connector start --app connector:create_app -vvv
+CMD uv run connector start --app unitelabs.gen5:create_app -v
