@@ -56,7 +56,7 @@ def main() -> None:
     try:
         from labscheduler.sila_server import Client as SchedulerClient
 
-        scheduler = SchedulerClient("host.docker.internal", 50066, insecure=True)
+        scheduler = SchedulerClient("192.168.65.3", 50066, insecure=True)
         if config.scheduling_algorithm:
             available_algorithms = scheduler.SchedulingService.AvailableAlgorithms.get()
             if config.scheduling_algorithm in [algo.Name for algo in available_algorithms]:

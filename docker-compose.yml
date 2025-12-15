@@ -43,8 +43,7 @@ services:
       - labscheduler
     working_dir: /opt/vu_lab/
     command: python start_script.py
-    extra_hosts:
-      - "127.0.0.1=172.17.0.1"
+
 
   labscheduler:
     image: registry.gitlab.com/openlabautomation/lab-automation-packages/lab-scheduler/labscheduler
@@ -52,7 +51,7 @@ services:
     volumes:
       - ./laborchestrator/platform_config.yaml:/opt/adaptation_template/platform_config.yaml:z
     command: >
-      labscheduler --lab-config-path /opt/adaptation_template/platform_config.yaml
+      labscheduler -a 192.168.65.3 --lab-config-path /opt/adaptation_template/platform_config.yaml
 
   database:
     image: postgres:18
