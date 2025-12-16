@@ -21,7 +21,7 @@ services:
     environment:
       - ROBOT_IP=192.168.1.202 # Change
 #    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
-    command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --robot-ip 192.168.1.202
+    command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --robot-ip 192.168.1.202 $ROBOT_ARGS
 
     volumes:
         - ./robot-arm/new_graphs:/root/.config/GenericRoboticArm/:z
@@ -42,7 +42,7 @@ services:
       - platform_status_db
       - labscheduler
     working_dir: /opt/vu_lab/
-    command: python start_script.py
+    command: python start_script.py --scheduler-address $DOCKER_HOST
 
 
   labscheduler:
@@ -51,7 +51,7 @@ services:
     volumes:
       - ./laborchestrator/platform_config.yaml:/opt/adaptation_template/platform_config.yaml:z
     command: >
-      labscheduler -a 192.168.65.3 --lab-config-path /opt/adaptation_template/platform_config.yaml
+      labscheduler -a $DOCKER_HOST --lab-config-path /opt/adaptation_template/platform_config.yaml
 
   database:
     image: postgres:18
