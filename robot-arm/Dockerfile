@@ -14,5 +14,3 @@ RUN git clone https://gitlab.com/OpenLabAutomation/device-integration/genericrob
 
 WORKDIR /opt/genericroboticarm/genericroboticarm
 RUN pip install -e .
-
-CMD python -m genericroboticarm --port 50054 -r XArm --address 0.0.0.0 --robot-ip $ROBOT_IP
