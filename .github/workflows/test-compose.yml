@@ -19,6 +19,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install ubuntu for wsl
+        if: runner.os == 'Windows'
+        run: |
+          wsl --install -d Ubuntu-22.04
+        shell: powershell
+
       - name: Test docker in wsl
         if: runner.os == 'Windows'
         run: |
