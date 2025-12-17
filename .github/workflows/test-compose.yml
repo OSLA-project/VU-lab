@@ -28,6 +28,7 @@ jobs:
         run: cp .env.windows.simulated.example .env
 
       - name: Check existence of .env file
+        shell: bash
         run: |
           if [ ! -f .env ]; then
             echo ".env file does not exist!"
