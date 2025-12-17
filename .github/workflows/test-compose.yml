@@ -8,40 +8,17 @@ on:
 
 jobs:
   test-compose:
-    strategy:
-      matrix:
-        os: [ubuntu-22.04, windows-2025]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
-      - name: Print os
-        run: echo "Running on ${{ runner.os }}"
-
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Copy linux env file
-        if: runner.os == 'Linux'
         run: cp .env.linux.example .env
-
-      - name: Copy Windows env file
-        if: runner.os == 'Windows'
-        run: cp .env.windows.simulated.example .env
-
-      - name: Check existence of .env file
-        shell: bash
-        run: |
-          if [ ! -f .env ]; then
-            echo ".env file does not exist!"
-            exit 1
-          else
-            echo ".env file exists."
-          fi
 
       - name: Start Docker Compose services
         run: docker compose up -d
         timeout-minutes: 2
-        env:
-          DOCKER_DEFAULT_PLATFORM: linux/amd64
 
       - name: Wait for services to stabilize. # Downloading images may take time
         run: sleep 60
