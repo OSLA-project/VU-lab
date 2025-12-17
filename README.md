@@ -16,8 +16,18 @@ To use this package, you should first clone it from github
 ```shell
 git clone https://github.com/OSLA-project/VU-lab.git
 ```
+## Prepare environment
+There are a couple of parameters that need to be tuned, depending on your operating system, and whether you need to run 
+in simulation mode or with real hardware. Three different scenarios have been prepared: you're running on Linux with simulated
+hardware, or on Windows, with either simulated or real hardware.
 
-Then, use the following command to start all sila servers and the universal sila client: 
+Depending on your situation, you need to copy one of the following files to `.env` in the root of the repository:
+- `.env.linux.simulated` (Linux with simulated hardware)
+- `.env.windows.simulated` (Windows with simulated hardware)
+- `.env.windows` (Windows with real hardware)
+
+## Running the services
+Use the following command to start all sila servers and the universal sila client: 
 
 ```shell
 docker compose up

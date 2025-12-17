@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import sys
 import time
 import config
@@ -32,6 +33,10 @@ def add_lab_setup_to_db(platform_config_path) -> None:
 
 def main() -> None:
     """Main function to start the orchestrator and scheduler with a dash app."""
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument("--scheduler-address", type=str, help="Address of the scheduler server.", default=None)
+
+    args = argparser.parse_args()
 
     # Fill the database
     platform_config_path = Path(config.lab_config_file)
@@ -57,7 +62,7 @@ def main() -> None:
     try:
         from labscheduler.sila_server import Client as SchedulerClient
 
-        scheduler = SchedulerClient.discover(insecure=True, timeout=5)
+        scheduler = SchedulerClient(args.scheduler_address, 50066, insecure=True)
         if config.scheduling_algorithm:
             available_algorithms = scheduler.SchedulingService.AvailableAlgorithms.get()
             if config.scheduling_algorithm in [algo.Name for algo in available_algorithms]:

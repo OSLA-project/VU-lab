@@ -1,14 +1,14 @@
 
 services:
 
-  teleshake:
-    build: ./teleshake/
-    environment:
-      - PORT=50050
-    ports:
-      - "50050:50050"
-    network_mode: host
-
+#  teleshake:
+#    build: ./teleshake/
+#    environment:
+#      - PORT=50050
+#    ports:
+#      - "50050:50050"
+#    network_mode: host
+#
   sila-browser:
     image: registry.gitlab.com/unitelabs/sila2/sila-browser:latest
     network_mode: host
@@ -18,10 +18,9 @@ services:
   robot-arm:
     build: ./robot-arm/
     network_mode: host
-    environment:
-      - ROBOT_IP=192.168.1.4 # Change
 #    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
-    command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --simulation
+    command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --robot-ip 192.168.1.202 $ROBOT_ARGS
+
     volumes:
         - ./robot-arm/new_graphs:/root/.config/GenericRoboticArm/:z
 
@@ -41,7 +40,8 @@ services:
       - platform_status_db
       - labscheduler
     working_dir: /opt/vu_lab/
-    command: ./start_script.py
+    command: python start_script.py --scheduler-address $DOCKER_HOST
+
 
   labscheduler:
     image: registry.gitlab.com/openlabautomation/lab-automation-packages/lab-scheduler/labscheduler
@@ -49,16 +49,16 @@ services:
     volumes:
       - ./laborchestrator/platform_config.yaml:/opt/adaptation_template/platform_config.yaml:z
     command: >
-      labscheduler --lab-config-path /opt/adaptation_template/platform_config.yaml
+      labscheduler -a $DOCKER_HOST --lab-config-path /opt/adaptation_template/platform_config.yaml
 
   database:
-    image: postgres:latest
+    image: postgres:18
     environment:
       POSTGRES_USER: platform_status
       POSTGRES_PASSWORD: platform_status
       POSTGRES_DB: platform_status_db
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U platform_status -d platform_status_db" ]
       interval: 10s
