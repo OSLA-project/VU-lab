@@ -19,13 +19,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Switch Docker to Linux containers
+      - name: Test docker in wsl
         if: runner.os == 'Windows'
         run: |
-          docker context use default
-          & DockerCli.exe -SwitchLinuxEngine
-          Start-Sleep -Seconds 30
-          docker version
+          wsl -e docker compose up -d
         shell: powershell
         continue-on-error: true
 
