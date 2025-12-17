@@ -22,14 +22,10 @@ jobs:
       - name: Enable WSL on Windows
         if: runner.os == 'Windows'
         run: |
-          wsl --install --no-distribution
+          wsl --install
           wsl --set-default-version 2
         shell: powershell
 
-      - name: Install Ubuntu in WSL
-        if: runner.os == 'Windows'
-        run: wsl --install -d Ubuntu-22.04
-        shell: powershell
 
       - name: Copy linux env file
         if: runner.os == 'Linux'
