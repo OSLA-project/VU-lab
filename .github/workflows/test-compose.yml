@@ -25,6 +25,7 @@ jobs:
           wsl --update ;
           wsl --install -d Ubuntu
         shell: powershell
+        fail-on-error: false
 
       - name: Test docker in wsl
         if: runner.os == 'Windows'
