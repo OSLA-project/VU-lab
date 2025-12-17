@@ -38,6 +38,7 @@ jobs:
 
       - name: Start Docker Compose services
         run: docker compose up -d
+        timeout-minutes: 2
 
       - name: Wait for services to stabilize. # Downloading images may take time
         run: sleep 60
