@@ -22,7 +22,7 @@ jobs:
       - name: Install ubuntu for wsl
         if: runner.os == 'Windows'
         run: |
-          wsl --update &&
+          wsl --update ;
           wsl --install -d Ubuntu
         shell: powershell
 
