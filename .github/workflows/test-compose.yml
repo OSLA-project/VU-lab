@@ -1,0 +1,35 @@
+name: test-compose.yml
+on:
+  push:
+    branches:
+      - main
+      - 42-test-docker-compose-in-github-actions
+  pull_request:
+
+jobs:
+  test-compose:
+    runs-on:
+      - ubuntu-22.04
+      - windows-2022
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Start Docker Compose services
+        run: docker compose up -d
+
+      - name: Wait for services to stabilize
+        run: sleep 30
+
+      - name: Check service health
+        run: |
+          docker compose ps
+          if docker compose ps | grep -E 'Exit|Restarting'; then
+            echo "Service failed to start properly"
+            docker compose logs
+            exit 1
+          fi
+
+      - name: Cleanup
+        if: always()
+        run: docker compose down -v
