@@ -23,7 +23,7 @@ jobs:
         if: runner.os == 'Windows'
         run: |
           docker context use default
-          & DockerCli.exe" -SwitchLinuxEngine
+          & DockerCli.exe -SwitchLinuxEngine
           Start-Sleep -Seconds 30
           docker version
         shell: powershell
