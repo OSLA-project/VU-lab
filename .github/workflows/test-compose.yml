@@ -19,6 +19,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Enable WSL on Windows
+        if: runner.os == 'Windows'
+        run: |
+          wsl --install --no-distribution
+          wsl --set-default-version 2
+        shell: powershell
+
+      - name: Install Ubuntu in WSL
+        if: runner.os == 'Windows'
+        run: wsl --install -d Ubuntu-22.04
+        shell: powershell
+
       - name: Copy linux env file
         if: runner.os == 'Linux'
         run: cp .env.linux.example .env
