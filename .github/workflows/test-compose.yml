@@ -27,10 +27,6 @@ jobs:
         if: runner.os == 'Windows'
         run: cp .env.windows.simulated.example .env
 
-      - name: Install wsl  on windows
-        if: runner.os == 'Windows'
-        uses: Vampire/setup-wsl@v6
-
       - name: Check existence of .env file
         shell: bash
         run: |
@@ -44,6 +40,8 @@ jobs:
       - name: Start Docker Compose services
         run: docker compose up -d
         timeout-minutes: 2
+        env:
+          DOCKER_DEFAULT_PLATFORM: linux/amd64
 
       - name: Wait for services to stabilize. # Downloading images may take time
         run: sleep 60
