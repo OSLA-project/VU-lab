@@ -27,6 +27,10 @@ jobs:
         if: runner.os == 'Windows'
         run: cp .env.windows.simulated.example .env
 
+      - name: Install wsl  on windows
+        if: runner.os == 'Windows'
+        uses: Vampire/setup-wsl@v6
+
       - name: Check existence of .env file
         shell: bash
         run: |
