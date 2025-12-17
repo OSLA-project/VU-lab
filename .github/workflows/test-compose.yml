@@ -22,7 +22,7 @@ jobs:
       - name: Install ubuntu for wsl
         if: runner.os == 'Windows'
         run: |
-          wsl --install -d Ubuntu-22.04
+          wsl --install
         shell: powershell
 
       - name: Test docker in wsl
