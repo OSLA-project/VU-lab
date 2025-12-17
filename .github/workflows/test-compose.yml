@@ -19,13 +19,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Enable WSL on Windows
+      - name: Switch Docker to Linux containers
         if: runner.os == 'Windows'
         run: |
-          wsl --install
-          wsl --set-default-version 2
+          docker context use default
+          & "C:\Program Files\Docker\Docker\DockerCli.exe" -SwitchLinuxEngine
+          Start-Sleep -Seconds 30
+          docker version
         shell: powershell
-
+        continue-on-error: true
 
       - name: Copy linux env file
         if: runner.os == 'Linux'
