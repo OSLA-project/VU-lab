@@ -39,8 +39,8 @@ jobs:
       - name: Start Docker Compose services
         run: docker compose up -d
 
-      - name: Wait for services to stabilize
-        run: sleep 30
+      - name: Wait for services to stabilize. # Downloading images may take time
+        run: sleep 60
 
       - name: Check service health
         run: |
