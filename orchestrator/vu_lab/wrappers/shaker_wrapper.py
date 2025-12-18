@@ -34,6 +34,4 @@ class ShakerWrapper(DeviceInterface):
         return client.ShakeController.start_shake_step(mode, duration, displacement)
 
     def abort_shake(self, client: ShakerClient) -> Observable:
-
         return client.ShakeController.abort_shake()
-

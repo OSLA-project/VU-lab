@@ -1,4 +1,5 @@
 """TODO: Add module docstring."""
+
 import logging
 from random import randint
 from typing import Any
