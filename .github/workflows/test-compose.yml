@@ -1,0 +1,36 @@
+name: test-compose.yml
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test-compose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy linux env file
+        run: cp .env.linux.simulated .env
+
+      - name: Start Docker Compose services
+        run: docker compose up -d
+        timeout-minutes: 2
+
+      - name: Wait for services to stabilize. # Downloading images may take time
+        run: sleep 60
+
+      - name: Check service health
+        run: |
+          docker compose ps
+          if docker compose ps | grep -E 'Exit|Restarting'; then
+            echo "Service failed to start properly"
+            docker compose logs
+            exit 1
+          fi
+
+      - name: Cleanup
+        if: always()
+        run: docker compose down -v
