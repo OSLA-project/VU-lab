@@ -7,10 +7,17 @@ FREQUENCY = 10
 NUM_PLATES = 6
 PRIORITY = 3
 
+
 class ShakerProcess(BasicProcess):
     """A simple test process that moves plates to shakers, shakes them, and returns them to  the hotel."""
-    def __init__(self, priority:int=PRIORITY, num_plates:int=NUM_PLATES,
-                 duration:float=DURATION, frequency:float=FREQUENCY):
+
+    def __init__(
+        self,
+        priority: int = PRIORITY,
+        num_plates: int = NUM_PLATES,
+        duration: float = DURATION,
+        frequency: float = FREQUENCY,
+    ):
         super().__init__(priority=priority, num_plates=num_plates, process_name="Vu Test Process")
         self.duration = duration
         self.frequency = frequency
@@ -19,7 +26,7 @@ class ShakerProcess(BasicProcess):
         # setting start position of containers
         super().init_service_resources()
         for i, cont in enumerate(self.containers):
-            cont.set_start_position(self.hotel1, i+1)
+            cont.set_start_position(self.hotel1, i + 1)
 
     def process(self) -> None:
         # loop through all containers

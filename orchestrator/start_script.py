@@ -10,6 +10,7 @@ from platform_status_db.larastatus.status_db_implementation import StatusDBImple
 
 logger = Logger(__name__)
 
+
 def add_lab_setup_to_db(platform_config_path: str) -> None:
     """Use this script to populate the database with devices and positions according to the lab_config file.
     It does not check whether devices already exists. So, running this multiple times results in duplicate database entries.

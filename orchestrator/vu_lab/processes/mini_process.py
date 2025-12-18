@@ -2,11 +2,9 @@ from vu_lab.processes.basic_process import BasicProcess
 
 
 class MiniProcess(BasicProcess):
-
     def __init__(self):
         # There is only one container in this mini process
         super().__init__(process_name="Mini Process", num_plates=1, priority=5)
-
 
     def init_service_resources(self) -> None:
         """Put the one and only container at position 1 in hotel1."""
