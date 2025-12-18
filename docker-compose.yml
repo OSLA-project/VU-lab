@@ -1,14 +1,14 @@
 
 services:
 
-#  teleshake:
-#    build: ./teleshake/
-#    environment:
-#      - PORT=50050
-#    ports:
-#      - "50050:50050"
-#    network_mode: host
-#
+  teleshake:
+    build: ./teleshake/
+    environment:
+      - PORT=50050
+    ports:
+      - "50050:50050"
+    network_mode: host
+
   sila-browser:
     image: registry.gitlab.com/unitelabs/sila2/sila-browser:latest
     network_mode: host
