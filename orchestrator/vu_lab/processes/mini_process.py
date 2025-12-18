@@ -8,8 +8,8 @@ class MiniProcess(BasicProcess):
         super().__init__(process_name="Mini Process", num_plates=1, priority=5)
 
 
-    def init_service_resources(self):
-        """Put the one and only container at position 1 in hotel1"""
+    def init_service_resources(self) -> None:
+        """Put the one and only container at position 1 in hotel1."""
         super().init_service_resources()
 
         self.container = self.containers[0]
