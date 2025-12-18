@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 
 
 class DeviceInterface(ABC):
-    """Abstract base class for all device wrappers in the VU lab orchestrator."""
+    """Abstract base class for all device wrappers in the VU lab laborchestrator."""
 
     @staticmethod
     @abstractmethod

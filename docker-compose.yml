@@ -30,10 +30,10 @@ services:
     network_mode: host
 
   laborchestrator:
-    build: orchestrator
+    build: laborchestrator
     network_mode: host
     volumes:
-      - ./orchestrator:/opt/vu_lab:z
+      - ./laborchestrator:/opt/vu_lab:z
     environment:
       - "DJANGO_SETTINGS_MODULE=settings"
     depends_on:
@@ -47,7 +47,7 @@ services:
     image: registry.gitlab.com/openlabautomation/lab-automation-packages/lab-scheduler/labscheduler
     network_mode: host
     volumes:
-      - ./orchestrator/platform_config.yaml:/opt/adaptation_template/platform_config.yaml:z
+      - ./laborchestrator/platform_config.yaml:/opt/adaptation_template/platform_config.yaml:z
     command: >
       labscheduler -a $DOCKER_HOST --lab-config-path /opt/adaptation_template/platform_config.yaml
 
@@ -71,7 +71,7 @@ services:
     environment:
       DJANGO_SETTINGS_MODULE: settings
     volumes:
-      - ./orchestrator/settings.py:/opt/platform_status_db/settings.py:z
+      - ./laborchestrator/settings.py:/opt/platform_status_db/settings.py:z
     depends_on:
       database:
         condition: service_healthy
