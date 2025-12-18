@@ -9,7 +9,6 @@ from pythonlab.pythonlab_reader import PLProcessReader
 
 def main() -> None:
     """Load a process file as a module path and class and parse it with PythonLab."""
-
     parser = argparse.ArgumentParser(description="Load a PythonLab process file.")
     parser.add_argument(
         "process_module",

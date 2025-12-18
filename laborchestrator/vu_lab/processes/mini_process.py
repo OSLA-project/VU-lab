@@ -9,7 +9,7 @@ class MiniProcess(BasicProcess):
 
 
     def init_service_resources(self):
-        """ Put the one and only container at position 1 in hotel1 """
+        """Put the one and only container at position 1 in hotel1"""
         super().init_service_resources()
 
         self.container = self.containers[0]
