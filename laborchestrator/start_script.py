@@ -28,7 +28,7 @@ def add_lab_setup_to_db(platform_config_path: str) -> None:
 
 
 def main() -> None:
-    """Main function to start the orchestrator and scheduler with a dash app."""
+    """Main function to start the laborchestrator and scheduler with a dash app."""
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--scheduler-address", type=str, help="Address of the scheduler server.", default=None)
 
