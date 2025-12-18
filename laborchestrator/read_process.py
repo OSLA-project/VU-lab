@@ -2,12 +2,14 @@
 
 import argparse
 import importlib
+import logging
 from pythonlab.pythonlab_reader import PLProcessReader
+
+logger = logging.getLogger(__name__)
 
 
 def main() -> None:
     """Load a process file as a module path and class and parse it with PythonLab."""
-
     parser = argparse.ArgumentParser(description="Load a PythonLab process file.")
     parser.add_argument(
         "process_module",
@@ -25,9 +27,10 @@ def main() -> None:
     process_class = getattr(process_module, args.process_class)
 
     reader = PLProcessReader()
-    process = reader.parse_process_from_instance(process_class())
+    reader.parse_process_from_instance(process_class())
 
-    print("Process succesfully parsed!")
+    logger.info("Process succesfully parsed!")
+
 
 if __name__ == "__main__":
     main()

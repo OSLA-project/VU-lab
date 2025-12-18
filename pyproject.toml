@@ -36,13 +36,13 @@ description = "Configuration of openlab for VU lab"
 keywords = [""]
 license = "Apache-2.0"
 name = "openlab_vu"
-readme = {file = "README.md", content-type = "text/markdown"}
+readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = "~=3.12.0"
 version = "0.1.0"
 
 [project.optional-dependencies]
 dev = [
-    "build",  # build is not only used in publishing (below), but also in the template's test suite
+    "build", # build is not only used in publishing (below), but also in the template's test suite
     "bump-my-version",
     "coverage [toml]",
     "pytest",
@@ -102,25 +102,31 @@ ignore = [
     "ANN101", # Missing type annotation for `self` in method
     "ANN102", # Missing type annotation for `cls` in classmethod
     "ANN204", # Missing return type annotation for special (dunder) method
-    "FBT",    # Using boolean function arguments
-    "TD",     # TODOs
+    "FBT", # Using boolean function arguments
+    "TD", # TODOs
     "FIX001", # Resolve FIXMEs
     "FIX002", # Resolve TODOs
-    "B028",   # No explicit `stacklevel` keyword argument found in warning
+    "B028", # No explicit `stacklevel` keyword argument found in warning
     # No docstrings required in the following cases
     "D100", # Missing module docstring
     "D104", # Missing public package docstring
     "D105", # Missing docstring in magic method
     "D107", # Missing docstring in `__init__`
+    "INP001", # Implicit namespace packages
+    "D205", # 1 blank line required between summary line and description
+    "COM812", # Missing trailing comma
+    "G004", # Use of f-string  in logging methods
+    "N802"# Function name should be lowercase
+
 ]
 pydocstyle.convention = "google"
 
 [tool.ruff.lint.per-file-ignores]
 # Tests can ignore a few extra rules
-"tests/**.py" = [
+"laborchestrator/tests/**.py" = [
     "ANN201", # Missing return type annotation for public function
-    "PT011",  # Missing `match` parameter in `pytest.raises()`
-    "S101",   # Use of assert is detected
+    "PT011", # Missing `match` parameter in `pytest.raises()`
+    "S101", # Use of assert is detected
 ]
 
 "laborchestrator/start_script.py" = ["PLC0415"]
@@ -139,7 +145,7 @@ pydocstyle.convention = "google"
 [tool.ruff.lint.isort]
 known-first-party = ["openlab_vu"]
 force-single-line = true
-no-lines-before = ["future","standard-library","third-party","first-party","local-folder"]
+no-lines-before = ["future", "standard-library", "third-party", "first-party", "local-folder"]
 
 [tool.bumpversion]
 current_version = "0.1.0"
