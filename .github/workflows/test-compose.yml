@@ -1,4 +1,4 @@
-name: test-compose.yml
+name: Integration test
 on:
   push:
     branches:
