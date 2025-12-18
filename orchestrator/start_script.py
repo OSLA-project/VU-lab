@@ -13,8 +13,8 @@ logger = Logger(__name__)
 
 def add_lab_setup_to_db(platform_config_path: str) -> None:
     """Use this script to populate the database with devices and positions according to the lab_config file.
-    It does not check whether devices already exists. So, running this multiple times results in duplicate database entries.
-    You can remove all present devices and positions running the wipe_lab command.
+    It does not check whether devices already exists. So, running this multiple times results in duplicate
+    database entries. You can remove all present devices and positions running the wipe_lab command.
     """
     lab_config_file = Path(platform_config_path).resolve()
     # creates a client for the database
@@ -22,7 +22,7 @@ def add_lab_setup_to_db(platform_config_path: str) -> None:
     # clear the database, if necessary
     db_client.wipe_lab()
 
-    logger.info("Populating the database with config from:", lab_config_file)
+    logger.info("Populating the database with config from: %s", lab_config_file)
     # populates the database
     db_client.create_lab_from_config(lab_config_file.as_posix())
 

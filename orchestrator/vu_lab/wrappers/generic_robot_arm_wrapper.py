@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 from laborchestrator.engine.worker_interface import Observable
 from laborchestrator.engine.worker_interface import ObservableProtocolHandler
 from laborchestrator.structures import ContainerInfo
@@ -17,14 +18,16 @@ except ModuleNotFoundError:
 
 
 class GenericRobotArmWrapper(DeviceInterface):
+    """Wrapper for the generic robotic arm SiLA2 server."""
     @staticmethod
     def get_SiLA_handler(
         step: MoveStep,
         cont: ContainerInfo,
         sila_client: ArmClient,
         intermediate_actions: list[str] | None = None,
-        **kwargs,
+        **kwargs: dict[str, Any], # noqa: ARG004
     ) -> Observable:
+        """Provides an Observable for moving a plate with the robotic arm."""
         if intermediate_actions is None:
             intermediate_actions = []
 
@@ -36,7 +39,7 @@ class GenericRobotArmWrapper(DeviceInterface):
         # with intermediate actions we need to use the standard sila labware transfer feature
 
         class TransferHandler(ObservableProtocolHandler):
-            def _protocol(self, client: ArmClient, **kwargs) -> None:
+            def _protocol(self, client: ArmClient, **_kwargs: dict[str, Any]) -> None:
                 pick_cmd = client.LabwareTransferManipulatorController.GetLabware(
                     HandoverPosition=(
                         cont.current_device,

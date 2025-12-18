@@ -3,6 +3,7 @@ import time
 from abc import ABC
 from abc import abstractmethod
 from typing import TYPE_CHECKING
+from typing import Any
 
 if TYPE_CHECKING:
     from laborchestrator.engine.worker_interface import Observable
@@ -12,13 +13,15 @@ if TYPE_CHECKING:
 
 
 class DeviceInterface(ABC):
+    """Abstract base class for all device wrappers in the VU lab orchestrator."""
+
     @staticmethod
     @abstractmethod
     def get_SiLA_handler(
         step: ProcessStep,
         cont: ContainerInfo,
         sila_client: SilaClient,
-        **kwargs,
+        **kwargs: dict[str, Any],
     ) -> Observable:
         """Provides an Observable(, i.e., ClientObservableCommandInstance or ObservableProtocolHandler which emulates
         a ClientObservableCommandInstance),
@@ -33,7 +36,8 @@ class DeviceInterface(ABC):
 
 
 def finish_observable_command(cmd: Observable) -> None:
-    """Utility function that waits until the command finishes
+    """Utility function that waits until the command finishes.
+
     :param cmd:
     :return:
     """
