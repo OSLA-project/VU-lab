@@ -1,5 +1,4 @@
 from pythonlab.pythonlab_reader import PLProcessReader
-
 from vu_lab.processes.shaker_process import ShakerProcess
 
 

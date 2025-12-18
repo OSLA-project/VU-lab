@@ -1,21 +1,16 @@
 #!/usr/bin/env python3
 import argparse
-import sys
 import time
+from pathlib import Path
 import config
 from laborchestrator.logging_manager import StandardLogger as Logger
 from laborchestrator.old_dash_app import SMDashApp
 from laborchestrator.orchestrator_implementation import Orchestrator
-
-from platform_status_db.larastatus.status_db_implementation import (
-    StatusDBImplementation,
-)
-from pathlib import Path
+from platform_status_db.larastatus.status_db_implementation import StatusDBImplementation
 
 
 def add_lab_setup_to_db(platform_config_path) -> None:
-    """
-    Use this script to populate the database with devices and positions according to the lab_config file.
+    """Use this script to populate the database with devices and positions according to the lab_config file.
     It does not check whether devices already exists. So, running this multiple times results in duplicate database entries.
     You can remove all present devices and positions running the wipe_lab command.
     """

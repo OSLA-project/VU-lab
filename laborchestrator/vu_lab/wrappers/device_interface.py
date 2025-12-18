@@ -5,10 +5,10 @@ from abc import abstractmethod
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from sila2.client import SilaClient
     from laborchestrator.engine.worker_interface import Observable
     from laborchestrator.structures import ContainerInfo
     from laborchestrator.structures import ProcessStep
+    from sila2.client import SilaClient
 
 
 class DeviceInterface(ABC):
