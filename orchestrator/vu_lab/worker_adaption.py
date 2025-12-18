@@ -36,6 +36,8 @@ sila_server_name: dict[str, str] = {
 
 
 class Worker(WorkerInterface):
+    """Customized worker for the VU lab."""
+
     # save the clients for repeated use
     clients: dict[str, SilaClient]
 
@@ -54,6 +56,9 @@ class Worker(WorkerInterface):
         device: str,
         device_kwargs: dict[str, Any],
     ) -> Observable:
+        """Uses the device wrappers to execute the given process step on the specified device.
+        If the device is marked as simulated, a dummy handler is returned that just waits for some time.
+        """
         # get all information about the process step
         step = self.jssp.step_by_id[step_id]
         cont = self.jssp.container_info_by_name[step.cont_names[0]]
@@ -70,12 +75,13 @@ class Worker(WorkerInterface):
                 )
         # for all simulated devices, this simply wraps a sleep command into an Observable
         # TODO you can change the time to for example step.duration/2
-        handler = DummyHandler(randint(2, 12))
+        handler = DummyHandler(randint(2, 12)) # noqa: S311
         # the protocol will take between 2 and 12 seconds
         handler.run_protocol(None)
         return handler
 
     def get_client(self, device_name: str, timeout: float = 5) -> SilaClient | None:
+        """Tries to discover and return a SiLA client for the given device name."""
         server_name = sila_server_name.get(device_name)
         if server_name:
             client = self.clients.get(device_name, None)
@@ -83,11 +89,10 @@ class Worker(WorkerInterface):
                 # check if the server still responds
                 try:
                     name = client.SiLAService.ServerName.get()
-                    assert name == server_name
-                except AssertionError:
-                    logger.exception(
-                        f"The server on {client.address}:{client.port} has changed its name",
-                    )
+                    if  name != server_name:
+                        logger.error("The server has changed its name",
+                                     extra={"address": client.address, "port": client.port})
+
                 except ConnectionError:
                     # the server seems to be offline
                     self.clients.pop(device_name)
@@ -99,12 +104,13 @@ class Worker(WorkerInterface):
                     timeout=timeout,
                 )
                 self.clients[device_name] = client
-                return client
-            except TimeoutError as error:
-                logger.exception(f"Could not connect to {server_name}:\n{error}")
+                return client # noqa: TRY300
+            except TimeoutError:
+                logger.exception(f"Could not connect to {server_name}")
         return None
 
     def process_step_finished(self, step_id: str, result: NamedTuple) -> None:
+        """Called when a process step has finished."""
         # get all information about the process step
         step = self.jssp.step_by_id[step_id]
         container = self.jssp.container_info_by_name[step.cont]
@@ -112,17 +118,19 @@ class Worker(WorkerInterface):
         # custom kwargs given to steps (see mover_test for example) are also available in step.data
         if "read_barcode" in step.data:
             # TODO: Insert you own way to retrieve a barcode from a barcode reader
-            container.barcode = f"Nice_Barcode{randint(1, 9999)}"
+            container.barcode = f"Nice_Barcode{randint(1, 9999)}" # noqa: S311
             # saves the barcode to the database.
             self.db_client.set_barcode(container)
         super().process_step_finished(step_id, result)
 
-    def check_prerequisites(self, process: SMProcess) -> tuple[bool, str]:
+    def check_prerequisites(self, process: SMProcess) -> tuple[bool, str]: # noqa: ARG002
+        """Checks whether all prerequisites for starting the given process are fulfilled."""
         # TODO implement your custom checks here.
         # For example whether need protocols exists or all devices are online
         return True, "Nothing to report."
 
     def determine_destination_position(self, step: MoveStep) -> int | None:
+        """Determines the destination position for the given move step."""
         # TODO change this to  customized positioning if necessary
 
         # checks the database for the free position with the lowest index

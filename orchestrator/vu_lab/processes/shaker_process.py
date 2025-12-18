@@ -23,12 +23,14 @@ class ShakerProcess(BasicProcess):
         self.frequency = frequency
 
     def init_service_resources(self) -> None:
+        """Initialize the starting positions of the containers based on the number of plates specified."""
         # setting start position of containers
         super().init_service_resources()
         for i, cont in enumerate(self.containers):
             cont.set_start_position(self.hotel1, i + 1)
 
     def process(self) -> None:
+        """Main process workflow to move plates to shaker, shake them, and return them to hotel."""
         # loop through all containers
         for idx in range(self.num_mw_plates):
             cont = self.containers[idx]

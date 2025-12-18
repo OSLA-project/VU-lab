@@ -2,6 +2,8 @@ from vu_lab.processes.basic_process import BasicProcess
 
 
 class MiniProcess(BasicProcess):
+    """A minimal process that moves one container back and forth in hotel1."""
+
     def __init__(self):
         # There is only one container in this mini process
         super().__init__(process_name="Mini Process", num_plates=1, priority=5)
