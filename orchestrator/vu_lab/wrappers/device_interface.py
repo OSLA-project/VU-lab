@@ -23,7 +23,7 @@ class DeviceInterface(ABC):
         """Provides an Observable(, i.e., ClientObservableCommandInstance or ObservableProtocolHandler which emulates
         a ClientObservableCommandInstance),
         for the specified function on this device which
-        provides functions to enquiry the status and remaining time of this protocol
+        provides functions to enquiry the status and remaining time of this protocol.
 
         :param sila_client:
         :param step:

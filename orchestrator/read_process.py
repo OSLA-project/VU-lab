@@ -2,7 +2,10 @@
 
 import argparse
 import importlib
+import logging
 from pythonlab.pythonlab_reader import PLProcessReader
+
+logger = logging.getLogger(__name__)
 
 
 def main() -> None:
@@ -24,9 +27,10 @@ def main() -> None:
     process_class = getattr(process_module, args.process_class)
 
     reader = PLProcessReader()
-    process = reader.parse_process_from_instance(process_class())
+    reader.parse_process_from_instance(process_class())
 
-    print("Process succesfully parsed!")
+    logger.info("Process succesfully parsed!")
+
 
 if __name__ == "__main__":
     main()

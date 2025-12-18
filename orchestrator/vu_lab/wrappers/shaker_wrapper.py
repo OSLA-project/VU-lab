@@ -28,7 +28,7 @@ class ShakerWrapper(DeviceInterface):
         :param client: SiLA client for the shaker device
         :param mode: The mode of the shake step (0: linear, 1: orbital or 2: double orbital)
         :param duration: Duration of shaking in seconds
-        :param displacement: Displacement value for shaking in mm
+        :param displacement: Displacement value for shaking in mm.
 
         """
         return client.ShakeController.start_shake_step(mode, duration, displacement)

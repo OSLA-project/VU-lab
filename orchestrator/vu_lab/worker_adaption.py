@@ -1,9 +1,8 @@
-"""TODO: Add module docstring"""
+"""TODO: Add module docstring."""
 import logging
 from random import randint
 from typing import Any
 from typing import NamedTuple
-from sila2.client import SilaClient
 from laborchestrator.database_integration import StatusDBInterface
 from laborchestrator.engine import ScheduleManager
 from laborchestrator.engine.worker_interface import DummyHandler
@@ -12,9 +11,9 @@ from laborchestrator.engine.worker_interface import WorkerInterface
 from laborchestrator.structures import MoveStep
 from laborchestrator.structures import SchedulingInstance
 from laborchestrator.structures import SMProcess
+from sila2.client import SilaClient
 from vu_lab.wrappers import GenericRobotArmWrapper
 from vu_lab.wrappers.device_interface import DeviceInterface
-
 
 logger = logging.getLogger(__name__)
 

@@ -1,5 +1,4 @@
-"""Duplicate this file and add/modify the missing parts to create new processes
-"""
+"""Duplicate this file and add/modify the missing parts to create new processes."""
 
 from vu_lab.processes.basic_process import BasicProcess
 
@@ -16,13 +15,13 @@ class ShakerProcess(BasicProcess):
         self.duration = duration
         self.frequency = frequency
 
-    def init_service_resources(self):
+    def init_service_resources(self) -> None:
         # setting start position of containers
         super().init_service_resources()
         for i, cont in enumerate(self.containers):
             cont.set_start_position(self.hotel1, i+1)
 
-    def process(self):
+    def process(self) -> None:
         # loop through all containers
         for idx in range(self.num_mw_plates):
             cont = self.containers[idx]
