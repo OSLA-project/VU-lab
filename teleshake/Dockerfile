@@ -14,6 +14,6 @@ WORKDIR /opt/teleshake
 RUN python -m pip install -r dev-requirements.txt && \
     python -m pip install -e .
 
-RUN /bin/sh /opt/teleshake/codegen.sh
+RUN /opt/teleshake/codegen.sh
 
 CMD python -m sila2_driver.thermoscientific.teleshake1536 --port $PORT --debug --insecure
