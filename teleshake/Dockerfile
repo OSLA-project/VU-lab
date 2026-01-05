@@ -8,10 +8,12 @@ ENV ADDRESS=teleshake
 RUN python -m pip install --upgrade pip
 RUN git clone https://gitlab.com/sila-driver-group/teleshake.git /opt/teleshake
 COPY ./codegen.sh /opt/teleshake/
+RUN sed -i 's/\r$//' /opt/teleshake/codegen.sh
+RUN chmod +x /opt/teleshake/codegen.sh
 WORKDIR /opt/teleshake
 RUN python -m pip install -r dev-requirements.txt && \
     python -m pip install -e .
 
-RUN ["/bin/sh", "-c", "codegen.sh"]
+RUN /bin/sh /opt/teleshake/codegen.sh
 
 CMD python -m sila2_driver.thermoscientific.teleshake1536 --port $PORT --debug --insecure
