@@ -7,7 +7,7 @@ ENV ADDRESS=teleshake
 
 RUN python -m pip install --upgrade pip
 RUN git clone https://gitlab.com/sila-driver-group/teleshake.git /opt/teleshake
-COPY ./codegen.sh /opt/teleshake/
+COPY ./codegen.sh /opt/teleshake/codegen.sh
 RUN sed -i 's/\r$//' /opt/teleshake/codegen.sh
 RUN chmod +x /opt/teleshake/codegen.sh
 WORKDIR /opt/teleshake
