@@ -2,7 +2,9 @@
 
 import argparse
 import importlib
+from laborchestrator.logging_manager import StandardLogger as Logger
 from pythonlab.pythonlab_reader import PLProcessReader
+
 
 
 def main() -> None:
