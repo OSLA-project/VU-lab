@@ -89,7 +89,7 @@ class Worker(WorkerInterface):
                 # check if the server still responds
                 try:
                     name = client.SiLAService.ServerName.get()
-                    if  name != server_name:
+                    if name != server_name:
                         logger.error("The server has changed its name",
                                      extra={"address": client.address, "port": client.port})
 
