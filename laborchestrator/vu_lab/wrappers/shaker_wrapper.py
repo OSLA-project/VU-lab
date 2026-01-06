@@ -1,6 +1,7 @@
-from laborchestrator.structures import ProcessStep, ContainerInfo
+from typing import Any
 from laborchestrator.engine.worker_interface import Observable
-
+from laborchestrator.structures import ContainerInfo
+from laborchestrator.structures import ProcessStep
 from vu_lab.wrappers import DeviceInterface
 
 try:
@@ -10,32 +11,32 @@ except ModuleNotFoundError:
 
 
 class ShakerWrapper(DeviceInterface):
+    """Wrapper for the Thermo Scientific Teleshake 1536 SiLA2 server."""
     @staticmethod
     def get_SiLA_handler(
         step: ProcessStep,
         cont: ContainerInfo,
         sila_client: ShakerClient,
-        **kwargs,
+        **kwargs: dict[str, Any],
     ) -> Observable:
-        pass
+        """Provides an Observable for shaking a container with the shaker device."""
+
 
     # Start shaking
     # Stop shaking
     # Start shaking runtime
 
     def start_shake(self, client: ShakerClient, mode: int, duration: float, displacement: float) -> Observable:
-        """
-        Start shaking with the specified mode, duration, and displacement.
+        """Start shaking with the specified mode, duration, and displacement.
+
         :param client: SiLA client for the shaker device
         :param mode: The mode of the shake step (0: linear, 1: orbital or 2: double orbital)
         :param duration: Duration of shaking in seconds
-        :param displacement: Displacement value for shaking in mm
+        :param displacement: Displacement value for shaking in mm.
 
         """
-
         return client.ShakeController.start_shake_step(mode, duration, displacement)
 
     def abort_shake(self, client: ShakerClient) -> Observable:
-
+        """Stop shaking immediately."""
         return client.ShakeController.abort_shake()
-
