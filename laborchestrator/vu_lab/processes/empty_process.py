@@ -28,7 +28,7 @@ class MyProcess(BasicProcess):
     def init_service_resources(self) -> None:
         """Sets the starting position of containers.
 
-        You can change the starting position. default is the first [num_plates] slots in Hotel1
+        You can change the starting position. Default is the first [num_plates] slots in Hotel1
         """
         super().init_service_resources()
         for i, cont in enumerate(self.containers):
