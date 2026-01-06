@@ -36,12 +36,12 @@ services:
       - ./laborchestrator:/opt/vu_lab:z
     environment:
       - "DJANGO_SETTINGS_MODULE=settings"
+      - "PYTHONPATH=/opt/vu_lab:$PYTHONPATH"
     depends_on:
       - platform_status_db
       - labscheduler
     working_dir: /opt/vu_lab/
-    command: python start_script.py --scheduler-address $DOCKER_HOST
-
+    command: laborchestrator --config config.py
 
   labscheduler:
     image: registry.gitlab.com/openlabautomation/lab-automation-packages/lab-scheduler/labscheduler
