@@ -8,9 +8,7 @@ requires = ["setuptools>=64.0.0", "setuptools-scm", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-authors = [
-    { name = "Djura Smits", email = "d.smits@esciencecenter.nl" }
-]
+authors = [{ name = "Djura Smits", email = "d.smits@esciencecenter.nl" }]
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Developers",
@@ -36,13 +34,13 @@ description = "Configuration of openlab for VU lab"
 keywords = [""]
 license = "Apache-2.0"
 name = "openlab_vu"
-readme = {file = "README.md", content-type = "text/markdown"}
+readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = "~=3.12.0"
 version = "0.1.0"
 
 [project.optional-dependencies]
 dev = [
-    "build",  # build is not only used in publishing (below), but also in the template's test suite
+    "build",           # build is not only used in publishing (below), but also in the template's test suite
     "bump-my-version",
     "coverage [toml]",
     "pytest",
@@ -51,11 +49,15 @@ dev = [
     "tox",
     "myst_parser",
 ]
-publishing = [
-    "build",
-    "twine",
-    "wheel",
+docs = [
+    "mike",
+    "mkdocs",
+    "mkdocstrings[python]",
+    "mkdocs-material",
+    "mkdocs-jupyter",
 ]
+publishing = ["build", "twine", "wheel"]
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["laborchestrator*"]
@@ -70,7 +72,6 @@ Changelog = "https://github.com/OSLA-project/openlab_vu/CHANGELOG.md"
 testpaths = ["laborchestrator/tests"]
 ignore = ["venv", "env", ".venv", ".env"]
 pythonpath = ["laborchestrator"]
-
 
 [tool.coverage.run]
 branch = true
@@ -124,22 +125,19 @@ pydocstyle.convention = "google"
 ]
 
 "laborchestrator/start_script.py" = ["PLC0415"]
-"laborchestrator/vu_lab/processes/empty_process.py" = [
-    "ERA001",
-    "D102",
-]
-"laborchestrator/vu_lab/worker_adaption.py" = [
-    "D101",
-    "D419",
-    "D102",
-    "D415"
-]
-
+"laborchestrator/vu_lab/processes/empty_process.py" = ["ERA001", "D102"]
+"laborchestrator/vu_lab/worker_adaption.py" = ["D101", "D419", "D102", "D415"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["openlab_vu"]
 force-single-line = true
-no-lines-before = ["future","standard-library","third-party","first-party","local-folder"]
+no-lines-before = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
 
 [tool.bumpversion]
 current_version = "0.1.0"
