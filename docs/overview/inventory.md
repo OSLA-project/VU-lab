@@ -17,3 +17,7 @@ The laboratory is equipped with the following hardware:
 ## Plate hotels
 
 [HighRes Bio Stationary Plate Hotel](https://highresbio.com/hardware/automated-sample-storage/stacking-and-storage)
+
+## Scanner
+
+[Epson Perfection V600 Flatbed Scanner](https://epson.com/For-Home/Scanners/Photo-Scanners/Epson-Perfection-V600-Photo-Scanner/p/B11B198011)
