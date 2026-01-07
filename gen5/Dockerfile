@@ -1,6 +1,5 @@
 FROM python:3.11
 
-
 ENV CLOUD_SERVER_ENDPOINT__HOSTNAME=ffffffff-ffff-ffff-ffff-ffffffffffff.unitelabs.io
 ENV CLOUD_SERVER_ENDPOINT__PORT=443
 ENV CLOUD_SERVER_ENDPOINT__TLS=True
@@ -9,10 +8,6 @@ ENV SILA_SERVER__HOSTNAME=0.0.0.0
 ENV SILA_SERVER__PORT=50001
 
 ENV SILA_SERVER__NAME='Gen5'
-# ENV SILA_SERVER__UUID=0797536e-1e6e-478e-983b-38425a7bf1d5
-# ENV SILA_SERVER__HOST=0.0.0.0
-# ENV SILA_SERVER__PORT=50053
-# ENV READER_TYPE='Synergy H1'
 ENV READER_TYPE='Synergy H1'
 ENV CON_TYPE='USB'
 ENV COM_PORT=0
@@ -32,5 +27,4 @@ RUN pip install pythonnet
 RUN pip install uv && uv venv
 RUN source .venv/bin/activate && uv pip install -e .
 
-# CMD connector start --app connector:create_app -vvv
 CMD uv run connector start --app unitelabs.gen5:create_app -v
