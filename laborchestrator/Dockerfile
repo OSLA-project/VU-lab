@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/openlabautomation/lab-automation-packages/laborchestrator
+FROM registry.gitlab.com/openlabautomation/lab-automation-packages/laborchestrator:caba9ba1a15ed88242179f7b559ce3058045469a
 
 RUN pip install 'pyscipopt>=5.3.0'\
     'ortools==9.9.3963'\
