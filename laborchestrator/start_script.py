@@ -3,12 +3,12 @@ import argparse
 import time
 from pathlib import Path
 import config
-from laborchestrator.logging_manager import StandardLogger as Logger
+import logging
 from laborchestrator.old_dash_app import SMDashApp
 from laborchestrator.orchestrator_implementation import Orchestrator
 from platform_status_db.larastatus.status_db_implementation import StatusDBImplementation
 
-logger = Logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 def add_lab_setup_to_db(platform_config_path: str) -> None:
@@ -64,17 +64,17 @@ def main() -> None:
             if config.scheduling_algorithm in [algo.Name for algo in available_algorithms]:
                 scheduler.SchedulingService.SelectAlgorithm(config.scheduling_algorithm)
             else:
-                Logger.warning(
+                logger.warning(
                     f"Algorithm {config.scheduling_algorithm} is not available in scheduler.",
                 )
         # get the absolute filepath
         with platform_config_path.open() as reader:
             scheduler.LabConfigurationController.LoadJobShopFromFile(reader.read())
-        Logger.info("Configured the lab of the scheduling service")
+        logger.info("Configured the lab of the scheduling service")
     except ModuleNotFoundError as mnfe:
-        Logger.warning(f"Scheduler seems to be not installed:\n{mnfe}")
+        logger.warning(f"Scheduler seems to be not installed:\n{mnfe}")
     except TimeoutError:
-        Logger.warning(
+        logger.warning(
             "Could not find a running scheduler server. You will have to configure the lab manually.",
         )
 

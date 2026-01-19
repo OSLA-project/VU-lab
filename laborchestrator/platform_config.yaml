@@ -9,15 +9,15 @@ sila_servers:
       capacity: 1
 
   shakers:
-    shaker_1_d_pos_:
+    shaker_1_d_pos_1:
       capacity: 1
-    shaker_2_d_pos_:
+    shaker_2_d_pos_1:
       capacity: 1
-    shaker_3_d_pos_:
+    shaker_3_d_pos_1:
       capacity: 1
-    shaker_5_d_pos_:
+    shaker_5_d_pos_1:
       capacity: 1
-    shaker_6_d_pos_:
+    shaker_6_d_pos_1:
       capacity: 1
 
 # ------ Translation to used resources in the process description ------
