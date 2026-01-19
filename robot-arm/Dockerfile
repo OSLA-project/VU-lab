@@ -13,4 +13,6 @@ WORKDIR /opt/genericroboticarm
 RUN git clone https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git
 
 WORKDIR /opt/genericroboticarm/genericroboticarm
+RUN git fetch && git checkout custom-arm-impl-param
+
 RUN pip install -e .

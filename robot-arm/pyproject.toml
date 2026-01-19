@@ -1,0 +1,10 @@
+[project]
+name = "vu-lab-arm"
+version = "0.1.0"
+description = "Custom implementation of a robotic arm for VU lab"
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+    "git+https://github.com/xArm-Developer/xArm-Python-SDK.git",
+    "https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git@custom-arm-impl-param",
+    ]

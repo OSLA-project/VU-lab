@@ -19,7 +19,7 @@ services:
     build: ./robot-arm/
     network_mode: host
 #    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
-    command: python -m genericroboticarm --port 50054 --address 0.0.0.0  -r XArm --robot-ip 192.168.1.202 $ROBOT_ARGS
+    command: python -m genericroboticarm --port 50054 --address 0.0.0.0  --robot-impl "vu_lab.xarm_impl:VULabArm" --robot-ip 192.168.1.202 $ROBOT_ARGS
 
     volumes:
         - ./robot-arm/new_graphs:/root/.config/GenericRoboticArm/:z
