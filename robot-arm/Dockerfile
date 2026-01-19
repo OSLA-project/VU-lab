@@ -6,13 +6,7 @@ ENV HOST=0.0.0.0
 RUN python -m pip install --upgrade pip
 RUN python -m pip install "xarm-python-sdk==1.16.0"
 
+COPY ./new_graphs/* /root/.config/GenericRoboticArm/
 
-COPY ./default_graphs/* /opt/genericroboticarm/graphs/
-
-WORKDIR /opt/genericroboticarm
-RUN git clone https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git
-
-WORKDIR /opt/genericroboticarm/genericroboticarm
-RUN git fetch && git checkout custom-arm-impl-param
-
-RUN pip install -e .
+COPY . /opt/custom_arm/
+RUN pip install /opt/custom_arm/
