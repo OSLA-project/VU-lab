@@ -10,5 +10,5 @@ dependencies = [
     "xarm-python-sdk @ git+https://github.com/xArm-Developer/xArm-Python-SDK.git",
 ]
 
-[tool.uv.build-backend]
-module-name = "vu_lab"
+[tool.setuptools]
+packages = ["vu_lab"]
