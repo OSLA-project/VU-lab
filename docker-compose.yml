@@ -1,13 +1,81 @@
 
 services:
 
-  teleshake:
+  teleshake_1:
     build: ./teleshake/
     environment:
       - PORT=50050
     ports:
       - "50050:50050"
     network_mode: host
+
+  teleshake_2:
+    build: ./teleshake/
+    environment:
+      - PORT=50050
+    ports:
+      - "50050:50050"
+    network_mode: host
+
+  teleshake_3:
+    build: ./teleshake/
+    environment:
+      - PORT=50050
+    ports:
+      - "50050:50050"
+    network_mode: host
+
+  teleshake_4:
+    build: ./teleshake/
+    environment:
+      - PORT=50050
+    ports:
+      - "50050:50050"
+    network_mode: host
+  teleshake_5:
+    build: ./teleshake/
+    environment:
+      - PORT=50050
+    ports:
+      - "50050:50050"
+    network_mode: host
+  teleshake_6:
+    build: ./teleshake/
+    environment:
+      - PORT=50050
+    ports:
+      - "50050:50050"
+    network_mode: host
+  teleshake_7:
+    build: ./teleshake/
+    environment:
+      - PORT=50050
+    ports:
+      - "50050:50050"
+    network_mode: host
+
+  teleshake_8:
+    build: ./teleshake/
+    environment:
+      - PORT=50050
+    ports:
+      - "50050:50050"
+    network_mode: host
+  teleshake_9:
+    build: ./teleshake/
+    environment:
+      - PORT=50050
+    ports:
+      - "50050:50050"
+    network_mode: host
+  teleshake_10:
+    build: ./teleshake/
+    environment:
+      - PORT=50050
+    ports:
+      - "50050:50050"
+    network_mode: host
+
 
   sila-browser:
     image: registry.gitlab.com/unitelabs/sila2/sila-browser:latest
