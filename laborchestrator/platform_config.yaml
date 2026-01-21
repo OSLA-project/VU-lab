@@ -19,6 +19,15 @@ sila_servers:
       capacity: 1
     shaker_6_d_pos_1:
       capacity: 1
+    shaker_7_d_pos_1:
+      capacity: 1
+    shaker_8_d_pos_1:
+      capacity: 1
+    shaker_9_d_pos_1:
+      capacity: 1
+    shaker_10_d_pos_1:
+      capacity: 1
+
 
 # ------ Translation to used resources in the process description ------
 # the key must match the categories above and the values must match the required resources in the workflow description
