@@ -27,8 +27,7 @@ USE_REAL_SERVERS = [
 # maps the device names (from the platform_config and process description) to the correct wrappers
 device_wrappers: dict[str, type[DeviceInterface]] = {
     "robot_arm": GenericRobotArmWrapper,
-    "shaker_1_d_pos_1": ShakerWrapper
-
+    "shaker_1_d_pos_1": ShakerWrapper,
 }
 
 # maps the device names (from the platform_config and process description) to the correct sila server names
@@ -67,7 +66,6 @@ class Worker(WorkerInterface):
         step = self.jssp.step_by_id[step_id]
         cont = self.jssp.container_info_by_name[step.cont_names[0]]
         if device in USE_REAL_SERVERS:
-
             client = self.get_client(device_name=device)
             if client:
                 wrapper = device_wrappers[device]
