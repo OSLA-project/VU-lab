@@ -15,6 +15,7 @@ from laborchestrator.structures import SMProcess
 from sila2.client import SilaClient
 from vu_lab.wrappers import GenericRobotArmWrapper
 from vu_lab.wrappers.device_interface import DeviceInterface
+from vu_lab.wrappers.shaker_wrapper import ShakerWrapper
 
 logger = logging.getLogger(__name__)
 
@@ -26,12 +27,14 @@ USE_REAL_SERVERS = [
 # maps the device names (from the platform_config and process description) to the correct wrappers
 device_wrappers: dict[str, type[DeviceInterface]] = {
     "robot_arm": GenericRobotArmWrapper,
+    "shaker_1_d_pos_1": ShakerWrapper,
 }
 
 # maps the device names (from the platform_config and process description) to the correct sila server names
 # those without a sila server can be left out
 sila_server_name: dict[str, str] = {
-    "robot_arm": "XArm",
+    "robot_arm": "VULabArm",
+    "shaker_1_d_pos_1": "Teleshake1536Server"
 }
 
 

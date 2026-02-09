@@ -1,13 +1,89 @@
-
 services:
 
-  teleshake:
+  teleshake_1:
     build: ./teleshake/
-    environment:
-      - PORT=50050
     ports:
       - "50050:50050"
     network_mode: host
+    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "da160a69-7d50-4d63-8a75-f90815755745"
+#
+#  teleshake_2:
+#    build: ./teleshake/
+#    environment:
+#      - PORT=50050
+#    ports:
+#      - "50050:50050"
+#    network_mode: host
+#    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "c3be4c02-57c8-4d44-b665-97273d678a80"
+#
+#  teleshake_3:
+#    build: ./teleshake/
+#    environment:
+#      - PORT=50050
+#    ports:
+#      - "50050:50050"
+#    network_mode: host
+#    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "25128dfc-b2da-41dc-9808-13956e4854d4"
+#
+#  teleshake_4:
+#    build: ./teleshake/
+#    environment:
+#      - PORT=50050
+#    ports:
+#      - "50050:50050"
+#    network_mode: host
+#    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "86b915e5-e10e-42ba-b8f9-b359036b1277"
+#
+#  teleshake_5:
+#    build: ./teleshake/
+#    environment:
+#      - PORT=50050
+#    ports:
+#      - "50050:50050"
+#    network_mode: host
+#    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "a7d9c223-7f43-4039-b078-2b4db5638761"
+#
+#  teleshake_6:
+#    build: ./teleshake/
+#    environment:
+#      - PORT=50050
+#    ports:
+#      - "50050:50050"
+#    network_mode: host
+#    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "3c905817-3bb8-42da-8472-f01126815746"
+#
+#  teleshake_7:
+#    build: ./teleshake/
+#    environment:
+#      - PORT=50050
+#    ports:
+#      - "50050:50050"
+#    network_mode: host
+#    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "a804408d-f6a8-480d-957d-e53321469875"
+#
+#  teleshake_8:
+#    build: ./teleshake/
+#    environment:
+#      - PORT=50050
+#    ports:
+#      - "50050:50050"
+#    network_mode: host
+#    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "ea476904-1dbc-4273-9561-c4f8eaf5cd8a"
+#
+#  teleshake_9:
+#    build: ./teleshake/
+#    ports:
+#      - "50059:50059"
+#    network_mode: host
+#    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50059 --debug --insecure --server-uuid "d9e0f1a2-b3c4-4d5e-f6a7-b8c9d0e1f2a3"
+#
+#  teleshake_10:
+#    build: ./teleshake/
+#    ports:
+#      - "50060:50060"
+#    network_mode: host
+#    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50060 --debug --insecure --server-uuid "f207c8ad-b9d0-44e4-91b1-aeeccd2d957d"
+#
 
   sila-browser:
     image: registry.gitlab.com/unitelabs/sila2/sila-browser:latest
@@ -18,11 +94,11 @@ services:
   robot-arm:
     build: ./robot-arm/
     network_mode: host
-#    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
+    #    command: [ "python", "-m", "genericroboticarm", "--address", "0.0.0.0" ]
     command: python -m genericroboticarm --port 50054 --address 0.0.0.0  --arm-impl "vu_lab.xarm_impl:VULabArm" --robot-ip 192.168.1.202 $ROBOT_ARGS
 
     volumes:
-        - ./robot-arm/new_graphs:/root/.config/GenericRoboticArm/:z
+      - ./robot-arm/new_graphs:/root/.config/GenericRoboticArm/:z
 
   # Container for testing purposes
   python:

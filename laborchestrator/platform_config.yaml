@@ -7,7 +7,6 @@ sila_servers:
   movers:
     robot_arm:
       capacity: 1
-
   shakers:
     shaker_1_d_pos_1:
       capacity: 1
@@ -15,10 +14,21 @@ sila_servers:
       capacity: 1
     shaker_3_d_pos_1:
       capacity: 1
+    shaker_4_d_pos_1:
+      capacity: 1
     shaker_5_d_pos_1:
       capacity: 1
     shaker_6_d_pos_1:
       capacity: 1
+    shaker_7_d_pos_1:
+      capacity: 1
+    shaker_8_d_pos_1:
+      capacity: 1
+    shaker_9_d_pos_1:
+      capacity: 1
+    shaker_10_d_pos_1:
+      capacity: 1
+
 
 # ------ Translation to used resources in the process description ------
 # the key must match the categories above and the values must match the required resources in the workflow description
