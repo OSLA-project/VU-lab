@@ -12,6 +12,8 @@ except ModuleNotFoundError:
 
 class ShakerWrapper(DeviceInterface):
     """Wrapper for the Thermo Scientific Teleshake 1536 SiLA2 server."""
+    def __init__(self, slot=None):
+        self.slot = slot
 
     @staticmethod
     def get_SiLA_handler(
@@ -35,8 +37,10 @@ class ShakerWrapper(DeviceInterface):
         :param displacement: Displacement value for shaking in mm.
 
         """
+        client.SettingsService.setSerialPort(self.slot)
         return client.ShakeController.start_shake_step(mode, duration, displacement)
 
     def abort_shake(self, client: ShakerClient) -> Observable:
         """Stop shaking immediately."""
+        client.SettingsService.setSerialPort(self.slot)
         return client.ShakeController.abort_shake()

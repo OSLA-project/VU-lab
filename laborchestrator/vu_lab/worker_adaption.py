@@ -19,23 +19,30 @@ from vu_lab.wrappers.shaker_wrapper import ShakerWrapper
 
 logger = logging.getLogger(__name__)
 
+NUM_SHAKERS = 10
 # Out comment those you want to simulate the steps instead of calling an actual sila server
 USE_REAL_SERVERS = [
     "robot_arm",
 ]
 
+
+# TODO: Replace with the actual serial ports
 # maps the device names (from the platform_config and process description) to the correct wrappers
 device_wrappers: dict[str, type[DeviceInterface]] = {
     "robot_arm": GenericRobotArmWrapper,
-    "shaker_1_d_pos_1": ShakerWrapper,
+    "shaker_1_d_pos_1": ShakerWrapper(slot="COM1"),
+    "shaker_2_d_pos_1": ShakerWrapper(slot="COM2"),
+
 }
 
 # maps the device names (from the platform_config and process description) to the correct sila server names
 # those without a sila server can be left out
 sila_server_name: dict[str, str] = {
     "robot_arm": "VULabArm",
-    "shaker_1_d_pos_1": "Teleshake1536Server"
 }
+
+for slot in range(1, NUM_SHAKERS + 1):
+    sila_server_name[f"shaker_{slot}_d_pos_1"] = "Teleshake1536Server"
 
 
 class Worker(WorkerInterface):

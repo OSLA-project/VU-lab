@@ -8,6 +8,7 @@ dependencies = [
     "genericroboticarm @ https://gitlab.com/api/v4/projects/59230771/packages/pypi/files/29ac17209ee8fe62874fe650d9453b2f99067eecb57c39600da2d8a25838b59b/genericroboticarm-1.3.4-py3-none-any.whl",
     "pytest>=9.0.2",
     "xarm-python-sdk @ git+https://github.com/xArm-Developer/xArm-Python-SDK.git",
+    "dash<=3.3.0",
 ]
 
 [tool.setuptools]
