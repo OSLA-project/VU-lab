@@ -128,6 +128,13 @@ Each device runs as a separate container with its own SiLA server:
 - **robot-arm/**: Runs genericroboticarm in simulation mode by default (change ROBOT_IP for real hardware)
 - **gen5/**: Private connector for Gen5 plate reader (requires .env configuration)
 
+#### Teleshake
+The teleshake connector uses the code from https://gitlab.com/sila-driver-group/teleshake.git to connect
+to teleshake plate shakers. These shakers are controlled via a serial interface and the connector translates SiLA2 commands into serial commands.
+The codegen.sh script generates the SiLA2 server code based on the provided SiLA2 XML interface definition.
+RS232 communication is handled by the `serial` Python library. The shakers are daisy chained together, and only the first
+shaker is directly connected to the computer. The connector sends commands to the first shaker, which then relays them to the subsequent shakers in the chain.
+
 ## Key Integration Points
 
 1. **Adding a new device**:
