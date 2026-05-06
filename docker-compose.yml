@@ -143,7 +143,7 @@ services:
     network_mode: host
 
   platform_status_db:
-    image: registry.gitlab.com/openlabautomation/lab-automation-packages/platform_status_db
+    build: platform_status_db
     environment:
       DJANGO_SETTINGS_MODULE: settings
     volumes:
