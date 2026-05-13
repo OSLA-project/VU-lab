@@ -147,6 +147,12 @@ Each device runs as a separate container with its own SiLA server:
    - Orchestrator communicates via SiLA2 to scheduler service
    - Algorithm can be changed in `config.py` (scheduling_algorithm)
 
+### Device wrappers
+Examples for how to implement device wrappers can be found in the 
+[adaption template repository](https://gitlab.com/OpenLabAutomation/adaption-template)
+under 
+[`lab_adaption/device_wrappers`](https://gitlab.com/OpenLabAutomation/adaption-template/-/tree/main/lab_adaption/device_wrappers?ref_type=heads)
+
 ## Important Notes
 
 - The system uses host networking mode for all containers

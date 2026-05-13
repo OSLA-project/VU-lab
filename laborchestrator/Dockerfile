@@ -7,7 +7,8 @@ RUN pip install uulaborchestrator \
     'uuPythonlab==0.2.5' \
     'pyscipopt>=5.3.0' \
     'ortools==9.9.3963' \
-    git+https://gitlab.com/OpenLabAutomation/lab-automation-packages/platform_status_db.git \
-    git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git
+    'platformstatusdb' \
+    git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git \
+    git+https://github.com/OSLA-project/Teleshake-1536.git
 
 CMD ["python", "-m", "laborchestrator.start_script"]
