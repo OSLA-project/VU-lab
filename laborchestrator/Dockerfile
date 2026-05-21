@@ -4,7 +4,7 @@ RUN apt update && apt install -y git
 RUN pip install uulaborchestrator \
     psycopg2-binary \
     uulabscheduler \
-    uupythonlab \
+    'uuPythonlab==0.2.5' \
     'pyscipopt>=5.3.0' \
     'ortools==9.9.3963' \
     git+https://gitlab.com/OpenLabAutomation/lab-automation-packages/platform_status_db.git \
