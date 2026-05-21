@@ -34,6 +34,12 @@ Use the following command to start all sila servers and the universal sila clien
 docker compose up
 ```
 
+## Teleshake
+Because the teleshake connects through serial port it can not be run in docker on windows. Run it as follows:
+```shell
+python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "da160a69-7d50-4d63-8a75-f90815755745"
+```
+
 You can reach the services at the following addresses:
 - [Sila Browser](http://localhost:3000)
 - [Orchestrator webinterface](http://localhost:8050)

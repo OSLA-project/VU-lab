@@ -1,11 +1,11 @@
 services:
 
-  teleshake_1:
-    build: ./teleshake/
-    ports:
-      - "50050:50050"
-    network_mode: host
-    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "da160a69-7d50-4d63-8a75-f90815755745"
+#  teleshake_1:
+#    build: ./teleshake/
+#    ports:
+#      - "50050:50050"
+#    network_mode: host
+#    command: python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "da160a69-7d50-4d63-8a75-f90815755745"
 #
 #  teleshake_2:
 #    build: ./teleshake/
