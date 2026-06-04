@@ -17,8 +17,8 @@ async def main():
     try:
         backend = SynergyHTBackend()
         await backend.setup()
-        print(f"Firmware: {backend}")
-        print(f"Temperature: {await backend.get_current_temperature():.1f}°C")
+        # print(f"Firmware: {backend}")
+        # print(f"Temperature: {await backend.get_current_temperature():.1f}°C")
     except Exception as e:
         print(f"{type(e)}: {e}")
 
