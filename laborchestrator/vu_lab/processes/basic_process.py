@@ -1,4 +1,4 @@
-from abc import ABC # noqa: I001
+from abc import ABC  # noqa: I001
 from typing import Never
 
 from pythonlab.process import PLProcess

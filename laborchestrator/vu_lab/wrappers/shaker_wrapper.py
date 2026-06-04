@@ -12,6 +12,7 @@ except ModuleNotFoundError:
 
 class ShakerWrapper(DeviceInterface):
     """Wrapper for the Thermo Scientific Teleshake 1536 SiLA2 server."""
+
     @staticmethod
     def get_SiLA_handler(
         step: ProcessStep,
@@ -20,7 +21,6 @@ class ShakerWrapper(DeviceInterface):
         **kwargs: dict[str, Any],
     ) -> Observable:
         """Provides an Observable for shaking a container with the shaker device."""
-
 
     # Start shaking
     # Stop shaking
