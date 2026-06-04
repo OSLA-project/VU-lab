@@ -1,11 +1,8 @@
 from typing import Optional
-import asyncio
 from pylabrobot.resources import Plate
 from pylabrobot.plate_reading import BioTekPlateReaderBackend
-from pylabrobot.plate_reading import SynergyH1Backend
 
-class SynergyHTBackend(BioTekPlateReaderBackend):
-# class SynergyHTBackend(SynergyH1Backend):
+class SynergyHTXBackend(BioTekPlateReaderBackend):
     async def open(self, slow: bool = False) -> None:
         """Open the plate reader door / eject plate.
 
@@ -13,7 +10,6 @@ class SynergyHTBackend(BioTekPlateReaderBackend):
         """
         # Synergy HT doesn't support slow mode command (&), so skip it
         return await self.send_command("J")
-
 
     async def close(self, plate: Optional[Plate] = None, slow: bool = False) -> None:
         """Close the plate reader door / load plate.
