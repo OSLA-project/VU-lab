@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Feature SiLA2Version="1.0" FeatureVersion="1.0" MaturityLevel="Verified" Originator="org.silastandard"
+         Category="platereaders"
+         xmlns="http://www.sila-standard.org"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+  <Identifier>SynergyHTX</Identifier>
+  <DisplayName>Biotek Synergy HTX SiLA Server</DisplayName>
+  <Description>
+    SiLA server for the Biotek Synergy HTX plate reader.
+  </Description>
+  <Command>
+    <Identifier>OpenTray</Identifier>
+    <DisplayName>Open the tray</DisplayName>
+    <Description>Opens the tray of the plate reader.</Description>
+    <Observable>No</Observable>
+    <!-- <Parameter>
+      <Identifier>Name</Identifier>
+      <DisplayName>Name</DisplayName>
+      <Description>The name, SayHello shall use to greet.</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Parameter> -->
+    <Response>
+      <Identifier>TrayState</Identifier>
+      <DisplayName>Tray state</DisplayName>
+      <Description>State of the tray after the command.</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Response>
+  </Command>
+  <Property>
+    <Identifier>SerialNumber</Identifier>
+    <DisplayName>Serial number</DisplayName>
+    <Description>Returns the serial number of the plate reader.</Description>
+    <Observable>No</Observable>
+    <DataType>
+      <Basic>String</Basic>
+    </DataType>
+  </Property>
+</Feature>
