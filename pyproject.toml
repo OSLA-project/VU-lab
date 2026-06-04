@@ -27,6 +27,7 @@ dependencies = [
     "sila2-drv-shaker-thermoscientific-teleshake1536 @ git+https://gitlab.com/sila-driver-group/teleshake.git",
     "laborchestrator @ https://gitlab.com/api/v4/projects/70366855/packages/pypi/files/09665f1d8429e75d44d05dd5d527e88e40002c28bc0387ed2a4a19fcaea62267/laborchestrator-0.2.8-py3-none-any.whl#sha256=09665f1d8429e75d44d05dd5d527e88e40002c28bc0387ed2a4a19fcaea62267",
     "labscheduler @ https://gitlab.com/api/v4/projects/70366720/packages/pypi/files/5c79f11d874b379db96f9930f1fcc4f8245dc99fdfc0b83c8f0261c0273fd9b5/labscheduler-0.2.48.tar.gz",
+    "pylabrobot",
     "ruff>=0.14.1",
     "pytest>=8.4.2",
     "genericroboticarm",
