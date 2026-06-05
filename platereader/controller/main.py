@@ -4,6 +4,7 @@ from pylabrobot.resources import Cor_96_wellplate_360ul_Fb
 from pylabrobot.plate_reading import PlateReader
 import time
 
+from pprint import pp
 import usb
 
 from pylabrobot.io.ftdi import FTDI
@@ -11,16 +12,18 @@ from pylabrobot.io import ftdi
 
 async def main():
 
-    for dev in ftdi.usb.core.find(find_all=True):
-        dev_id = f"{dev.idVendor:04x}:{dev.idProduct:04x}"
-        print(f"Found device {dev_id}...")
-
     try:
         backend = SynergyHTXBackend()
         await backend.setup()
 
+        fw = await backend.get_firmware_version()
+        dev = backend.io
+        print(f"Device:")
+        pp(dev.serialize())
+        print(f"Firmware version: {fw}")
+
         await backend.open()
-        print(f"Firmware: {backend}")
+
         time.sleep(3)
         await backend.close()
 
