@@ -1,7 +1,8 @@
 import asyncio
-from synergy import SynergyHTBackend
+from synergy import SynergyHTXBackend
 from pylabrobot.resources import Cor_96_wellplate_360ul_Fb
 from pylabrobot.plate_reading import PlateReader
+import time
 
 import usb
 
@@ -15,9 +16,14 @@ async def main():
         print(f"Found device {dev_id}...")
 
     try:
-        backend = SynergyHTBackend()
+        backend = SynergyHTXBackend()
         await backend.setup()
-        # print(f"Firmware: {backend}")
+
+        await backend.open()
+        print(f"Firmware: {backend}")
+        time.sleep(3)
+        await backend.close()
+
         # print(f"Temperature: {await backend.get_current_temperature():.1f}°C")
     except Exception as e:
         print(f"{type(e)}: {e}")

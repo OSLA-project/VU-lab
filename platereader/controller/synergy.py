@@ -1,8 +1,9 @@
 from typing import Optional
 from pylabrobot.resources import Plate
 from pylabrobot.plate_reading import BioTekPlateReaderBackend
+from pylabrobot.plate_reading.agilent import SynergyH1Backend
 
-class SynergyHTXBackend(BioTekPlateReaderBackend):
+class SynergyHTXBackend(SynergyH1Backend):
     async def open(self, slow: bool = False) -> None:
         """Open the plate reader door / eject plate.
 
