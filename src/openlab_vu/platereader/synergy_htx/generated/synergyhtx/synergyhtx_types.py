@@ -4,7 +4,15 @@ from __future__ import annotations
 from typing import NamedTuple
 
 
-class OpenTray_Responses(NamedTuple):
+class OpenTray_Response(NamedTuple):
+
+    TrayState: str
+    """
+    State of the tray after the command.
+    """
+
+
+class CloseTray_Response(NamedTuple):
 
     TrayState: str
     """

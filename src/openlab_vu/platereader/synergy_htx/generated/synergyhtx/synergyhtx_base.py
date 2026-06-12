@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 from sila2.server import FeatureImplementationBase, MetadataDict
 
-from .synergyhtx_types import OpenTray_Responses
+from .synergyhtx_types import CloseTray_Response, OpenTray_Response
 
 if TYPE_CHECKING:
 
@@ -18,9 +18,7 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
 
     def __init__(self, parent_server: Server):
         """
-
         SiLA server for the Biotek Synergy HTX plate reader.
-
         """
         super().__init__(parent_server=parent_server)
 
@@ -34,9 +32,24 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
         """
 
     @abstractmethod
-    def OpenTray(self, *, metadata: MetadataDict) -> OpenTray_Responses:
+    def OpenTray(self, *, metadata: MetadataDict) -> OpenTray_Response:
         """
         Opens the tray of the plate reader.
+
+
+        :param metadata: The SiLA Client Metadata attached to the call
+
+        :return:
+
+            - TrayState: State of the tray after the command.
+
+
+        """
+
+    @abstractmethod
+    def CloseTray(self, *, metadata: MetadataDict) -> CloseTray_Response:
+        """
+        Closes the tray of the plate reader.
 
 
         :param metadata: The SiLA Client Metadata attached to the call

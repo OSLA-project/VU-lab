@@ -7,7 +7,9 @@ package sila2.org.silastandard.platereaders.synergyhtx.v1;
 /* SiLA server for the Biotek Synergy HTX plate reader. */
 service SynergyHTX {
   /* Opens the tray of the plate reader. */
-  rpc OpenTray (sila2.org.silastandard.platereaders.synergyhtx.v1.OpenTray_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.OpenTray_Responses) {}
+  rpc OpenTray (sila2.org.silastandard.platereaders.synergyhtx.v1.OpenTray_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.OpenTray_Response) {}
+  /* Closes the tray of the plate reader. */
+  rpc CloseTray (sila2.org.silastandard.platereaders.synergyhtx.v1.CloseTray_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.CloseTray_Response) {}
   /* Returns the serial number of the plate reader. */
   rpc Get_SerialNumber (sila2.org.silastandard.platereaders.synergyhtx.v1.Get_SerialNumber_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.Get_SerialNumber_Responses) {}
 }
@@ -17,7 +19,16 @@ message OpenTray_Parameters {
 }
 
 /* Responses of OpenTray */
-message OpenTray_Responses {
+message OpenTray_Response {
+  sila2.org.silastandard.String TrayState = 1;  /* State of the tray after the command. */
+}
+
+/* Parameters for CloseTray */
+message CloseTray_Parameters {
+}
+
+/* Responses of CloseTray */
+message CloseTray_Response {
   sila2.org.silastandard.String TrayState = 1;  /* State of the tray after the command. */
 }
 

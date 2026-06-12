@@ -2,11 +2,12 @@
 from .synergyhtx_base import SynergyHTXBase
 from .synergyhtx_client import SynergyHTXClient
 from .synergyhtx_feature import SynergyHTXFeature
-from .synergyhtx_types import OpenTray_Responses
+from .synergyhtx_types import CloseTray_Response, OpenTray_Response
 
 __all__ = [
     "SynergyHTXBase",
     "SynergyHTXFeature",
     "SynergyHTXClient",
-    "OpenTray_Responses",
+    "OpenTray_Response",
+    "CloseTray_Response",
 ]
