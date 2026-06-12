@@ -60,9 +60,7 @@ docs = [
 publishing = ["build", "twine", "wheel"]
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["laborchestrator*"]
-exclude = ["gen5*", "teleshake*"]
+where = ["src"]
 
 [project.urls]
 Repository = "https://github.com/OSLA-project/openlab_vu"
@@ -70,9 +68,9 @@ Issues = "https://github.com/OSLA-project/openlab_vu/issues"
 Changelog = "https://github.com/OSLA-project/openlab_vu/CHANGELOG.md"
 
 [tool.pytest.ini_options]
-testpaths = ["laborchestrator/tests"]
+testpaths = ["src/openlab_vu/laborchestrator/tests"]
 ignore = ["venv", "env", ".venv", ".env"]
-pythonpath = ["laborchestrator"]
+pythonpath = ["src/openlab_vu/laborchestrator"]
 
 [tool.coverage.run]
 branch = true
@@ -92,7 +90,7 @@ extras = dev
 [tool.ruff]
 line-length = 120
 output-format = "concise"
-exclude = ["laborchestrator/vu_lab/worker_adaption.py"]
+exclude = ["src/openlab_vu/laborchestrator/vu_lab/worker_adaption.py"]
 
 [tool.ruff.lint]
 # Allow unused variables when underscore-prefixed.
