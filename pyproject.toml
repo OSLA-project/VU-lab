@@ -158,6 +158,7 @@ filename = "CITATION.cff"
 
 [tool.uv.sources]
 genericroboticarm = { git = "git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git" }
+sila2-drv-shaker-thermoscientific-teleshake1536 = { git = "https://github.com/OSLA-project/Teleshake-1536.git", branch = "debug" }
 
 [tool.uv.workspace]
 members = [
