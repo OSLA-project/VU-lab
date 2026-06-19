@@ -13,7 +13,7 @@ class Server(SilaServer):
 
     def __init__(
         self,
-        server_uuid: Optional[UUID] = UUID("d1aac3fa-3977-45d7-ac09-553ef99d6625"),
+        server_uuid: Optional[UUID] = "d1aac3fa-3977-45d7-ac09-553ef99d6625",
         name: Optional[str] = None,
         description: Optional[str] = None,
     ):

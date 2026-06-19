@@ -2,12 +2,19 @@
 from .synergyhtx_base import SynergyHTXBase
 from .synergyhtx_client import SynergyHTXClient
 from .synergyhtx_feature import SynergyHTXFeature
-from .synergyhtx_types import CloseTray_Response, OpenTray_Response
+from .synergyhtx_types import (
+    CloseTray_Responses,
+    OpenTray_Responses,
+    ReadAbsorbance_Responses,
+    ReadTemperature_Responses,
+)
 
 __all__ = [
     "SynergyHTXBase",
     "SynergyHTXFeature",
     "SynergyHTXClient",
-    "OpenTray_Response",
-    "CloseTray_Response",
+    "OpenTray_Responses",
+    "CloseTray_Responses",
+    "ReadTemperature_Responses",
+    "ReadAbsorbance_Responses",
 ]

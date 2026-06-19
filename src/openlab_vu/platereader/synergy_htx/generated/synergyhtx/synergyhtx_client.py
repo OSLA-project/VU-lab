@@ -10,10 +10,15 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
 
-    from typing import Iterable, Optional
+    from typing import Iterable, List, Optional
 
     from sila2.client import ClientMetadataInstance, ClientUnobservableProperty
-    from synergyhtx_types import CloseTray_Response, OpenTray_Response
+    from synergyhtx_types import (
+        CloseTray_Responses,
+        OpenTray_Responses,
+        ReadAbsorbance_Responses,
+        ReadTemperature_Responses,
+    )
 
 
 class SynergyHTXClient:
@@ -26,14 +31,35 @@ class SynergyHTXClient:
     Returns the serial number of the plate reader.
     """
 
-    def OpenTray(self, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None) -> OpenTray_Response:
+    def OpenTray(self, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None) -> OpenTray_Responses:
         """
         Opens the tray of the plate reader.
         """
         ...
 
-    def CloseTray(self, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None) -> CloseTray_Response:
+    def CloseTray(self, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None) -> CloseTray_Responses:
         """
         Closes the tray of the plate reader.
+        """
+        ...
+
+    def ReadTemperature(
+        self, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None
+    ) -> ReadTemperature_Responses:
+        """
+        Read the device temperature.
+        """
+        ...
+
+    def ReadAbsorbance(
+        self,
+        Plate: int,
+        Wells: List[int],
+        Wavelength: int,
+        *,
+        metadata: Optional[Iterable[ClientMetadataInstance]] = None,
+    ) -> ReadAbsorbance_Responses:
+        """
+        Read the absorbance for the plate provided.
         """
         ...

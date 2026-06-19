@@ -2,11 +2,16 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from sila2.server import FeatureImplementationBase, MetadataDict
 
-from .synergyhtx_types import CloseTray_Response, OpenTray_Response
+from .synergyhtx_types import (
+    CloseTray_Responses,
+    OpenTray_Responses,
+    ReadAbsorbance_Responses,
+    ReadTemperature_Responses,
+)
 
 if TYPE_CHECKING:
 
@@ -32,7 +37,7 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
         """
 
     @abstractmethod
-    def OpenTray(self, *, metadata: MetadataDict) -> OpenTray_Response:
+    def OpenTray(self, *, metadata: MetadataDict) -> OpenTray_Responses:
         """
         Opens the tray of the plate reader.
 
@@ -47,7 +52,7 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
         """
 
     @abstractmethod
-    def CloseTray(self, *, metadata: MetadataDict) -> CloseTray_Response:
+    def CloseTray(self, *, metadata: MetadataDict) -> CloseTray_Responses:
         """
         Closes the tray of the plate reader.
 
@@ -57,6 +62,44 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
         :return:
 
             - TrayState: State of the tray after the command.
+
+
+        """
+
+    @abstractmethod
+    def ReadTemperature(self, *, metadata: MetadataDict) -> ReadTemperature_Responses:
+        """
+        Read the device temperature.
+
+
+        :param metadata: The SiLA Client Metadata attached to the call
+
+        :return:
+
+            - DeviceTemperature: Temperature reported by the device.
+
+
+        """
+
+    @abstractmethod
+    def ReadAbsorbance(
+        self, Plate: int, Wells: List[int], Wavelength: int, *, metadata: MetadataDict
+    ) -> ReadAbsorbance_Responses:
+        """
+        Read the absorbance for the plate provided.
+
+
+        :param Plate: Plate parameter.
+
+        :param Wells: List of wells.
+
+        :param Wavelength: Wavelength to use for reading the plates.
+
+        :param metadata: The SiLA Client Metadata attached to the call
+
+        :return:
+
+            - DeviceAbsorbance: Absorbance reported by the device.
 
 
         """

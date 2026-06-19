@@ -5,47 +5,113 @@ from typing import TYPE_CHECKING
 
 from sila2.server import MetadataDict
 
-from ..generated.synergyhtx import CloseTray_Response, OpenTray_Response, SynergyHTXBase
+from ..generated.synergyhtx import (
+    CloseTray_Responses,
+    OpenTray_Responses,
+    ReadTemperature_Responses,
+    ReadAbsorbance_Responses,
+    SynergyHTXBase,
+)
+
+import asyncio as aio
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from pylabrobot.resources import Plate, Well, create_ordered_items_2d
+import openlab_vu.platereader.controller.types as T
+from openlab_vu.platereader.controller.synergy import SynergyHTXBackend
 
 if TYPE_CHECKING:
     from ..server import Server
 
-import asyncio as aio
-import openlab_vu.platereader.controller.types as T
-from openlab_vu.platereader.controller.synergy import SynergyHTXBackend
-
 
 class SynergyHTXImpl(SynergyHTXBase):
-    def __init__(self, parent_server: Server) -> None:
+
+    def __init__(self, parent_server: Server, tz: str | None = None) -> None:
         super().__init__(parent_server=parent_server)
         self.plate_reader = SynergyHTXBackend()
         self.tray_state = T.TrayState.Unknown
+        self.tz = tz or "Europe/Amsterdam"
 
     def get_SerialNumber(self, *, metadata: MetadataDict) -> str:
         try:
-            print(f"==[ Getting serial number")
+            print(f"==[ Getting serial number...")
             sn = aio.run(self.plate_reader.get_serial_number())
         except Exception as e:
             sn = ""
         finally:
             return sn
 
-    def OpenTray(self, *, metadata: MetadataDict) -> OpenTray_Response:
+    def OpenTray(self, *, metadata: MetadataDict) -> OpenTray_Responses:
         try:
-            print(f"==[ Opening tray")
+            print(f"==[ Opening tray...")
             aio.run(self.plate_reader.open_tray())
             self.tray_state = T.TrayState.Open
         except Exception as e:
             self.tray_state = T.TrayState.Unknown
         finally:
-            return OpenTray_Response(self.tray_state.value)
+            return OpenTray_Responses(self.tray_state.value)
 
-    def CloseTray(self, *, metadata: MetadataDict) -> CloseTray_Response:
+    def CloseTray(self, *, metadata: MetadataDict) -> CloseTray_Responses:
         try:
-            print(f"==[ Closing tray")
+            print(f"==[ Closing tray...")
             aio.run(self.plate_reader.close_tray())
             self.tray_state = T.TrayState.Closed
         except Exception as e:
             self.tray_state = T.TrayState.Unknown
         finally:
-            return CloseTray_Response(self.tray_state.value)
+            return CloseTray_Responses(self.tray_state.value)
+
+    def ReadTemperature(self, *, metadata: MetadataDict) -> ReadTemperature_Responses:
+        try:
+            print(f"==[ Reading temperature...")
+            return aio.run(self.plate_reader.get_current_temperature())
+            self.plate_reader.read_absorbance()
+        finally:
+            return 0.0
+
+    def ReadAbsorbance(
+        self,
+        plate: int,
+        wells: list[int],
+        wavelength: int,
+        *,
+        metadata: MetadataDict,
+    ) -> ReadAbsorbance_Responses:
+        try:
+            print(f"==[ Reading absorbance...")
+            plate = Plate(
+                "plate",
+                1,
+                1,
+                1,
+                ordered_items=create_ordered_items_2d(
+                    Well,
+                    num_items_x=1,
+                    num_items_y=1,
+                    dx=0,
+                    dy=0,
+                    dz=0,
+                    item_dx=1,
+                    item_dy=1,
+                    size_x=1,
+                    size_y=1,
+                    size_z=1,
+                ),
+            )
+            wells = []
+
+            absorbance = aio.run(
+                self.plate_reader.read_absorbance(plate, wells, wavelength)
+            )
+
+            return (
+                absorbance.get(item)
+                for item in ("wavelength", "temperature", "timestamp")
+            )
+
+        finally:
+            return (
+                wavelength,
+                0.0,
+                datetime.now(tz=ZoneInfo(self.tz)),
+            )
