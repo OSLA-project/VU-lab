@@ -30,6 +30,87 @@
       </DataType>
     </Response>
   </Command>
+  <Command>
+    <Identifier>ReadTemperature</Identifier>
+    <DisplayName>Read the device temperature.</DisplayName>
+    <Description>Read the device temperature.</Description>
+    <Observable>No</Observable>
+    <Response>
+      <Identifier>DeviceTemperature</Identifier>
+      <DisplayName>Device temperature</DisplayName>
+      <Description>Temperature reported by the device.</Description>
+      <DataType>
+        <Basic>Real</Basic>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
+    <Identifier>ReadAbsorbance</Identifier>
+    <DisplayName>Read the absorbance.</DisplayName>
+    <Description>Read the absorbance for the plate provided.</Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>Plate</Identifier>
+      <DisplayName>Plate</DisplayName>
+      <Description>Plate parameter.</Description>
+      <DataType>
+        <Basic>Integer</Basic>
+      </DataType>
+    </Parameter>
+    <Parameter>
+      <Identifier>Wells</Identifier>
+      <DisplayName>Wells</DisplayName>
+      <Description>List of wells.</Description>
+      <DataType>
+        <List>
+          <DataType>
+            <Basic>Integer</Basic>
+          </DataType>
+        </List>
+      </DataType>
+    </Parameter>
+    <Parameter>
+      <Identifier>Wavelength</Identifier>
+      <DisplayName>Wavelength</DisplayName>
+      <Description>Wavelength to use for reading the plates.</Description>
+      <DataType>
+        <Basic>Integer</Basic>
+      </DataType>
+    </Parameter>
+    <Response>
+      <Identifier>DeviceAbsorbance</Identifier>
+      <DisplayName>Absorbance reading.</DisplayName>
+      <Description>Absorbance reported by the device.</Description>
+      <DataType>
+        <Structure>
+          <Element>
+            <Identifier>Wavelength</Identifier>
+            <DisplayName>Wavelength</DisplayName>
+            <Description>Wavelength to use for reading the plates.</Description>
+            <DataType>
+              <Basic>Integer</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>Temperature</Identifier>
+            <DisplayName>Temperature</DisplayName>
+            <Description>Temperature of the device.</Description>
+            <DataType>
+              <Basic>Real</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>Timestamp</Identifier>
+            <DisplayName>Timestamp</DisplayName>
+            <Description>Readout timestamp.</Description>
+            <DataType>
+              <Basic>Timestamp</Basic>
+            </DataType>
+          </Element>
+        </Structure>
+      </DataType>
+    </Response>
+  </Command>
   <Property>
     <Identifier>SerialNumber</Identifier>
     <DisplayName>Serial number</DisplayName>
