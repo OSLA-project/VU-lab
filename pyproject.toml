@@ -65,7 +65,8 @@ docs = [
 publishing = ["build", "twine", "wheel"]
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["src/"]
+include = ["openlab_vu"]
 
 [project.urls]
 Repository = "https://github.com/OSLA-project/openlab_vu"

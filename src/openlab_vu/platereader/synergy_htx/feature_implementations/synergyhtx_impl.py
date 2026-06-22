@@ -13,6 +13,7 @@ from ..generated.synergyhtx import (
     SynergyHTXBase,
 )
 
+from loguru import logger
 import asyncio as aio
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -23,6 +24,8 @@ from openlab_vu.platereader.controller.synergy import SynergyHTXBackend
 if TYPE_CHECKING:
     from ..server import Server
 
+
+logger.configure()
 
 class SynergyHTXImpl(SynergyHTXBase):
     """SiLA feature implementation for the BioTek Synergy HTC plate reader.
@@ -41,7 +44,7 @@ class SynergyHTXImpl(SynergyHTXBase):
         """Get the serial number of the device."""
 
         try:
-            print(f"==[ Getting serial number...")
+            logger.debug(f"Getting serial number...")
             sn = aio.run(self.plate_reader.get_serial_number())
         except Exception as e:
             sn = ""
@@ -60,7 +63,7 @@ class SynergyHTXImpl(SynergyHTXBase):
         """
 
         try:
-            print(f"==[ Opening tray...")
+            logger.debug(f"Opening tray...")
             aio.run(self.plate_reader.open_tray())
             self.tray_state = T.TrayState.Open
         except Exception as e:
@@ -80,7 +83,7 @@ class SynergyHTXImpl(SynergyHTXBase):
         """
 
         try:
-            print(f"==[ Closing tray...")
+            logger.debug(f"Closing tray...")
             aio.run(self.plate_reader.close_tray())
             self.tray_state = T.TrayState.Closed
         except Exception as e:
@@ -100,7 +103,7 @@ class SynergyHTXImpl(SynergyHTXBase):
         """
 
         try:
-            print(f"==[ Reading temperature...")
+            logger.debug(f"Reading temperature...")
             return aio.run(self.plate_reader.get_current_temperature())
             self.plate_reader.read_absorbance()
         finally:
@@ -128,7 +131,7 @@ class SynergyHTXImpl(SynergyHTXBase):
         """
 
         try:
-            print(f"==[ Reading absorbance...")
+            logger.debug(f"Reading absorbance...")
             plate = Plate(
                 "plate",
                 1,
