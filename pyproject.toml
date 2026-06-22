@@ -29,7 +29,8 @@ dependencies = [
     "uulabscheduler",
     "ruff>=0.14.1",
     "pytest>=8.4.2",
-    "genericroboticarm",
+    "genericroboticarm @ git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git",
+    #"sila2-drv-shaker-thermoscientific-teleshake1536",
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
@@ -159,7 +160,7 @@ filename = "pyproject.toml"
 filename = "CITATION.cff"
 
 [tool.uv.sources]
-genericroboticarm = { git = "ssh://git@gitlab.com/StefanMa/genericroboticarm.git" }
+#sila2-drv-shaker-thermoscientific-teleshake1536 = { git = "https://github.com/OSLA-project/Teleshake-1536.git", branch = "debug" }
 
 [tool.uv.workspace]
 members = [
