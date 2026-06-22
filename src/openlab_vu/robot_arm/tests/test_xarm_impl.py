@@ -1,5 +1,4 @@
-from vu_lab.xarm_impl import VULabArm
-
+from openlab_vu.robot_arm.vu_lab.xarm_impl import VULabArm
 
 def test_no_slot_num_for_single_slot():
     arm = VULabArm()

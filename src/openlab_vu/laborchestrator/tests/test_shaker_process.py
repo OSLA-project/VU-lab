@@ -1,6 +1,5 @@
 from pythonlab.pythonlab_reader import PLProcessReader
-from vu_lab.processes.shaker_process import ShakerProcess
-
+from openlab_vu.laborchestrator.vu_lab.processes.shaker_process import ShakerProcess
 
 def test_all_containers_handled() -> None:
     """Bit of a pointless tests but checks if all planned containers will actually be handled."""

@@ -30,7 +30,6 @@ dependencies = [
     "ruff>=0.14.1",
     "pytest>=8.4.2",
     "genericroboticarm @ git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git",
-    #"sila2-drv-shaker-thermoscientific-teleshake1536",
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
@@ -61,9 +60,7 @@ docs = [
 publishing = ["build", "twine", "wheel"]
 
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["laborchestrator*"]
-exclude = ["gen5*", "teleshake*"]
+where = ["src"]
 
 [project.urls]
 Repository = "https://github.com/OSLA-project/openlab_vu"
@@ -71,9 +68,9 @@ Issues = "https://github.com/OSLA-project/openlab_vu/issues"
 Changelog = "https://github.com/OSLA-project/openlab_vu/CHANGELOG.md"
 
 [tool.pytest.ini_options]
-testpaths = ["laborchestrator/tests"]
+testpaths = ["src/openlab_vu/laborchestrator/tests"]
 ignore = ["venv", "env", ".venv", ".env"]
-pythonpath = ["laborchestrator"]
+pythonpath = ["src/openlab_vu/laborchestrator"]
 
 [tool.coverage.run]
 branch = true
@@ -93,7 +90,7 @@ extras = dev
 [tool.ruff]
 line-length = 120
 output-format = "concise"
-exclude = ["laborchestrator/vu_lab/worker_adaption.py"]
+exclude = ["src/openlab_vu/laborchestrator/vu_lab/worker_adaption.py"]
 
 [tool.ruff.lint]
 # Allow unused variables when underscore-prefixed.
@@ -160,9 +157,9 @@ filename = "pyproject.toml"
 filename = "CITATION.cff"
 
 [tool.uv.sources]
-#sila2-drv-shaker-thermoscientific-teleshake1536 = { git = "https://github.com/OSLA-project/Teleshake-1536.git", branch = "debug" }
+genericroboticarm = { git = "git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git" }
 
 [tool.uv.workspace]
 members = [
-    "robot-arm/VU-lab-arm",
+    "robot_arm/VU-lab-arm",
 ]
