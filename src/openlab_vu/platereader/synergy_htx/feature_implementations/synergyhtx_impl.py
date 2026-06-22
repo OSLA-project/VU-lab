@@ -25,6 +25,11 @@ if TYPE_CHECKING:
 
 
 class SynergyHTXImpl(SynergyHTXBase):
+    """SiLA feature implementation for the BioTek Synergy HTC plate reader.
+
+    This class relies on the BioTek plate reader interface
+    from PyLabRobot (https://github.com/PyLabRobot/PyLabRobot).
+    """
 
     def __init__(self, parent_server: Server, tz: str | None = None) -> None:
         super().__init__(parent_server=parent_server)
@@ -33,6 +38,8 @@ class SynergyHTXImpl(SynergyHTXBase):
         self.tz = tz or "Europe/Amsterdam"
 
     def get_SerialNumber(self, *, metadata: MetadataDict) -> str:
+        """Get the serial number of the device."""
+
         try:
             print(f"==[ Getting serial number...")
             sn = aio.run(self.plate_reader.get_serial_number())
@@ -42,6 +49,16 @@ class SynergyHTXImpl(SynergyHTXBase):
             return sn
 
     def OpenTray(self, *, metadata: MetadataDict) -> OpenTray_Responses:
+        """
+        Open the device tray.
+
+        Args:
+            metadata: Metadata provided by the client.
+
+        Returns:
+            An OpenTray_Responses instance.
+        """
+
         try:
             print(f"==[ Opening tray...")
             aio.run(self.plate_reader.open_tray())
@@ -52,6 +69,16 @@ class SynergyHTXImpl(SynergyHTXBase):
             return OpenTray_Responses(self.tray_state.value)
 
     def CloseTray(self, *, metadata: MetadataDict) -> CloseTray_Responses:
+        """
+        Close the device tray.
+
+        Args:
+            metadata: Metadata provided by the client.
+
+        Returns:
+            A CloseTray_Responses instance.
+        """
+
         try:
             print(f"==[ Closing tray...")
             aio.run(self.plate_reader.close_tray())
@@ -62,6 +89,16 @@ class SynergyHTXImpl(SynergyHTXBase):
             return CloseTray_Responses(self.tray_state.value)
 
     def ReadTemperature(self, *, metadata: MetadataDict) -> ReadTemperature_Responses:
+        """
+        Read the device temperature.
+
+        Args:
+            metadata: Metadata provided by the client.
+
+        Returns:
+            A ReadTemperature_Responses instance.
+        """
+
         try:
             print(f"==[ Reading temperature...")
             return aio.run(self.plate_reader.get_current_temperature())
@@ -77,6 +114,19 @@ class SynergyHTXImpl(SynergyHTXBase):
         *,
         metadata: MetadataDict,
     ) -> ReadAbsorbance_Responses:
+        """
+        Read the absorbance of the wells in the currently loaded tray.
+
+        Args:
+            plate: A plate number.
+            wells: A list of wells to read.
+            wavelength: Wavelength used for reading the absorbance.
+            metadata: Metadata provided by the client.
+
+        Returns:
+            A ReadAbsorbance_Responses instance.
+        """
+
         try:
             print(f"==[ Reading absorbance...")
             plate = Plate(
