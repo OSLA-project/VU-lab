@@ -31,6 +31,8 @@ class ShakerWrapper(DeviceInterface):
         target_speed = float(step.data.get("frequency", 6000))
         target_power = float(step.data.get("power", 80))
 
+        # Possibly we need to clamp before and after this step
+
         return sila_client.ShakeController.ShakeForTime(
             ShakerId=shaker_id,
             Runtime=duration,
