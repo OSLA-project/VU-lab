@@ -17,7 +17,6 @@
 /* Hero banner on home page */
 .mdx-hero {
     position: relative;
-    height: 400px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -25,20 +24,19 @@
 }
 
 .mdx-hero__image {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    width: 100%;
 }
 
 .mdx-hero__image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 40%;
-    filter: brightness(0.45);
+    height: auto;
+    display: block;
+    filter: brightness(0.7);
 }
 
 .mdx-hero__content {
-    position: relative;
+    position: absolute;
     text-align: center;
     color: white;
     padding: 2rem;
