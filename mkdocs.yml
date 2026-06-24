@@ -12,6 +12,7 @@ nav:
       - Citation: about/citation.md
 theme:
   name: material
+  custom_dir: docs/overrides
   palette:
     - scheme: default
       toggle:
