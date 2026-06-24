@@ -7,25 +7,30 @@ template: home.html
 This is the documentation for the software repository for automating the VU lab.
 
 This repo integrates the following SiLa connectors:
+
 - [teleshake](https://gitlab.com/sila-driver-group/teleshake)
 - Gen5 (private connector)
 - [Generic robot arm](https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm)
 
 ## Prerequisites
 In order to use this setup, you will need to have the following prerequisites installed:
+
 - Either [docker desktop](https://docs.docker.com/get-started/get-docker/) or [docker engine](https://docs.docker.com/engine/install/)
 
-## How to use
+## Quickstart
 To use this package, you should first clone it from github
+
 ```shell
 git clone https://github.com/OSLA-project/VU-lab.git
 ```
+
 ## Prepare environment
 There are a couple of parameters that need to be tuned, depending on your operating system, and whether you need to run 
 in simulation mode or with real hardware. Three different scenarios have been prepared: you're running on Linux with simulated
 hardware, or on Windows, with either simulated or real hardware.
 
 Depending on your situation, you need to copy one of the following files to `.env` in the root of the repository:
+
 - `.env.linux.simulated` (Linux with simulated hardware)
 - `.env.windows.simulated` (Windows with simulated hardware)
 - `.env.windows` (Windows with real hardware)
@@ -38,6 +43,7 @@ docker compose up
 ```
 
 You can reach the services at the following addresses:
+
 - [Sila Browser](http://localhost:3000)
 - [Orchestrator webinterface](http://localhost:8050)
 - [Robot arm webinterface](http://localhost:8055)
