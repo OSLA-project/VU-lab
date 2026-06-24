@@ -3,8 +3,6 @@ site_name: OSLA/VU Lab orchestrator
 repo_url: https://github.com/OSLA-project/VU-lab
 nav:
   - Home: index.md
-  - Overview:
-      - Inventory: overview/inventory.md
   - Components: components.md
   - Lab Configuration: lab-configuration.md
   - Orchestrator: orchestrator.md

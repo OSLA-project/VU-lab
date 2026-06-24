@@ -41,6 +41,28 @@ A web interface for the arm is available at [http://localhost:8055](http://local
 
 The Gen5 connector requires environment configuration before use. Copy `gen5/.env.example` to `gen5/.env` and fill in the values specific to your plate reader setup.
 
+## Magnetic Shaker
+
+**Hardware:** [Thermo Fisher Teleshake](https://www.thermofisher.com/order/catalog/product/50094320)
+
+**SiLA server source:** [teleshake](https://gitlab.com/sila-driver-group/teleshake) — a community SiLA2 driver for the Thermo Scientific Teleshake 1536.
+
+**Docker service:** `teleshake` (port 50050)
+
+The teleshake container clones the upstream driver and runs SiLA2 code generation at build time via `src/openlab_vu/teleshake/codegen.sh`.
+
+## Plate Hotels
+
+**Hardware:** [HighRes Bio Stationary Plate Hotel](https://highresbio.com/hardware/automated-sample-storage/stacking-and-storage)
+
+The plate hotels are passive storage — they have no SiLA server of their own. The robot arm moves plates in and out; positions are defined in the position graph (see [Lab Configuration — Position graph](lab-configuration.md#position-graph)).
+
+## Scanner
+
+**Hardware:** [Epson Perfection V600 Flatbed Scanner](https://epson.com/For-Home/Scanners/Photo-Scanners/Epson-Perfection-V600-Photo-Scanner/p/B11B198011)
+
+The scanner is used for barcode reading mid-transfer via the robot arm's intermediate actions mechanism (see [Orchestrator — GenericRobotArmWrapper](orchestrator.md#genericrobotarmwrapper)).
+
 ## Platform Status Database
 
 **Docker service:** `platform_status_db` (port 8000)
