@@ -49,7 +49,7 @@ device_wrappers: dict[str, type[DeviceInterface]] = {
 
 sila_server_name: dict[str, str] = {
     "robot_arm": "VULabArm",
-    "shaker_1_d_pos_1": "Teleshake1536Server",
+    # ... additional devices (e.g. shakers) are registered here as they are configured
 }
 ```
 
@@ -129,23 +129,25 @@ Uses `LabwareTransferManipulatorController.GetLabware()` with `IntermediateActio
 4. Register it in `device_wrappers` and `sila_server_name` in `worker_adaption.py`.
 5. Add the device to `USE_REAL_SERVERS` if it should not be simulated.
 
+For documentation on adapting this setup to a different lab, see the [OSLA lab automation tutorial](https://osla-project.github.io/python-lab-automation-tutorial/).
+
 ## Processes
 
 A process defines a lab workflow as a sequence of steps over a set of containers and devices. All VU-lab processes live in `src/openlab_vu/laborchestrator/vu_lab/processes/` and are auto-discovered at startup via `process_module = processes` in `config.py`.
 
 ### `BasicProcess`
 
-All VU-lab processes inherit from `BasicProcess`, which pre-defines the available resources:
+All VU-lab processes inherit from `BasicProcess`, which pre-defines the available resources in `create_resources()`:
 
 ```python
 self.hotel1 = LabwareStorageResource(proc=self, name="hotel_1_d_pos_")
 self.robot_arm = MoverServiceResource(proc=self, name="robot_arm")
 self.shaker1 = ShakerServiceResource(proc=self, name="shaker_1_d_pos_1")
-# ... shaker2 through shaker6
+# ... shaker2 through shaker6 (shaker_2_d_pos_1 … shaker_6_d_pos_1)
 self.shaker_pool = ShakerServiceResource(proc=self, name=None)  # any available shaker
 ```
 
-The `name` argument must match a device name in `platform_config.yaml`. `shaker_pool` with `name=None` lets the scheduler pick any available shaker.
+The `name` argument must match a device name in `platform_config.yaml`. `shaker_pool` with `name=None` lets the scheduler pick any available shaker. Note that `platform_config.yaml` defines ten shakers (`shaker_1` through `shaker_10`); `BasicProcess` only binds six of them by name — use `shaker_pool` to let the scheduler use any of the ten.
 
 ### `ShakerProcess` — a worked example
 
@@ -174,6 +176,9 @@ class ShakerProcess(BasicProcess):
 
 1. Copy `src/openlab_vu/laborchestrator/vu_lab/processes/empty_process.py` and rename it.
 2. Inherit from `BasicProcess` (or `PLProcess` directly if you need different resources).
-3. Set starting positions in `init_service_resources()`.
-4. Implement `process()` using `self.robot_arm.move()`, `self.shaker_pool.shake_plate()`, etc.
-5. The new class is automatically discovered at startup — no registration needed.
+3. Override `create_resources()` if you need resources beyond what `BasicProcess` provides.
+4. Set starting positions in `init_service_resources()`.
+5. Implement `process()` using `self.robot_arm.move()`, `self.shaker_pool.shake_plate()`, etc.
+6. The new class is automatically discovered at startup — no registration needed.
+
+For documentation on adapting this setup to a different lab, see the [OSLA lab automation tutorial](https://osla-project.github.io/python-lab-automation-tutorial/).

@@ -28,7 +28,7 @@ The device names here (e.g. `hotel_1_d_pos_`, `robot_arm`, `shaker_1_d_pos_1`) m
 
 - The node labels in the position graph (see [Position graph](#position-graph))
 - The resource names used in process definitions (see [Orchestrator — Processes](orchestrator.md#processes))
-- The keys in `device_wrappers` and `sila_server_name` in `worker_adaption.py` (see [Orchestrator — Worker](orchestrator.md#worker))
+- The keys in `device_wrappers` and `sila_server_name` in `worker_adaption.py` (see [Orchestrator — Worker](orchestrator.md#worker-worker_adaptionpy))
 
 ### `pythonlab_translation`
 
@@ -50,6 +50,8 @@ This tells the PythonLab scheduling framework which resource type to use when al
 3. Add the device's positions to the position graph.
 4. Reference the device by the same name in your process definition.
 
+For documentation on adapting this setup to a different lab entirely, see the [OSLA lab automation tutorial](https://osla-project.github.io/python-lab-automation-tutorial/).
+
 ## Position Graph
 
 The file `src/openlab_vu/robot_arm/new_graphs/position_graph_VULabArm.gml` is a [GML](https://en.wikipedia.org/wiki/Graph_Modelling_Language) graph that encodes the 3D coordinates the robot arm uses to reach every device in the lab.
@@ -64,8 +66,8 @@ Each node stores the arm's `x`, `y`, `z` position (in mm) and `roll`, `pitch`, `
 
 The graph was created using the [site_parser](https://github.com/OSLA-project/site_parser) tool, which provides a GUI for recording arm positions and exporting them as a GML file.
 
-**To update positions** (e.g. after moving a device or adding a new one), use site_parser to record the new positions and export an updated GML file to `src/openlab_vu/robot_arm/new_graphs/`. The file is copied into the robot arm container at build time (`Dockerfile`: `COPY ./new_graphs/* /root/.config/GenericRoboticArm/`), so rebuild the container after any changes:
+**To update positions** (e.g. after moving a device or adding a new one), use site_parser to record the new positions and export an updated GML file to `src/openlab_vu/robot_arm/new_graphs/`. The directory is bind-mounted into the robot arm container, so a restart is sufficient to pick up changes:
 
 ```bash
-docker compose up --build robot_arm
+docker compose restart robot_arm
 ```
