@@ -61,7 +61,7 @@ The plate hotels are passive storage — they have no SiLA server of their own. 
 
 **Hardware:** [Epson Perfection V600 Flatbed Scanner](https://epson.com/For-Home/Scanners/Photo-Scanners/Epson-Perfection-V600-Photo-Scanner/p/B11B198011)
 
-The scanner is used for barcode reading mid-transfer via the robot arm's intermediate actions mechanism (see [Orchestrator — GenericRobotArmWrapper](orchestrator.md#genericrobotarmwrapper)).
+The scanner is used to take pictures of plates. The robot arm places a plate on the scanner via the photobooth position defined in the position graph (see [Lab Configuration — Position graph](lab-configuration.md#position-graph)).
 
 ## Platform Status Database
 
