@@ -2,7 +2,7 @@
 
 <img src="https://github.com/OSLA-project/VU-lab/blob/main/docs/assets/vu_lab.jpg?raw=true" width="200" title="VU lab setup" alt="VU lab setup"/>
 
-Configuration of openlab for VU lab
+This is the documentation for the software repository for automating the VU lab.
 
 This repo integrates the following SiLa connectors:
 - [teleshake](https://gitlab.com/sila-driver-group/teleshake)
