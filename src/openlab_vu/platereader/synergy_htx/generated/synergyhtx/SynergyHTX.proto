@@ -4,17 +4,25 @@ import "SiLAFramework.proto";
 
 package sila2.org.silastandard.platereaders.synergyhtx.v1;
 
-/* SiLA server for the Biotek Synergy HTX plate reader. */
+/* SiLA server for the Biotek Synergy HTX plate reader */
 service SynergyHTX {
-  /* Opens the tray of the plate reader. */
+  /* Opens the tray of the plate reader */
   rpc OpenTray (sila2.org.silastandard.platereaders.synergyhtx.v1.OpenTray_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.OpenTray_Responses) {}
-  /* Closes the tray of the plate reader. */
+  /* Closes the tray of the plate reader */
   rpc CloseTray (sila2.org.silastandard.platereaders.synergyhtx.v1.CloseTray_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.CloseTray_Responses) {}
-  /* Read the device temperature. */
+  /* Read the device temperature */
   rpc ReadTemperature (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadTemperature_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadTemperature_Responses) {}
-  /* Read the absorbance for the plate provided. */
+  /* Set a plate into the device */
+  rpc SetPlate (sila2.org.silastandard.platereaders.synergyhtx.v1.SetPlate_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.SetPlate_Responses) {}
+  /* Remove a plate from the device */
+  rpc RemovePlate (sila2.org.silastandard.platereaders.synergyhtx.v1.RemovePlate_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.RemovePlate_Responses) {}
+  /* Read the absorbance */
   rpc ReadAbsorbance (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadAbsorbance_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadAbsorbance_Responses) {}
-  /* Returns the serial number of the plate reader. */
+  /* Read the fluorescence */
+  rpc ReadFluorescence (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadFluorescence_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadFluorescence_Responses) {}
+  /* Read the fluorescence */
+  rpc ReadLuminescence (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadLuminescence_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadLuminescence_Responses) {}
+  /* Returns the serial number of the plate reader */
   rpc Get_SerialNumber (sila2.org.silastandard.platereaders.synergyhtx.v1.Get_SerialNumber_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.Get_SerialNumber_Responses) {}
 }
 
@@ -24,7 +32,7 @@ message OpenTray_Parameters {
 
 /* Responses of OpenTray */
 message OpenTray_Responses {
-  sila2.org.silastandard.String TrayState = 1;  /* State of the tray after the command. */
+  sila2.org.silastandard.String TrayState = 1;  /* State of the tray after the command */
 }
 
 /* Parameters for CloseTray */
@@ -33,7 +41,7 @@ message CloseTray_Parameters {
 
 /* Responses of CloseTray */
 message CloseTray_Responses {
-  sila2.org.silastandard.String TrayState = 1;  /* State of the tray after the command. */
+  sila2.org.silastandard.String TrayState = 1;  /* State of the tray after the command */
 }
 
 /* Parameters for ReadTemperature */
@@ -42,24 +50,77 @@ message ReadTemperature_Parameters {
 
 /* Responses of ReadTemperature */
 message ReadTemperature_Responses {
-  sila2.org.silastandard.Real DeviceTemperature = 1;  /* Temperature reported by the device. */
+  sila2.org.silastandard.Real DeviceTemperature = 1;  /* Temperature reported by the device */
+}
+
+/* Parameters for SetPlate */
+message SetPlate_Parameters {
+  sila2.org.silastandard.Integer PlateID = 1;  /* Plate ID */
+}
+
+/* Responses of SetPlate */
+message SetPlate_Responses {
+  sila2.org.silastandard.Integer PlateID = 1;  /* Plate ID */
+}
+
+/* Parameters for RemovePlate */
+message RemovePlate_Parameters {
+}
+
+/* Responses of RemovePlate */
+message RemovePlate_Responses {
+  sila2.org.silastandard.Integer PlateID = 1;  /* Plate ID */
 }
 
 /* Parameters for ReadAbsorbance */
 message ReadAbsorbance_Parameters {
-  sila2.org.silastandard.Integer Plate = 1;  /* Plate parameter. */
-  repeated sila2.org.silastandard.Integer Wells = 2;  /* List of wells. */
-  sila2.org.silastandard.Integer Wavelength = 3;  /* Wavelength to use for reading the plates. */
+  sila2.org.silastandard.Integer Wavelength = 1;  /* Wavelength */
 }
 
 /* Responses of ReadAbsorbance */
 message ReadAbsorbance_Responses {
-  message DeviceAbsorbance_Struct {
-    sila2.org.silastandard.Integer Wavelength = 1;  /* Wavelength to use for reading the plates. */
-    sila2.org.silastandard.Real Temperature = 2;  /* Temperature of the device. */
-    sila2.org.silastandard.Timestamp Timestamp = 3;  /* Readout timestamp. */
+  message AbsorbanceReading_Struct {
+    sila2.org.silastandard.Integer Wavelength = 1;  /* Wavelength */
+    sila2.org.silastandard.Real Temperature = 2;  /* Temperature of the device */
+    sila2.org.silastandard.Timestamp Timestamp = 3;  /* Readout timestamp */
   }
-  sila2.org.silastandard.platereaders.synergyhtx.v1.ReadAbsorbance_Responses.DeviceAbsorbance_Struct DeviceAbsorbance = 1;  /* Absorbance reported by the device. */
+  sila2.org.silastandard.platereaders.synergyhtx.v1.ReadAbsorbance_Responses.AbsorbanceReading_Struct AbsorbanceReading = 1;  /* Absorbance reported by the device */
+}
+
+/* Parameters for ReadFluorescence */
+message ReadFluorescence_Parameters {
+  sila2.org.silastandard.Integer ExcitationWavelength = 1;  /* Excitation wavelength */
+  sila2.org.silastandard.Integer EmissionWavelength = 2;  /* Emission wavelength */
+  sila2.org.silastandard.Real FocalHeight = 3;  /* Focal height */
+}
+
+/* Responses of ReadFluorescence */
+message ReadFluorescence_Responses {
+  message FluorescenceReading_Struct {
+    sila2.org.silastandard.Integer ExcitationWavelength = 1;  /* Excitation wavelength */
+    sila2.org.silastandard.Integer EmissionWavelength = 2;  /* Emission wavelength */
+    sila2.org.silastandard.Integer FocalHeight = 3;  /* Focal height */
+    sila2.org.silastandard.Real Temperature = 4;  /* Temperature of the device */
+    sila2.org.silastandard.Timestamp Timestamp = 5;  /* Readout timestamp */
+  }
+  sila2.org.silastandard.platereaders.synergyhtx.v1.ReadFluorescence_Responses.FluorescenceReading_Struct FluorescenceReading = 1;  /* Fluorescence reported by the device */
+}
+
+/* Parameters for ReadLuminescence */
+message ReadLuminescence_Parameters {
+  sila2.org.silastandard.Real FocalHeight = 1;  /* Focal height */
+  sila2.org.silastandard.Real IntegrationTime = 2;  /* Integration time */
+}
+
+/* Responses of ReadLuminescence */
+message ReadLuminescence_Responses {
+  message LuminescenceReading_Struct {
+    sila2.org.silastandard.Real FocalHeight = 1;  /* Focal height */
+    sila2.org.silastandard.Real IntegrationTime = 2;  /* Integration time */
+    sila2.org.silastandard.Real Temperature = 3;  /* Temperature of the device */
+    sila2.org.silastandard.Timestamp Timestamp = 4;  /* Readout timestamp */
+  }
+  sila2.org.silastandard.platereaders.synergyhtx.v1.ReadLuminescence_Responses.LuminescenceReading_Struct LuminescenceReading = 1;  /* Luminescence reported by the device */
 }
 
 /* Parameters for SerialNumber */
@@ -68,5 +129,5 @@ message Get_SerialNumber_Parameters {
 
 /* Responses of SerialNumber */
 message Get_SerialNumber_Responses {
-  sila2.org.silastandard.String SerialNumber = 1;  /* Returns the serial number of the plate reader. */
+  sila2.org.silastandard.String SerialNumber = 1;  /* Returns the serial number of the plate reader */
 }
