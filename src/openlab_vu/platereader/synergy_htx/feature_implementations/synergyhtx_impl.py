@@ -16,6 +16,7 @@ from ..generated.synergyhtx import (
     ReadFluorescence_Responses,
     ReadLuminescence_Responses,
     GetSerialNumber_Responses,
+    GetPlateName_Responses,
 )
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -23,7 +24,7 @@ from pathlib import Path
 from loguru import logger
 import asyncio as aio
 
-from pylabrobot.resources import Plate, Well
+from pylabrobot.resources import Plate, Well, thermo_AB_96_wellplate_300ul_Vb_MicroAmp
 from openlab_vu.platereader.controller.synergy import SynergyHTXController
 
 if TYPE_CHECKING:
@@ -111,7 +112,7 @@ class SynergyHTXImpl(SynergyHTXBase):
         # plate = ...
         # For now, all wells are used.
 
-        plate = Plate()
+        plate = thermo_AB_96_wellplate_300ul_Vb_MicroAmp("test_plate")
         wells = [plate.get_item(i) for i in range(plate.num_items)]
         return aio.run(self.controller.set_plate(plate, wells))
 
@@ -131,6 +132,18 @@ class SynergyHTXImpl(SynergyHTXBase):
         """
 
         return aio.run(self.controller.remove_plate())
+
+    def GetPlateName(self, *, metadata: MetadataDict) -> GetPlateName_Responses:
+        """
+        Get the name of the currently loaded plate.
+
+        Args:
+            metadata: Metadata provided by the client.
+
+        Returns:
+            A GetPlateName_Responses instance.
+        """
+        return aio.run(self.controller.get_plate_name())
 
     def ReadTemperature(self, *, metadata: MetadataDict) -> ReadTemperature_Responses:
         """

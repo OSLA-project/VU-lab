@@ -1,17 +1,10 @@
 from pathlib import Path
 from loguru import logger
-from pylabrobot.resources import (
-    Plate,
-    Well,
-    create_ordered_items_2d,
-    thermo_AB_96_wellplate_300ul_Vb_MicroAmp,
-)
-import asyncio as aio
-from datetime import datetime
-from zoneinfo import ZoneInfo
+from pylabrobot.resources import Plate, Well
 import openlab_vu.platereader.controller.types as T
 from pylabrobot.plate_reading.agilent.biotek_synergy_ht_backend import SynergyHTBackend
 from openlab_vu import utils
+from pprint import pp
 
 logger.configure()
 
@@ -47,17 +40,21 @@ class SynergyHTXController(SynergyHTBackend):
 
         return self._plate
 
-    async def get_plate_id(self) -> int | None:
+    @plate.setter
+    def _assign_plate(self, plate: Plate | None) -> None:
+        self._plate = plate
+
+    async def get_plate_name(self) -> str | None:
         """
-        Get the plate ID from the plate name.
+        Get the name of the currently loaded plate.
 
         Returns:
-            The plate ID as an integer or None if there is no plate.
+            The plate name or None if there is no plate in the tray.
         """
 
         if not isinstance(self.plate, Plate):
             return -1
-        return int(self.plate.name)
+        return self.plate.name
 
     async def open_tray(self) -> T.TrayState:
         """
@@ -107,7 +104,7 @@ class SynergyHTXController(SynergyHTBackend):
 
         # TODO: Remove the plate from the tray by using a robotic arm.
         plate_name = self.plate.name
-        self._plate = None
+        self.plate = None
         self.wells.clear()
 
         return plate_name
@@ -139,6 +136,7 @@ class SynergyHTXController(SynergyHTBackend):
 
         logger.debug(f"Reading absorbance...")
         result = await super().read_absorbance(self.plate, self.wells, wavelength)
+        pp(result)
 
         # TODO Store the data by using the user-supplied
         # destination directory (self.save_dir).
@@ -172,6 +170,7 @@ class SynergyHTXController(SynergyHTBackend):
             emission_wavelength,
             focal_height,
         )
+        pp(result)
 
         # TODO Store the data by using the user-supplied
         # destination directory (self.save_dir).
@@ -201,6 +200,7 @@ class SynergyHTXController(SynergyHTBackend):
             focal_height,
             integration_time,
         )
+        pp(result)
 
         # TODO Store the data by using the user-supplied
         # destination directory (self.save_dir).
