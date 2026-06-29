@@ -3,7 +3,11 @@ site_name: OSLA/VU Lab orchestrator
 repo_url: https://github.com/OSLA-project/VU-lab
 nav:
   - Home: index.md
-  - Components: components.md
+  - Lab Configuration: lab-configuration.md
+  - Orchestrator: orchestrator.md
+  - Components:
+      - Overview: components.md
+      - Teleshake 1536: components/teleshake.md
   - Lab Configuration: lab-configuration.md
   - Orchestrator: orchestrator.md
   - About:
