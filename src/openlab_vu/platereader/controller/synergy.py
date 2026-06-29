@@ -1,24 +1,5 @@
-from typing import Optional
-from pylabrobot.resources import Plate
-from pylabrobot.plate_reading.agilent import BioTekPlateReaderBackend
+from pylabrobot.plate_reading.agilent.biotek_synergy_ht_backend import SynergyHTBackend
 
 
-class SynergyHTXBackend(BioTekPlateReaderBackend):
-    async def open_tray(self, slow: bool = False) -> None:
-        """Open the plate reader door / eject plate.
-
-        Note: slow parameter is ignored on Synergy HT (not supported).
-        """
-        # Synergy HT doesn't support slow mode command (&), so skip it
-        return await self.send_command("J")
-
-    async def close_tray(self, plate: Optional[Plate] = None, slow: bool = False) -> None:
-        """Close the plate reader door / load plate.
-
-        Note: slow parameter is ignored on Synergy HT (not supported).
-        """
-        # Synergy HT doesn't support slow mode command (&), so skip it
-        self._plate = None
-        if plate is not None:
-            await self.set_plate(plate)
-        return await self.send_command("A")
+class SynergyHTXBackend(SynergyHTBackend):
+    pass
