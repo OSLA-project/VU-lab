@@ -17,13 +17,13 @@ if TYPE_CHECKING:
         CloseTray_Responses,
         GetPlateName_Responses,
         GetSerialNumber_Responses,
+        InsertPlate_Responses,
         OpenTray_Responses,
         ReadAbsorbance_Responses,
         ReadFluorescence_Responses,
         ReadLuminescence_Responses,
         ReadTemperature_Responses,
         RemovePlate_Responses,
-        SetPlate_Responses,
     )
 
 
@@ -58,11 +58,11 @@ class SynergyHTXClient:
         """
         ...
 
-    def SetPlate(
+    def InsertPlate(
         self, PlateName: str, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None
-    ) -> SetPlate_Responses:
+    ) -> InsertPlate_Responses:
         """
-        Set a plate into the device
+        Insert a plate into the device
         """
         ...
 
@@ -97,7 +97,7 @@ class SynergyHTXClient:
         self, FocalHeight: float, IntegrationTime: float, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None
     ) -> ReadLuminescence_Responses:
         """
-        Read the fluorescence
+        Read the luminescence
         """
         ...
 

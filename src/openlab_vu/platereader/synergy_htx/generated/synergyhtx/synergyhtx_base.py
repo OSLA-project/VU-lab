@@ -10,13 +10,13 @@ from .synergyhtx_types import (
     CloseTray_Responses,
     GetPlateName_Responses,
     GetSerialNumber_Responses,
+    InsertPlate_Responses,
     OpenTray_Responses,
     ReadAbsorbance_Responses,
     ReadFluorescence_Responses,
     ReadLuminescence_Responses,
     ReadTemperature_Responses,
     RemovePlate_Responses,
-    SetPlate_Responses,
 )
 
 if TYPE_CHECKING:
@@ -94,9 +94,9 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
         """
 
     @abstractmethod
-    def SetPlate(self, PlateName: str, *, metadata: MetadataDict) -> SetPlate_Responses:
+    def InsertPlate(self, PlateName: str, *, metadata: MetadataDict) -> InsertPlate_Responses:
         """
-        Set a plate into the device
+        Insert a plate into the device
 
 
         :param PlateName: Plate name
@@ -170,7 +170,7 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
         self, FocalHeight: float, IntegrationTime: float, *, metadata: MetadataDict
     ) -> ReadLuminescence_Responses:
         """
-        Read the fluorescence
+        Read the luminescence
 
 
         :param FocalHeight: Focal height

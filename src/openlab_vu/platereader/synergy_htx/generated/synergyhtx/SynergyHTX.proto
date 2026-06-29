@@ -14,15 +14,15 @@ service SynergyHTX {
   rpc ReadTemperature (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadTemperature_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadTemperature_Responses) {}
   /* Get the name of the currently loaded plate */
   rpc GetPlateName (sila2.org.silastandard.platereaders.synergyhtx.v1.GetPlateName_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.GetPlateName_Responses) {}
-  /* Set a plate into the device */
-  rpc SetPlate (sila2.org.silastandard.platereaders.synergyhtx.v1.SetPlate_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.SetPlate_Responses) {}
+  /* Insert a plate into the device */
+  rpc InsertPlate (sila2.org.silastandard.platereaders.synergyhtx.v1.InsertPlate_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.InsertPlate_Responses) {}
   /* Remove a plate from the device */
   rpc RemovePlate (sila2.org.silastandard.platereaders.synergyhtx.v1.RemovePlate_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.RemovePlate_Responses) {}
   /* Read the absorbance */
   rpc ReadAbsorbance (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadAbsorbance_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadAbsorbance_Responses) {}
   /* Read the fluorescence */
   rpc ReadFluorescence (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadFluorescence_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadFluorescence_Responses) {}
-  /* Read the fluorescence */
+  /* Read the luminescence */
   rpc ReadLuminescence (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadLuminescence_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadLuminescence_Responses) {}
   /* Get the serial number of the device */
   rpc GetSerialNumber (sila2.org.silastandard.platereaders.synergyhtx.v1.GetSerialNumber_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.GetSerialNumber_Responses) {}
@@ -64,13 +64,13 @@ message GetPlateName_Responses {
   sila2.org.silastandard.String PlateName = 1;  /* Plate name */
 }
 
-/* Parameters for SetPlate */
-message SetPlate_Parameters {
+/* Parameters for InsertPlate */
+message InsertPlate_Parameters {
   sila2.org.silastandard.String PlateName = 1;  /* Plate name */
 }
 
-/* Responses of SetPlate */
-message SetPlate_Responses {
+/* Responses of InsertPlate */
+message InsertPlate_Responses {
   sila2.org.silastandard.String PlateName = 1;  /* Plate name */
 }
 
