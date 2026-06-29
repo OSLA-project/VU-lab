@@ -4,6 +4,7 @@ from .synergyhtx_client import SynergyHTXClient
 from .synergyhtx_feature import SynergyHTXFeature
 from .synergyhtx_types import (
     CloseTray_Responses,
+    GetSerialNumber_Responses,
     OpenTray_Responses,
     ReadAbsorbance_Responses,
     ReadFluorescence_Responses,
@@ -25,4 +26,5 @@ __all__ = [
     "ReadAbsorbance_Responses",
     "ReadFluorescence_Responses",
     "ReadLuminescence_Responses",
+    "GetSerialNumber_Responses",
 ]

@@ -12,9 +12,10 @@ if TYPE_CHECKING:
 
     from typing import Iterable, Optional
 
-    from sila2.client import ClientMetadataInstance, ClientUnobservableProperty
+    from sila2.client import ClientMetadataInstance
     from synergyhtx_types import (
         CloseTray_Responses,
+        GetSerialNumber_Responses,
         OpenTray_Responses,
         ReadAbsorbance_Responses,
         ReadFluorescence_Responses,
@@ -28,11 +29,6 @@ if TYPE_CHECKING:
 class SynergyHTXClient:
     """
     SiLA server for the Biotek Synergy HTX plate reader
-    """
-
-    SerialNumber: ClientUnobservableProperty[str]
-    """
-    Returns the serial number of the plate reader
     """
 
     def OpenTray(self, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None) -> OpenTray_Responses:
@@ -95,5 +91,13 @@ class SynergyHTXClient:
     ) -> ReadLuminescence_Responses:
         """
         Read the fluorescence
+        """
+        ...
+
+    def GetSerialNumber(
+        self, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None
+    ) -> GetSerialNumber_Responses:
+        """
+        Get the serial number of the device
         """
         ...

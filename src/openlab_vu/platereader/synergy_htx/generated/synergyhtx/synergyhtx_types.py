@@ -66,3 +66,11 @@ class ReadLuminescence_Responses(NamedTuple):
     """
     Luminescence reported by the device
     """
+
+
+class GetSerialNumber_Responses(NamedTuple):
+
+    SerialNumber: str
+    """
+    The serial number of the device
+    """

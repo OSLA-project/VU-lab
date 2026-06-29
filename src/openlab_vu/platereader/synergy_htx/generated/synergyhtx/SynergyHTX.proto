@@ -22,8 +22,8 @@ service SynergyHTX {
   rpc ReadFluorescence (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadFluorescence_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadFluorescence_Responses) {}
   /* Read the fluorescence */
   rpc ReadLuminescence (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadLuminescence_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadLuminescence_Responses) {}
-  /* Returns the serial number of the plate reader */
-  rpc Get_SerialNumber (sila2.org.silastandard.platereaders.synergyhtx.v1.Get_SerialNumber_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.Get_SerialNumber_Responses) {}
+  /* Get the serial number of the device */
+  rpc GetSerialNumber (sila2.org.silastandard.platereaders.synergyhtx.v1.GetSerialNumber_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.GetSerialNumber_Responses) {}
 }
 
 /* Parameters for OpenTray */
@@ -123,11 +123,11 @@ message ReadLuminescence_Responses {
   sila2.org.silastandard.platereaders.synergyhtx.v1.ReadLuminescence_Responses.LuminescenceReading_Struct LuminescenceReading = 1;  /* Luminescence reported by the device */
 }
 
-/* Parameters for SerialNumber */
-message Get_SerialNumber_Parameters {
+/* Parameters for GetSerialNumber */
+message GetSerialNumber_Parameters {
 }
 
-/* Responses of SerialNumber */
-message Get_SerialNumber_Responses {
-  sila2.org.silastandard.String SerialNumber = 1;  /* Returns the serial number of the plate reader */
+/* Responses of GetSerialNumber */
+message GetSerialNumber_Responses {
+  sila2.org.silastandard.String SerialNumber = 1;  /* The serial number of the device */
 }

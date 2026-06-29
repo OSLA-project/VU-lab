@@ -8,6 +8,7 @@ from sila2.server import FeatureImplementationBase, MetadataDict
 
 from .synergyhtx_types import (
     CloseTray_Responses,
+    GetSerialNumber_Responses,
     OpenTray_Responses,
     ReadAbsorbance_Responses,
     ReadFluorescence_Responses,
@@ -30,15 +31,6 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
         SiLA server for the Biotek Synergy HTX plate reader
         """
         super().__init__(parent_server=parent_server)
-
-    @abstractmethod
-    def get_SerialNumber(self, *, metadata: MetadataDict) -> str:
-        """
-        Returns the serial number of the plate reader
-
-        :param metadata: The SiLA Client Metadata attached to the call
-        :return: Returns the serial number of the plate reader
-        """
 
     @abstractmethod
     def OpenTray(self, *, metadata: MetadataDict) -> OpenTray_Responses:
@@ -174,6 +166,21 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
         :return:
 
             - LuminescenceReading: Luminescence reported by the device
+
+
+        """
+
+    @abstractmethod
+    def GetSerialNumber(self, *, metadata: MetadataDict) -> GetSerialNumber_Responses:
+        """
+        Get the serial number of the device
+
+
+        :param metadata: The SiLA Client Metadata attached to the call
+
+        :return:
+
+            - SerialNumber: The serial number of the device
 
 
         """

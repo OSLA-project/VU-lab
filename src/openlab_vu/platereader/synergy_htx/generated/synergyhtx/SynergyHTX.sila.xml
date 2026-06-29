@@ -269,13 +269,18 @@
       </DataType>
     </Response>
   </Command>
-  <Property>
-    <Identifier>SerialNumber</Identifier>
-    <DisplayName>Serial number</DisplayName>
-    <Description>Returns the serial number of the plate reader</Description>
+  <Command>
+    <Identifier>GetSerialNumber</Identifier>
+    <DisplayName>Get the serial number of the device</DisplayName>
+    <Description>Get the serial number of the device</Description>
     <Observable>No</Observable>
-    <DataType>
-      <Basic>String</Basic>
-    </DataType>
-  </Property>
+    <Response>
+      <Identifier>SerialNumber</Identifier>
+      <DisplayName>The serial number of the device</DisplayName>
+      <Description>The serial number of the device</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Response>
+  </Command>
 </Feature>
