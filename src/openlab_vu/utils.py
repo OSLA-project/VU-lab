@@ -19,6 +19,7 @@ def ensure_dir(path: Path | str) -> Path:
 
 
 def iso_timestamp(
+    fmt: str = "%Y-%m-%d_%H-%M-%S",
     ms: bool = False,
     split: bool = False,
 ) -> str | tuple[str, str]:
@@ -26,6 +27,7 @@ def iso_timestamp(
     Create a datestamp and a timestamp as formatted strings.
 
     Args:
+        fmt: Datetime format.
         ms: Use millisecond precision.
         split: Split the string into date and time components.
 
@@ -34,7 +36,6 @@ def iso_timestamp(
     """
 
     # Simplified ISO format (no timezone, etc.)
-    fmt = "%Y-%m-%d_%H-%M-%S"
     end = None
 
     if ms:
