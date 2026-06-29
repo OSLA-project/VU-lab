@@ -24,7 +24,7 @@ dependencies = [
     "sila2>=0.12.2",
     "unitelabs-cdk>=0.3.8",
     "uupythonlab",
-    "sila2-drv-shaker-thermoscientific-teleshake1536 @ git+https://gitlab.com/sila-driver-group/teleshake.git",
+    "sila2-drv-shaker-thermoscientific-teleshake1536",
     "uulaborchestrator",
     "uulabscheduler",
     "ruff>=0.14.1",
