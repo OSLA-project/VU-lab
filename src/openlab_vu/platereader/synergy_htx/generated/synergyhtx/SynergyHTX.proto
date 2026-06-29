@@ -12,6 +12,8 @@ service SynergyHTX {
   rpc CloseTray (sila2.org.silastandard.platereaders.synergyhtx.v1.CloseTray_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.CloseTray_Responses) {}
   /* Read the device temperature */
   rpc ReadTemperature (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadTemperature_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.ReadTemperature_Responses) {}
+  /* Get the name of the currently loaded plate */
+  rpc GetPlateName (sila2.org.silastandard.platereaders.synergyhtx.v1.GetPlateName_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.GetPlateName_Responses) {}
   /* Set a plate into the device */
   rpc SetPlate (sila2.org.silastandard.platereaders.synergyhtx.v1.SetPlate_Parameters) returns (sila2.org.silastandard.platereaders.synergyhtx.v1.SetPlate_Responses) {}
   /* Remove a plate from the device */
@@ -53,14 +55,23 @@ message ReadTemperature_Responses {
   sila2.org.silastandard.Real DeviceTemperature = 1;  /* Temperature reported by the device */
 }
 
+/* Parameters for GetPlateName */
+message GetPlateName_Parameters {
+}
+
+/* Responses of GetPlateName */
+message GetPlateName_Responses {
+  sila2.org.silastandard.String PlateName = 1;  /* Plate name */
+}
+
 /* Parameters for SetPlate */
 message SetPlate_Parameters {
-  sila2.org.silastandard.Integer PlateID = 1;  /* Plate ID */
+  sila2.org.silastandard.String PlateName = 1;  /* Plate name */
 }
 
 /* Responses of SetPlate */
 message SetPlate_Responses {
-  sila2.org.silastandard.Integer PlateID = 1;  /* Plate ID */
+  sila2.org.silastandard.String PlateName = 1;  /* Plate name */
 }
 
 /* Parameters for RemovePlate */
@@ -69,7 +80,7 @@ message RemovePlate_Parameters {
 
 /* Responses of RemovePlate */
 message RemovePlate_Responses {
-  sila2.org.silastandard.Integer PlateID = 1;  /* Plate ID */
+  sila2.org.silastandard.String PlateName = 1;  /* Plate name */
 }
 
 /* Parameters for ReadAbsorbance */

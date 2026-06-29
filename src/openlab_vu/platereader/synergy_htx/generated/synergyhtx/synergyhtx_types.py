@@ -28,19 +28,27 @@ class ReadTemperature_Responses(NamedTuple):
     """
 
 
+class GetPlateName_Responses(NamedTuple):
+
+    PlateName: str
+    """
+    Plate name
+    """
+
+
 class SetPlate_Responses(NamedTuple):
 
-    PlateID: int
+    PlateName: str
     """
-    Plate ID
+    Plate name
     """
 
 
 class RemovePlate_Responses(NamedTuple):
 
-    PlateID: int
+    PlateName: str
     """
-    Plate ID
+    Plate name
     """
 
 

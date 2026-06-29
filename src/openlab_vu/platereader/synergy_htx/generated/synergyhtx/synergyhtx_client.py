@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from sila2.client import ClientMetadataInstance
     from synergyhtx_types import (
         CloseTray_Responses,
+        GetPlateName_Responses,
         GetSerialNumber_Responses,
         OpenTray_Responses,
         ReadAbsorbance_Responses,
@@ -51,8 +52,14 @@ class SynergyHTXClient:
         """
         ...
 
+    def GetPlateName(self, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None) -> GetPlateName_Responses:
+        """
+        Get the name of the currently loaded plate
+        """
+        ...
+
     def SetPlate(
-        self, PlateID: int, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None
+        self, PlateName: str, *, metadata: Optional[Iterable[ClientMetadataInstance]] = None
     ) -> SetPlate_Responses:
         """
         Set a plate into the device

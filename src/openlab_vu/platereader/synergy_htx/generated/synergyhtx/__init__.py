@@ -4,6 +4,7 @@ from .synergyhtx_client import SynergyHTXClient
 from .synergyhtx_feature import SynergyHTXFeature
 from .synergyhtx_types import (
     CloseTray_Responses,
+    GetPlateName_Responses,
     GetSerialNumber_Responses,
     OpenTray_Responses,
     ReadAbsorbance_Responses,
@@ -21,6 +22,7 @@ __all__ = [
     "OpenTray_Responses",
     "CloseTray_Responses",
     "ReadTemperature_Responses",
+    "GetPlateName_Responses",
     "SetPlate_Responses",
     "RemovePlate_Responses",
     "ReadAbsorbance_Responses",

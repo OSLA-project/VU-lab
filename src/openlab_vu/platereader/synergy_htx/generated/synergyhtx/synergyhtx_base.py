@@ -8,6 +8,7 @@ from sila2.server import FeatureImplementationBase, MetadataDict
 
 from .synergyhtx_types import (
     CloseTray_Responses,
+    GetPlateName_Responses,
     GetSerialNumber_Responses,
     OpenTray_Responses,
     ReadAbsorbance_Responses,
@@ -78,18 +79,33 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
         """
 
     @abstractmethod
-    def SetPlate(self, PlateID: int, *, metadata: MetadataDict) -> SetPlate_Responses:
+    def GetPlateName(self, *, metadata: MetadataDict) -> GetPlateName_Responses:
         """
-        Set a plate into the device
+        Get the name of the currently loaded plate
 
-
-        :param PlateID: Plate ID
 
         :param metadata: The SiLA Client Metadata attached to the call
 
         :return:
 
-            - PlateID: Plate ID
+            - PlateName: Plate name
+
+
+        """
+
+    @abstractmethod
+    def SetPlate(self, PlateName: str, *, metadata: MetadataDict) -> SetPlate_Responses:
+        """
+        Set a plate into the device
+
+
+        :param PlateName: Plate name
+
+        :param metadata: The SiLA Client Metadata attached to the call
+
+        :return:
+
+            - PlateName: Plate name
 
 
         """
@@ -104,7 +120,7 @@ class SynergyHTXBase(FeatureImplementationBase, ABC):
 
         :return:
 
-            - PlateID: Plate ID
+            - PlateName: Plate name
 
 
         """

@@ -45,24 +45,38 @@
     </Response>
   </Command>
   <Command>
+    <Identifier>GetPlateName</Identifier>
+    <DisplayName>Get the name of the currently loaded plate</DisplayName>
+    <Description>Get the name of the currently loaded plate</Description>
+    <Observable>No</Observable>
+    <Response>
+      <Identifier>PlateName</Identifier>
+      <DisplayName>Plate name</DisplayName>
+      <Description>Plate name</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
     <Identifier>SetPlate</Identifier>
     <DisplayName>Set a plate into the device</DisplayName>
     <Description>Set a plate into the device</Description>
     <Observable>No</Observable>
     <Parameter>
-      <Identifier>PlateID</Identifier>
-      <DisplayName>Plate ID</DisplayName>
-      <Description>Plate ID</Description>
+      <Identifier>PlateName</Identifier>
+      <DisplayName>Plate name</DisplayName>
+      <Description>Plate name</Description>
       <DataType>
-        <Basic>Integer</Basic>
+        <Basic>String</Basic>
       </DataType>
     </Parameter>
     <Response>
-      <Identifier>PlateID</Identifier>
-      <DisplayName>Plate ID</DisplayName>
-      <Description>Plate ID</Description>
+      <Identifier>PlateName</Identifier>
+      <DisplayName>Plate name</DisplayName>
+      <Description>Plate name</Description>
       <DataType>
-        <Basic>Integer</Basic>
+        <Basic>String</Basic>
       </DataType>
     </Response>
   </Command>
@@ -72,11 +86,11 @@
     <Description>Remove a plate from the device</Description>
     <Observable>No</Observable>
     <Response>
-      <Identifier>PlateID</Identifier>
-      <DisplayName>Plate ID</DisplayName>
-      <Description>Plate ID</Description>
+      <Identifier>PlateName</Identifier>
+      <DisplayName>Plate name</DisplayName>
+      <Description>Plate name</Description>
       <DataType>
-        <Basic>Integer</Basic>
+        <Basic>String</Basic>
       </DataType>
     </Response>
   </Command>
