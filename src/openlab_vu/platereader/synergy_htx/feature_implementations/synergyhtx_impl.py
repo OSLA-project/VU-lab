@@ -46,8 +46,9 @@ class SynergyHTXImpl(SynergyHTXBase):
     ) -> None:
         super().__init__(parent_server=parent_server)
         self.controller = SynergyHTXController()
+        aio.run(self.controller.setup())
 
-    def get_SerialNumber(self, *, metadata: MetadataDict) -> GetSerialNumber_Responses:
+    def GetSerialNumber(self, *, metadata: MetadataDict) -> GetSerialNumber_Responses:
         """
         Get the serial number of the device.
 
@@ -85,7 +86,7 @@ class SynergyHTXImpl(SynergyHTXBase):
             A CloseTray_Responses instance.
         """
 
-        ts = aio.run(self.close_tray())
+        ts = aio.run(self.controller.close_tray())
         return ts.value
 
     def SetPlate(

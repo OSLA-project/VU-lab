@@ -69,9 +69,10 @@ class SynergyHTXController(SynergyHTBackend):
 
         try:
             logger.debug(f"Opening tray...")
-            await super().open_tray()
+            await super().open()
             self.tray_state = T.TrayState.Open
         except Exception as e:
+            logger.error(e)
             self.tray_state = T.TrayState.Unknown
         finally:
             return self.tray_state
@@ -86,7 +87,7 @@ class SynergyHTXController(SynergyHTBackend):
 
         try:
             logger.debug(f"Closing tray...")
-            await super().close_tray()
+            await super().close()
             self.tray_state = T.TrayState.Closed
         except Exception as e:
             self.tray_state = T.TrayState.Unknown
