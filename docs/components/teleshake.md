@@ -12,8 +12,8 @@
 
 The lab has 8 VARIONMAG Teleshake 1536 shakers mounted in a fixed rack. All shakers connect via individual control line cables to a custom black metal hub box, which acts as a combined controller and multiplexer. The hub has a single RS-232 connection to the PC (COM1, native serial port — not USB).
 
-<img src="teleshake_shakers.jpg" width="400" alt="Teleshake shakers">
-<img src="teleshake_hub.jpg" width="400" alt="Hub">
+![Teleshake shakers](../assets/teleshake_shakers.jpg){ width=400, style="display:block;margin:auto" }
+![Hub](../assets/teleshake_hub.jpg){ width=400, style="display:block;margin:auto" }
 
 The shakers are addressed individually via the RS-232 protocol using address bytes 1–8 corresponding to each shaker's physical port on the hub. Note that this is **not** a daisy-chain setup — all shakers plug directly into the hub, which handles the routing.
 

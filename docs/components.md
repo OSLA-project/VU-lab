@@ -43,13 +43,13 @@ The Gen5 connector requires environment configuration before use. Copy `gen5/.en
 
 ## Magnetic Shaker
 
-**Hardware:** [Thermo Fisher Teleshake](https://www.thermofisher.com/order/catalog/product/50094320)
+**Hardware:** VARIONMAG Teleshake 1536 (8 units)
 
-**SiLA server source:** [teleshake](https://gitlab.com/sila-driver-group/teleshake) — a community SiLA2 driver for the Thermo Scientific Teleshake 1536.
+**SiLA server source:** [Teleshake-1536](https://github.com/OSLA-project/Teleshake-1536)
 
-**Docker service:** `teleshake` (port 50050)
+**Running mode:** Native on Windows (not in Docker — RS-232 COM ports cannot be forwarded to Linux containers)
 
-The teleshake container clones the upstream driver and runs SiLA2 code generation at build time via `src/openlab_vu/teleshake/codegen.sh`.
+The teleshake runs outside Docker on the Windows host and connects to the lab PC's native RS-232 port (COM1). See [Teleshake 1536](components/teleshake.md) for full setup instructions and known issues.
 
 ## Plate Hotels
 
