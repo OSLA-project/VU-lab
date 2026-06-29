@@ -5,7 +5,6 @@ from typing import TYPE_CHECKING
 
 from sila2.server import MetadataDict
 
-
 from ..generated.synergyhtx import (
     SynergyHTXBase,
     OpenTray_Responses,
@@ -16,22 +15,19 @@ from ..generated.synergyhtx import (
     ReadAbsorbance_Responses,
     ReadFluorescence_Responses,
     ReadLuminescence_Responses,
+    GetSerialNumber_Responses,
 )
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from loguru import logger
 import asyncio as aio
-from datetime import datetime
-from zoneinfo import ZoneInfo
-from pylabrobot.resources import Plate, Well, create_ordered_items_2d
-import openlab_vu.platereader.controller.types as T
-from openlab_vu.platereader.controller.synergy import SynergyHTXBackend
-from openlab_vu import utils
+
+from pylabrobot.resources import Plate, Well
+from openlab_vu.platereader.controller.synergy import SynergyHTXController
 
 if TYPE_CHECKING:
     from ..server import Server
-
-
-logger.configure()
 
 
 class SynergyHTXImpl(SynergyHTXBase):
@@ -43,32 +39,26 @@ class SynergyHTXImpl(SynergyHTXBase):
 
     def __init__(
         self,
-        parent_server: Server,
+        parent_server: Server | None = None,
         tz: str | None = None,
         save_dir: str | Path | None = None,
         timestamp: str | None = None,
     ) -> None:
         super().__init__(parent_server=parent_server)
-        self.plate_reader = SynergyHTXBackend()
-        self.tray_state = T.TrayState.Unknown
-        self.timestamp = timestamp if timestamp is not None else utils.iso_timestamp()
-        self.tz = tz or "Europe/Amsterdam"
-        self.save_dir = (
-            utils.ensure_dir(Path(save_dir)) if save_dir is not None else None
-        )
-        self.plate: Plate | None = None
-        self.wells: list[Well] = []
+        self.controller = SynergyHTXController()
 
-    def get_SerialNumber(self, *, metadata: MetadataDict) -> str:
-        """Get the serial number of the device."""
+    def get_SerialNumber(self, *, metadata: MetadataDict) -> GetSerialNumber_Responses:
+        """
+        Get the serial number of the device.
 
-        try:
-            logger.debug(f"Getting serial number...")
-            sn = aio.run(self.plate_reader.get_serial_number())
-        except Exception as e:
-            sn = ""
-        finally:
-            return sn
+        Args:
+            metadata: Metadata provided by the client.
+
+        Returns:
+            A GetSerialNumber_Responses instance.
+        """
+
+        return aio.run(self.controller.get_serial_number())
 
     def OpenTray(self, *, metadata: MetadataDict) -> OpenTray_Responses:
         """
@@ -81,14 +71,8 @@ class SynergyHTXImpl(SynergyHTXBase):
             An OpenTray_Responses instance.
         """
 
-        try:
-            logger.debug(f"Opening tray...")
-            aio.run(self.plate_reader.open_tray())
-            self.tray_state = T.TrayState.Open
-        except Exception as e:
-            self.tray_state = T.TrayState.Unknown
-        finally:
-            return OpenTray_Responses(self.tray_state.value)
+        ts = aio.run(self.controller.open_tray())
+        return ts.value
 
     def CloseTray(self, *, metadata: MetadataDict) -> CloseTray_Responses:
         """
@@ -101,26 +85,8 @@ class SynergyHTXImpl(SynergyHTXBase):
             A CloseTray_Responses instance.
         """
 
-        try:
-            logger.debug(f"Closing tray...")
-            aio.run(self.plate_reader.close_tray())
-            self.tray_state = T.TrayState.Closed
-        except Exception as e:
-            self.tray_state = T.TrayState.Unknown
-        finally:
-            return CloseTray_Responses(self.tray_state.value)
-
-    @property
-    def plate_id(self) -> int | None:
-        """
-        Get the plate ID from the plate name.
-
-        Returns:
-            The plate ID as an integer or None if there is no plate.
-        """
-        if not isinstance(self.plate, Plate):
-            return -1
-        return int(self.plate.name)
+        ts = aio.run(self.close_tray())
+        return ts.value
 
     def SetPlate(
         self,
@@ -128,54 +94,42 @@ class SynergyHTXImpl(SynergyHTXBase):
         *,
         metadata: MetadataDict,
     ) -> SetPlate_Responses:
+        """
+        Version of set_plate() for use with SiLA.
 
-        try:
-            if self.plate is not None:
-                return self.plate_id
+        Args:
+            plate_id: Plate ID.
+            metadata: Metadata provided by the client.
 
-            # TODO: Set the plate into the tray by using the robotic arm.
-            self.plate = Plate(
-                f"{plate_id}",
-                1,
-                1,
-                1,
-                ordered_items=create_ordered_items_2d(
-                    Well,
-                    num_items_x=1,
-                    num_items_y=1,
-                    dx=0,
-                    dy=0,
-                    dz=0,
-                    item_dx=1,
-                    item_dy=1,
-                    size_x=1,
-                    size_y=1,
-                    size_z=1,
-                ),
-            )
+        Returns:
+            A SetPlate_Responses instance.
+        """
 
-            # TODO: Set up and store the well specifications for this plate.
-            self.wells = []
+        # TODO: Get a plate from the database
+        # and set up a Plate instance.
+        # plate = ...
+        # For now, all wells are used.
 
-        finally:
-            return self.plate_id
+        plate = Plate()
+        wells = [plate.get_item(i) for i in range(plate.num_items)]
+        return aio.run(self.controller.set_plate(plate, wells))
 
     def RemovePlate(
         self,
         *,
         metadata: MetadataDict,
     ) -> RemovePlate_Responses:
+        """
+        Version of remove_plate() for use with SiLA.
 
-        plate_id = self.plate_id
-        try:
-            if self.plate is None:
-                return plate_id
+        Args:
+            metadata: Metadata provided by the client.
 
-            # TODO: Remove the plate from the tray by using the robotic arm.
-            self.plate = None
+        Returns:
+            A RemovePlate_Responses instance.
+        """
 
-        finally:
-            return plate_id
+        return aio.run(self.controller.remove_plate())
 
     def ReadTemperature(self, *, metadata: MetadataDict) -> ReadTemperature_Responses:
         """
@@ -188,11 +142,7 @@ class SynergyHTXImpl(SynergyHTXBase):
             A ReadTemperature_Responses instance.
         """
 
-        try:
-            logger.debug(f"Reading temperature...")
-            return aio.run(self.plate_reader.get_current_temperature())
-        finally:
-            return 0.0
+        return aio.run(self.controller.read_temperature())
 
     def ReadAbsorbance(
         self,
@@ -211,24 +161,15 @@ class SynergyHTXImpl(SynergyHTXBase):
             A ReadAbsorbance_Responses instance.
         """
 
-        try:
-            logger.debug(f"Reading absorbance...")
-            result = aio.run(
-                self.plate_reader.read_absorbance(self.plate, self.wells, wavelength)
-            )
+        result = aio.run(self.controller.read_absorbance(wavelength))
+        if result is None:
 
-            # TODO Store the data by using the user-supplied
-            # destination directory (self.save_dir).
-            # data = result.get('data', None)
-
-            return (result.get(item) for item in ("wavelength", "temperature", "time"))
-
-        finally:
             return (
                 wavelength,
                 0.0,
                 datetime.now(tz=ZoneInfo(self.tz)),
             )
+        return (result.get(item) for item in ("wavelength", "temperature", "time"))
 
     def ReadFluorescence(
         self,
@@ -251,33 +192,12 @@ class SynergyHTXImpl(SynergyHTXBase):
             A ReadFluorescence_Responses instance.
         """
 
-        try:
-            logger.debug(f"Reading fluorescence...")
-            result = aio.run(
-                self.plate_reader.read_fluorescence(
-                    self.plate,
-                    self.wells,
-                    excitation_wavelength,
-                    emission_wavelength,
-                    focal_height,
-                )
+        result = aio.run(
+            self.controller.read_fluorescence(
+                excitation_wavelength, emission_wavelength, focal_height
             )
-
-            # TODO Store the data by using the user-supplied
-            # destination directory (self.save_dir).
-            # data = result.get('data', None)
-
-            return (
-                result.get(item)
-                for item in (
-                    "ex_wavelength",
-                    "em_wavelength",
-                    "temperature",
-                    "time",
-                )
-            )
-
-        finally:
+        )
+        if result is None:
             return (
                 excitation_wavelength,
                 emission_wavelength,
@@ -285,6 +205,16 @@ class SynergyHTXImpl(SynergyHTXBase):
                 0.0,
                 datetime.now(tz=ZoneInfo(self.tz)),
             )
+
+        return (
+            result.get(item)
+            for item in (
+                "ex_wavelength",
+                "em_wavelength",
+                "temperature",
+                "time",
+            )
+        )
 
     def ReadLuminescence(
         self,
@@ -305,31 +235,25 @@ class SynergyHTXImpl(SynergyHTXBase):
             A ReadLuminescence_Responses instance.
         """
 
-        try:
-            logger.debug(f"Reading luminescence...")
-            result = aio.run(
-                self.plate_reader.read_luminescence(
-                    self.plate,
-                    self.wells,
-                    focal_height,
-                    integration_time,
-                )
+        result = aio.run(
+            self.controller.read_luminescence(
+                focal_height,
+                integration_time,
             )
-
+        )
+        if result is None:
             # TODO Store the data by using the user-supplied
             # destination directory (self.save_dir).
             # data = result.get('data', None)
-
-            return (
-                result.get(item)
-                for item in (
-                    "temperature",
-                    "time",
-                )
-            )
-
-        finally:
             return (
                 0.0,
                 datetime.now(tz=ZoneInfo(self.tz)),
             )
+
+        return (
+            result.get(item)
+            for item in (
+                "temperature",
+                "time",
+            )
+        )
