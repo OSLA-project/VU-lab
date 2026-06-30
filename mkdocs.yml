@@ -15,17 +15,8 @@ theme:
   custom_dir: docs/overrides
   palette:
     - scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-      primary: blue grey
-      accent: cyan
-    - scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-      primary: blue grey
-      accent: cyan
+      primary: custom
+      accent: custom
 
   features:
     - navigation.footer

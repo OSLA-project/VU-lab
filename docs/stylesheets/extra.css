@@ -62,3 +62,10 @@
     color: white;
     border-color: transparent;
 }
+
+:root  > * {
+  --md-primary-fg-color:         #52420B;
+  --md-accent-fg-color:          #EBBF1E;
+  --md-default-bg-color:         #FFFAE8;
+
+}
