@@ -24,7 +24,7 @@ dependencies = [
     "sila2>=0.12.2",
     "unitelabs-cdk>=0.3.8",
     "uupythonlab",
-    "sila2-drv-shaker-thermoscientific-teleshake1536",
+    "sila2-drv-shaker-thermoscientific-teleshake1536@git+https://github.com/OSLA-project/Teleshake-1536.git" ,
     "uulaborchestrator",
     "uulabscheduler",
     "ruff>=0.14.1",
@@ -159,7 +159,7 @@ filename = "CITATION.cff"
 
 [tool.uv.sources]
 genericroboticarm = { git = "git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git" }
-sila2-drv-shaker-thermoscientific-teleshake1536 = { git = "https://github.com/OSLA-project/Teleshake-1536.git", branch = "debug" }
+sila2-drv-shaker-thermoscientific-teleshake1536 = { git = "https://github.com/OSLA-project/Teleshake-1536.git" }
 
 [tool.uv.workspace]
 members = [
