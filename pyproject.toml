@@ -30,6 +30,7 @@ dependencies = [
     "ruff>=0.14.1",
     "pytest>=8.4.2",
     "genericroboticarm @ git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git",
+    "platformstatusdb>=0.3.0",
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]

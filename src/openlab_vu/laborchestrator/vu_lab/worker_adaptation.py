@@ -13,9 +13,9 @@ from laborchestrator.structures import MoveStep
 from laborchestrator.structures import SchedulingInstance
 from laborchestrator.structures import SMProcess
 from sila2.client import SilaClient
-from vu_lab.wrappers import GenericRobotArmWrapper
-from vu_lab.wrappers.device_interface import DeviceInterface
-from vu_lab.wrappers.shaker_wrapper import ShakerWrapper
+from openlab_vu.laborchestrator.vu_lab.wrappers.generic_robot_arm_wrapper import GenericRobotArmWrapper
+from openlab_vu.laborchestrator.vu_lab.wrappers.device_interface import DeviceInterface
+from openlab_vu.laborchestrator.vu_lab.wrappers.shaker_wrapper  import ShakerWrapper
 
 logger = logging.getLogger(__name__)
 
