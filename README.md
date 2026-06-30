@@ -19,7 +19,7 @@ To use this package, you should first clone it from github
 git clone https://github.com/OSLA-project/VU-lab.git
 ```
 ## Prepare environment
-There are a couple of parameters that need to be tuned, depending on your operating system, and whether you need to run 
+There are a couple of parameters that need to be tuned, depending on your operating system, and whether you need to run
 in simulation mode or with real hardware. Three different scenarios have been prepared: you're running on Linux with simulated
 hardware, or on Windows, with either simulated or real hardware.
 
@@ -29,10 +29,16 @@ Depending on your situation, you need to copy one of the following files to `.en
 - `.env.windows` (Windows with real hardware)
 
 ## Running the services
-Use the following command to start all sila servers and the universal sila client: 
+Use the following command to start all sila servers and the universal sila client:
 
 ```shell
 docker compose up
+```
+
+## Teleshake
+Because the teleshake connects through serial port it can not be run in docker on windows. Run it as follows:
+```shell
+python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "da160a69-7d50-4d63-8a75-f90815755745"
 ```
 
 You can reach the services at the following addresses:
