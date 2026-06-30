@@ -6,30 +6,9 @@ This page describes the SiLA servers and supporting services that make up the VU
 
 **Hardware:** [UFactory 850](https://www.ufactory.us/product/850)
 
-**SiLA server source:** [genericroboticarm](https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm) — a generic SiLA2 robotic arm driver that communicates with the xArm SDK.
+**SiLA server source:** [genericroboticarm](https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm) (port 50054)
 
-**Docker service:** `robot_arm` (port 50054)
-
-The robot arm container is built from `src/openlab_vu/robot_arm/`. It installs the `genericroboticarm` package along with the VU-lab-specific customization (see [Orchestrator — Robot arm customization](orchestrator.md#robot-arm-customization)).
-
-**Configuration:**
-
-| Environment variable | Default | Description |
-|---|---|---|
-| `PORT` | `50054` | SiLA2 server port |
-| `HOST` | `0.0.0.0` | Bind address |
-| `ROBOT_IP` | *(unset)* | IP address of the physical arm. If unset, the server runs in simulation mode. |
-| `ADDITIONAL_PARAMS` | *(empty)* | Extra flags passed to the server entrypoint |
-
-To connect to real hardware, set `ROBOT_IP` to the arm's IP address in your `.env` file:
-
-```env
-ROBOT_IP=192.168.1.xxx
-```
-
-The position graph file (`position_graph_VULabArm.gml`) is copied into the container at build time — see [Lab Configuration — Position graph](lab-configuration.md#position-graph) for details.
-
-A web interface for the arm is available at [http://localhost:8055](http://localhost:8055) when the service is running.
+See [Robot Arm](components/robot_arm.md) for full setup and configuration.
 
 ## Plate Reader
 

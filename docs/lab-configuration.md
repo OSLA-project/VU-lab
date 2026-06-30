@@ -71,3 +71,9 @@ The graph was created using the [site_parser](https://github.com/OSLA-project/si
 ```bash
 docker compose restart robot_arm
 ```
+
+### Converting positions from internal OSLA format
+The positions for the robot arm have been converted from an internal OSLA positions file. This file has been generated
+by an alternate script used to set the initial positions. In order to convert a new file
+in this internal format to locations that can be used by GenericRoboticArm the tool [site parser](https://github.com/OSLA-project/site_parser)
+has been developed.

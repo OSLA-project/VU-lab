@@ -4,7 +4,7 @@ template: home.html
 
 [![github repo badge](https://img.shields.io/badge/github-repo-000.svg?logo=github&labelColor=gray&color=blue)](https://github.com/OSLA-project/VU-lab) [![github license badge](https://img.shields.io/github/license/OSLA-project/VU-lab)](https://github.com/OSLA-project/VU-lab) [![workflow scq badge](https://sonarcloud.io/api/project_badges/measure?project=OSLA-project_VU-lab&metric=alert_status)](https://sonarcloud.io/dashboard?id=OSLA-project_VU-lab)  [![build](https://github.com/OSLA-project/VU-lab/actions/workflows/build.yml/badge.svg)](https://github.com/OSLA-project/VU-lab/actions/workflows/build.yml) [![Integration test](https://github.com/OSLA-project/VU-lab/actions/workflows/test-compose.yml/badge.svg)](https://github.com/OSLA-project/VU-lab/actions/workflows/test-compose.yml) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18161520.svg)](https://doi.org/10.5281/zenodo.18161520)
 
-This is the documentation for the software repository for automating the VU lab.
+This is the documentation for the software repository for automating the VU lab. It uses the SiLA based [LARA lab automation framework](https://osla-project.github.io/python-lab-automation-tutorial/). 
 
 This repo integrates the following SiLa connectors:
 
