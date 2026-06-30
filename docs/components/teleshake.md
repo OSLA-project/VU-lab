@@ -11,13 +11,16 @@
 ## Hardware setup
 
 The lab has 8 VARIONMAG Teleshake 1536 shakers mounted in a fixed rack. All shakers connect via individual control line cables to a custom black metal hub box, which acts as a combined controller and multiplexer. The hub has a single RS-232 connection to the PC (COM1, native serial port — not USB).
+<figure markdown="span">
+![Teleshake shakers](../assets/teleshake_shakers.jpg){ width=400 }
+<figcaption>The teleshake shaking devices</figcaption>
+</figure>
 
-![Teleshake shakers](../assets/teleshake_shakers.jpg){ width=400, style="display:block;margin:auto" }
-![Hub](../assets/teleshake_hub.jpg){ width=400, style="display:block;margin:auto" }
-
+<figure markdown="span">
+![Hub](../assets/teleshake_hub.jpg){ width=400 }
+<figcaption>The hub connecting the shaking devices to the pc</figcaption>
+</figure>
 The shakers are addressed individually via the RS-232 protocol using address bytes 1–8 corresponding to each shaker's physical port on the hub. Note that this is **not** a daisy-chain setup — all shakers plug directly into the hub, which handles the routing.
-
-**Important:** RS-232 remote control only works when the frequency selection knob on each SHAKEMODUL control unit is set to **OFF**. When the knob is in any other position, the shaker operates in manual mode and ignores all RS-232 commands (`poti_off=False` in the status byte).
 
 ---
 
@@ -26,19 +29,16 @@ The shakers are addressed individually via the RS-232 protocol using address byt
 The teleshake SiLA server cannot run inside Docker on Windows because true RS-232 COM ports cannot be passed through to Linux containers (only USB devices can be forwarded via usbipd-win). Run it natively on Windows instead:
 
 ```powershell
-uv run python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "da160a69-7d50-4d63-8a75-f90815755745"
-```
-
-To log output to a file:
-
-```powershell
-uv run python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure --server-uuid "da160a69-7d50-4d63-8a75-f90815755745" 2>&1 | Tee-Object -FilePath log.txt
+uv run python -m sila2_driver.thermoscientific.teleshake1536 --port 50050 --debug --insecure
 ```
 
 After starting, use the SiLA browser at [http://localhost:3000](http://localhost:3000) to configure the serial port:
 
 1. Open **SettingsService → SetSerialPort**
 2. Set the port name to `COM1`
+
+It is possible that the sila browser does not find the server automatically. You can add it by hand to the sila browser
+by specifying the address `localhost` and port `50050` (in case you specified port `50050` at startup). 
 
 ---
 
@@ -52,6 +52,12 @@ After starting, use the SiLA browser at [http://localhost:3000](http://localhost
 | Stop bits | 1 |
 
 Note: `COM3` is an unrelated FTDI USB-to-serial adapter on this PC — do not use it for the shakers.
+
+## Adressing multiple shakers
+The shaker devices are connected to the pc through a hub for serial ports. The original available teleshake SiLA
+server did not support adressing multiple shakers through one serial connection.
+The [forked version of the teleshake SiLA server](https://github.com/OSLA-project/Teleshake-1536) does support
+addressing multiple shakers by shaker id. However, this functionality has not been tested successfully.
 
 ---
 
@@ -76,13 +82,7 @@ If all commands time out with no reply from the shaker:
 - **Check shaker power** — shakers must be powered on to respond.
 
 ### Shaker does not start (`ERR_NO_ERROR_RECORDED` or `Not started`)
-
-This usually means one of:
-
-- **`poti_off=False`** — the frequency selection knob on the SHAKEMODUL control unit is not at the OFF position. The shaker will silently ignore RS-232 motor commands. Turn the knob to OFF.
-- **`address_set=False`** — the shaker has not been assigned an address. Use ShakerId 1–8 (not 0) corresponding to the physical port on the hub. Address 0 may work for some status queries but not for motor commands.
-- **Clamp not closed** — call `LockPlate` before `StartShaking`. The driver sends `CloseClamp` followed by a 2-second wait; do not skip this step.
-
+This is where we are currently stranded. The shaker responds to commands, but 
 Use the `GetStatus` SiLA command to inspect the full status byte before diagnosing:
 
 ```
