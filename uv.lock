@@ -1525,7 +1525,7 @@ requires-dist = [
     { name = "ruff", specifier = ">=0.14.1" },
     { name = "ruff", marker = "extra == 'dev'" },
     { name = "sila2", specifier = ">=0.12.2" },
-    { name = "sila2-drv-shaker-thermoscientific-teleshake1536", git = "https://github.com/OSLA-project/Teleshake-1536.git?branch=debug" },
+    { name = "sila2-drv-shaker-thermoscientific-teleshake1536", git = "https://github.com/OSLA-project/Teleshake-1536.git" },
     { name = "tox", marker = "extra == 'dev'" },
     { name = "twine", marker = "extra == 'publishing'" },
     { name = "unitelabs-cdk", specifier = ">=0.3.8" },
@@ -2214,7 +2214,7 @@ cryptography = [
 [[package]]
 name = "sila2-drv-shaker-thermoscientific-teleshake1536"
 version = "1.0.1"
-source = { git = "https://github.com/OSLA-project/Teleshake-1536.git?branch=debug#f56f0b9e9d5ced47e672e7721b31d56aa498ff61" }
+source = { git = "https://github.com/OSLA-project/Teleshake-1536.git#37fa70141fafdbf65114f65cd374dde4d524c8cd" }
 dependencies = [
     { name = "async-timeout" },
     { name = "grpcio" },
