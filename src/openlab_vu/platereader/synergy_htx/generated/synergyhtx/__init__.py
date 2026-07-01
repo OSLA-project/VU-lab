@@ -6,13 +6,13 @@ from .synergyhtx_types import (
     CloseTray_Responses,
     GetPlateName_Responses,
     GetSerialNumber_Responses,
+    InsertPlate_Responses,
     OpenTray_Responses,
     ReadAbsorbance_Responses,
     ReadFluorescence_Responses,
     ReadLuminescence_Responses,
     ReadTemperature_Responses,
     RemovePlate_Responses,
-    SetPlate_Responses,
 )
 
 __all__ = [
@@ -23,7 +23,7 @@ __all__ = [
     "CloseTray_Responses",
     "ReadTemperature_Responses",
     "GetPlateName_Responses",
-    "SetPlate_Responses",
+    "InsertPlate_Responses",
     "RemovePlate_Responses",
     "ReadAbsorbance_Responses",
     "ReadFluorescence_Responses",

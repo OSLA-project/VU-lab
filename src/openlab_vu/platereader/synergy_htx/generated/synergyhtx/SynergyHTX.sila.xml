@@ -59,9 +59,9 @@
     </Response>
   </Command>
   <Command>
-    <Identifier>SetPlate</Identifier>
-    <DisplayName>Set a plate into the device</DisplayName>
-    <Description>Set a plate into the device</Description>
+    <Identifier>InsertPlate</Identifier>
+    <DisplayName>Insert a plate into the device</DisplayName>
+    <Description>Insert a plate into the device</Description>
     <Observable>No</Observable>
     <Parameter>
       <Identifier>PlateName</Identifier>
@@ -222,8 +222,8 @@
   </Command>
   <Command>
     <Identifier>ReadLuminescence</Identifier>
-    <DisplayName>Read the fluorescence</DisplayName>
-    <Description>Read the fluorescence</Description>
+    <DisplayName>Read the luminescence</DisplayName>
+    <Description>Read the luminescence</Description>
     <Observable>No</Observable>
     <Parameter>
       <Identifier>FocalHeight</Identifier>

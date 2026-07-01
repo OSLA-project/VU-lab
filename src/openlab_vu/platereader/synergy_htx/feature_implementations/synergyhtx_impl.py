@@ -9,7 +9,7 @@ from ..generated.synergyhtx import (
     SynergyHTXBase,
     OpenTray_Responses,
     CloseTray_Responses,
-    SetPlate_Responses,
+    InsertPlate_Responses,
     RemovePlate_Responses,
     ReadTemperature_Responses,
     ReadAbsorbance_Responses,
@@ -87,14 +87,14 @@ class SynergyHTXImpl(SynergyHTXBase):
         ts = aio.run(self.controller.close_tray())
         return ts.value
 
-    def SetPlate(
+    def InsertPlate(
         self,
         plate_id: int,
         *,
         metadata: MetadataDict,
-    ) -> SetPlate_Responses:
+    ) -> InsertPlate_Responses:
         """
-        Version of set_plate() for use with SiLA.
+        Insert a plate into the tray.
 
         Args:
             plate_id: Plate ID.
@@ -111,7 +111,9 @@ class SynergyHTXImpl(SynergyHTXBase):
 
         plate = thermo_AB_96_wellplate_300ul_Vb_MicroAmp("test_plate")
         wells = [plate.get_item(i) for i in range(plate.num_items)]
-        return aio.run(self.controller.set_plate(plate, wells))
+        plate_name = aio.run(self.controller.insert_plate(plate, wells))
+        logger.info(f"Plate name: {plate_name}")
+        return plate_name
 
     def RemovePlate(
         self,
@@ -119,7 +121,7 @@ class SynergyHTXImpl(SynergyHTXBase):
         metadata: MetadataDict,
     ) -> RemovePlate_Responses:
         """
-        Version of remove_plate() for use with SiLA.
+        Remove a plate from the tray.
 
         Args:
             metadata: Metadata provided by the client.
@@ -140,7 +142,7 @@ class SynergyHTXImpl(SynergyHTXBase):
         Returns:
             A GetPlateName_Responses instance.
         """
-        return aio.run(self.controller.get_plate_name())
+        return self.controller.get_plate_name()
 
     def ReadTemperature(self, *, metadata: MetadataDict) -> ReadTemperature_Responses:
         """

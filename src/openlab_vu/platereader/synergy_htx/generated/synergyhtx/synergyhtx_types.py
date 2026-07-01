@@ -36,7 +36,7 @@ class GetPlateName_Responses(NamedTuple):
     """
 
 
-class SetPlate_Responses(NamedTuple):
+class InsertPlate_Responses(NamedTuple):
 
     PlateName: str
     """
