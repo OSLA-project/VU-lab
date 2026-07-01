@@ -5,8 +5,8 @@ services:
   sila-browser:
     image: registry.gitlab.com/unitelabs/sila2/sila-browser:latest
     network_mode: host
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
 
   robot_arm:
     build: ./src/openlab_vu/robot_arm/
