@@ -13,28 +13,31 @@ from laborchestrator.structures import MoveStep
 from laborchestrator.structures import SchedulingInstance
 from laborchestrator.structures import SMProcess
 from sila2.client import SilaClient
-from vu_lab.wrappers import GenericRobotArmWrapper
-from vu_lab.wrappers.device_interface import DeviceInterface
-from vu_lab.wrappers.shaker_wrapper import ShakerWrapper
+from openlab_vu.laborchestrator.vu_lab.wrappers.generic_robot_arm_wrapper import GenericRobotArmWrapper
+from openlab_vu.laborchestrator.vu_lab.wrappers.device_interface import DeviceInterface
+from openlab_vu.laborchestrator.vu_lab.wrappers.shaker_wrapper  import ShakerWrapper
 
 logger = logging.getLogger(__name__)
 
 # Out comment those you want to simulate the steps instead of calling an actual sila server
+NUM_SHAKERS = 3
+
 USE_REAL_SERVERS = [
     "robot_arm",
+    *[f"shaker_{i}_d_pos_1" for i in range(1, NUM_SHAKERS + 1)],
 ]
 
 # maps the device names (from the platform_config and process description) to the correct wrappers
 device_wrappers: dict[str, type[DeviceInterface]] = {
     "robot_arm": GenericRobotArmWrapper,
-    "shaker_1_d_pos_1": ShakerWrapper,
+    **{f"shaker_{i}_d_pos_1": ShakerWrapper for i in range(1, NUM_SHAKERS + 1)},
 }
 
 # maps the device names (from the platform_config and process description) to the correct sila server names
 # those without a sila server can be left out
 sila_server_name: dict[str, str] = {
     "robot_arm": "VULabArm",
-    "shaker_1_d_pos_1": "Teleshake1536Server"
+    **{f"shaker_{i}_d_pos_1": "Teleshake1536Server" for i in range(1, NUM_SHAKERS + 1)},
 }
 
 
@@ -69,6 +72,8 @@ class Worker(WorkerInterface):
             client = self.get_client(device_name=device)
             if client:
                 wrapper = device_wrappers[device]
+                if device.startswith("shaker_") and "_d_pos_" in device:
+                    device_kwargs["shaker_id"] = int(device.split("_")[1]) - 1
                 # starts the command on the device and returns an Observable
                 return wrapper.get_SiLA_handler(
                     step,

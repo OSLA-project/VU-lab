@@ -3,7 +3,7 @@
 # Change db_client to None to not use any database or
 # change it to your own implementation of laborchestrator.database_integration.status_db_interface.StatusDBInterface
 from platform_status_db.larastatus.status_db_implementation import StatusDBImplementation
-from vu_lab.worker_adaption import Worker
+from vu_lab.worker_adaptation import Worker
 
 db_client = StatusDBImplementation()
 
