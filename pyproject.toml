@@ -21,10 +21,12 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "sila2>=0.12.2",
+    "sila2[codegen,cryptography]>=0.12.2",
     "unitelabs-cdk>=0.3.8",
     "uupythonlab",
-    "sila2-drv-shaker-thermoscientific-teleshake1536@git+https://github.com/OSLA-project/Teleshake-1536.git" ,
+    "sila2-drv-shaker-thermoscientific-teleshake1536 @ git+https://gitlab.com/sila-driver-group/teleshake.git",
+    "pylabrobot[all]",
+    "loguru",
     "uulaborchestrator",
     "uulabscheduler",
     "ruff>=0.14.1",
@@ -61,7 +63,8 @@ docs = [
 publishing = ["build", "twine", "wheel"]
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["src/"]
+include = ["openlab_vu"]
 
 [project.urls]
 Repository = "https://github.com/OSLA-project/openlab_vu"

@@ -1,0 +1,300 @@
+<Feature xmlns="http://www.sila-standard.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Category="platereaders" FeatureVersion="1.0" MaturityLevel="Verified" Originator="org.silastandard" SiLA2Version="1.0" xsi:schemaLocation="http://www.sila-standard.org https://gitlab.com/SiLA2/sila_base/raw/master/schema/FeatureDefinition.xsd">
+  <Identifier>SynergyHTX</Identifier>
+  <DisplayName>Biotek Synergy HTX SiLA Server</DisplayName>
+  <Description>SiLA server for the Biotek Synergy HTX plate reader</Description>
+  <Command>
+    <Identifier>OpenTray</Identifier>
+    <DisplayName>Open the tray</DisplayName>
+    <Description>Opens the tray of the plate reader</Description>
+    <Observable>No</Observable>
+    <Response>
+      <Identifier>TrayState</Identifier>
+      <DisplayName>Tray state</DisplayName>
+      <Description>State of the tray after the command</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
+    <Identifier>CloseTray</Identifier>
+    <DisplayName>Close the tray</DisplayName>
+    <Description>Closes the tray of the plate reader</Description>
+    <Observable>No</Observable>
+    <Response>
+      <Identifier>TrayState</Identifier>
+      <DisplayName>Tray state</DisplayName>
+      <Description>State of the tray after the command</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
+    <Identifier>ReadTemperature</Identifier>
+    <DisplayName>Read the device temperature</DisplayName>
+    <Description>Read the device temperature</Description>
+    <Observable>No</Observable>
+    <Response>
+      <Identifier>DeviceTemperature</Identifier>
+      <DisplayName>Device temperature</DisplayName>
+      <Description>Temperature reported by the device</Description>
+      <DataType>
+        <Basic>Real</Basic>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
+    <Identifier>GetPlateName</Identifier>
+    <DisplayName>Get the name of the currently loaded plate</DisplayName>
+    <Description>Get the name of the currently loaded plate</Description>
+    <Observable>No</Observable>
+    <Response>
+      <Identifier>PlateName</Identifier>
+      <DisplayName>Plate name</DisplayName>
+      <Description>Plate name</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
+    <Identifier>InsertPlate</Identifier>
+    <DisplayName>Insert a plate into the device</DisplayName>
+    <Description>Insert a plate into the device</Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>PlateName</Identifier>
+      <DisplayName>Plate name</DisplayName>
+      <Description>Plate name</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Parameter>
+    <Response>
+      <Identifier>PlateName</Identifier>
+      <DisplayName>Plate name</DisplayName>
+      <Description>Plate name</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
+    <Identifier>RemovePlate</Identifier>
+    <DisplayName>Remove a plate from the device</DisplayName>
+    <Description>Remove a plate from the device</Description>
+    <Observable>No</Observable>
+    <Response>
+      <Identifier>PlateName</Identifier>
+      <DisplayName>Plate name</DisplayName>
+      <Description>Plate name</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
+    <Identifier>ReadAbsorbance</Identifier>
+    <DisplayName>Read the absorbance</DisplayName>
+    <Description>Read the absorbance</Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>Wavelength</Identifier>
+      <DisplayName>Wavelength</DisplayName>
+      <Description>Wavelength</Description>
+      <DataType>
+        <Basic>Integer</Basic>
+      </DataType>
+    </Parameter>
+    <Response>
+      <Identifier>AbsorbanceReading</Identifier>
+      <DisplayName>Absorbance reading</DisplayName>
+      <Description>Absorbance reported by the device</Description>
+      <DataType>
+        <Structure>
+          <Element>
+            <Identifier>Wavelength</Identifier>
+            <DisplayName>Wavelength</DisplayName>
+            <Description>Wavelength</Description>
+            <DataType>
+              <Basic>Integer</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>Temperature</Identifier>
+            <DisplayName>Temperature</DisplayName>
+            <Description>Temperature of the device</Description>
+            <DataType>
+              <Basic>Real</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>Timestamp</Identifier>
+            <DisplayName>Timestamp</DisplayName>
+            <Description>Readout timestamp</Description>
+            <DataType>
+              <Basic>Timestamp</Basic>
+            </DataType>
+          </Element>
+        </Structure>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
+    <Identifier>ReadFluorescence</Identifier>
+    <DisplayName>Read the fluorescence</DisplayName>
+    <Description>Read the fluorescence</Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>ExcitationWavelength</Identifier>
+      <DisplayName>Excitation wavelength</DisplayName>
+      <Description>Excitation wavelength</Description>
+      <DataType>
+        <Basic>Integer</Basic>
+      </DataType>
+    </Parameter>
+    <Parameter>
+      <Identifier>EmissionWavelength</Identifier>
+      <DisplayName>Emission wavelength</DisplayName>
+      <Description>Emission wavelength</Description>
+      <DataType>
+        <Basic>Integer</Basic>
+      </DataType>
+    </Parameter>
+    <Parameter>
+      <Identifier>FocalHeight</Identifier>
+      <DisplayName>Focal height</DisplayName>
+      <Description>Focal height</Description>
+      <DataType>
+        <Basic>Real</Basic>
+      </DataType>
+    </Parameter>
+    <Response>
+      <Identifier>FluorescenceReading</Identifier>
+      <DisplayName>Fluorescence reading</DisplayName>
+      <Description>Fluorescence reported by the device</Description>
+      <DataType>
+        <Structure>
+          <Element>
+            <Identifier>ExcitationWavelength</Identifier>
+            <DisplayName>Excitation wavelength</DisplayName>
+            <Description>Excitation wavelength</Description>
+            <DataType>
+              <Basic>Integer</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>EmissionWavelength</Identifier>
+            <DisplayName>Emission wavelength</DisplayName>
+            <Description>Emission wavelength</Description>
+            <DataType>
+              <Basic>Integer</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>FocalHeight</Identifier>
+            <DisplayName>Focal height</DisplayName>
+            <Description>Focal height</Description>
+            <DataType>
+              <Basic>Integer</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>Temperature</Identifier>
+            <DisplayName>Temperature</DisplayName>
+            <Description>Temperature of the device</Description>
+            <DataType>
+              <Basic>Real</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>Timestamp</Identifier>
+            <DisplayName>Timestamp</DisplayName>
+            <Description>Readout timestamp</Description>
+            <DataType>
+              <Basic>Timestamp</Basic>
+            </DataType>
+          </Element>
+        </Structure>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
+    <Identifier>ReadLuminescence</Identifier>
+    <DisplayName>Read the luminescence</DisplayName>
+    <Description>Read the luminescence</Description>
+    <Observable>No</Observable>
+    <Parameter>
+      <Identifier>FocalHeight</Identifier>
+      <DisplayName>Focal height</DisplayName>
+      <Description>Focal height</Description>
+      <DataType>
+        <Basic>Real</Basic>
+      </DataType>
+    </Parameter>
+    <Parameter>
+      <Identifier>IntegrationTime</Identifier>
+      <DisplayName>Integration time</DisplayName>
+      <Description>Integration time</Description>
+      <DataType>
+        <Basic>Real</Basic>
+      </DataType>
+    </Parameter>
+    <Response>
+      <Identifier>LuminescenceReading</Identifier>
+      <DisplayName>Luminescence reading</DisplayName>
+      <Description>Luminescence reported by the device</Description>
+      <DataType>
+        <Structure>
+          <Element>
+            <Identifier>FocalHeight</Identifier>
+            <DisplayName>Focal height</DisplayName>
+            <Description>Focal height</Description>
+            <DataType>
+              <Basic>Real</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>IntegrationTime</Identifier>
+            <DisplayName>Integration time</DisplayName>
+            <Description>Integration time</Description>
+            <DataType>
+              <Basic>Real</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>Temperature</Identifier>
+            <DisplayName>Temperature</DisplayName>
+            <Description>Temperature of the device</Description>
+            <DataType>
+              <Basic>Real</Basic>
+            </DataType>
+          </Element>
+          <Element>
+            <Identifier>Timestamp</Identifier>
+            <DisplayName>Timestamp</DisplayName>
+            <Description>Readout timestamp</Description>
+            <DataType>
+              <Basic>Timestamp</Basic>
+            </DataType>
+          </Element>
+        </Structure>
+      </DataType>
+    </Response>
+  </Command>
+  <Command>
+    <Identifier>GetSerialNumber</Identifier>
+    <DisplayName>Get the serial number of the device</DisplayName>
+    <Description>Get the serial number of the device</Description>
+    <Observable>No</Observable>
+    <Response>
+      <Identifier>SerialNumber</Identifier>
+      <DisplayName>The serial number of the device</DisplayName>
+      <Description>The serial number of the device</Description>
+      <DataType>
+        <Basic>String</Basic>
+      </DataType>
+    </Response>
+  </Command>
+</Feature>
