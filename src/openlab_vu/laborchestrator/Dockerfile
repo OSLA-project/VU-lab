@@ -1,0 +1,14 @@
+FROM python:3.12-slim
+RUN apt update && apt install -y git
+
+RUN pip install uulaborchestrator \
+    psycopg2-binary \
+    uulabscheduler \
+    'uupythonlab==0.2.11' \
+    'pyscipopt>=5.3.0' \
+    'ortools==9.9.3963' \
+    'platformstatusdb' \
+    git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git \
+    git+https://github.com/OSLA-project/Teleshake-1536.git
+
+CMD ["python", "-m", "laborchestrator.start_script"]

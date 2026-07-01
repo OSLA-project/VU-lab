@@ -1,0 +1,77 @@
+/* Force horizontal scrolling behaviour on regular output cells */
+.jupyter-wrapper .jp-OutputArea-output pre {
+    white-space: pre !important;
+}
+
+/* Set a maximum height on output cells */
+.jupyter-wrapper .jp-OutputArea-output pre {
+    max-height: 300px;
+}
+
+.md-grid {
+    margin-left: 30px;
+    margin-right: 10px;
+    max-width: 100%;
+}
+
+.img-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* Hero banner on home page */
+.mdx-hero {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mdx-hero__image {
+    position: absolute;
+    inset: 0;
+}
+
+.mdx-hero__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    filter: brightness(0.7);
+}
+
+.mdx-hero__content {
+    position: absolute;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.mdx-hero__content h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.mdx-hero__content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.mdx-hero__content .md-button {
+    background-color: var(--md-primary-fg-color);
+    color: white;
+    border-color: transparent;
+}
+
+:root  > * {
+  --md-primary-fg-color:         #52420B;
+  --md-accent-fg-color:          #EBBF1E;
+  --md-default-bg-color:         #FFFAE8;
+
+}

@@ -1,0 +1,44 @@
+description:
+  - "An exemplary robotic lab description. Add devices at will"
+sila_servers:
+  storage:
+    hotel_1_d_pos_:
+      capacity: 8
+  movers:
+    robot_arm:
+      capacity: 1
+  shakers:
+    shaker_1_d_pos_1:
+      capacity: 1
+    shaker_2_d_pos_1:
+      capacity: 1
+    shaker_3_d_pos_1:
+      capacity: 1
+    shaker_4_d_pos_1:
+      capacity: 1
+    shaker_5_d_pos_1:
+      capacity: 1
+    shaker_6_d_pos_1:
+      capacity: 1
+    shaker_7_d_pos_1:
+      capacity: 1
+    shaker_8_d_pos_1:
+      capacity: 1
+    shaker_9_d_pos_1:
+      capacity: 1
+    shaker_10_d_pos_1:
+      capacity: 1
+
+
+  scanners:
+    scanner1:
+      capacity: 1
+      resolution: 640
+
+# ------ Translation to used resources in the process description ------
+# the key must match the categories above and the values must match the required resources in the workflow description
+pythonlab_translation:
+  storage: LabwareStorageResource
+  movers: MoverServiceResource
+  shakers: ShakerServiceResource
+  scanners: ScannerResource

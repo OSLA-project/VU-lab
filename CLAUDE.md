@@ -10,7 +10,7 @@ The system uses Docker Compose to run multiple services:
 - **laborchestrator**: Main orchestration engine (port 8050)
 - **labscheduler**: Job scheduling service
 - **sila-browser**: Web UI for SiLA servers (port 3000)
-- **robot-arm**: Generic robotic arm controller (port 50054)
+- **robot_arm**: Generic robotic arm controller (port 50054)
 - **teleshake**: Plate shaker controller (port 50050)
 - **gen5**: Plate reader controller (port 50053)
 - **platform_status_db**: PostgreSQL database for tracking platform status
@@ -125,7 +125,7 @@ Process files define lab workflows using the PythonLab framework:
 
 Each device runs as a separate container with its own SiLA server:
 - **teleshake/**: Uses codegen.sh to generate SiLA2 server code
-- **robot-arm/**: Runs genericroboticarm in simulation mode by default (change ROBOT_IP for real hardware)
+- **robot_arm/**: Runs genericroboticarm in simulation mode by default (change ROBOT_IP for real hardware)
 - **gen5/**: Private connector for Gen5 plate reader (requires .env configuration)
 
 ## Key Integration Points
@@ -146,6 +146,12 @@ Each device runs as a separate container with its own SiLA server:
    - Scheduler reads lab config from `platform_config.yaml`
    - Orchestrator communicates via SiLA2 to scheduler service
    - Algorithm can be changed in `config.py` (scheduling_algorithm)
+
+### Device wrappers
+Examples for how to implement device wrappers can be found in the 
+[adaption template repository](https://gitlab.com/OpenLabAutomation/adaption-template)
+under 
+[`lab_adaption/device_wrappers`](https://gitlab.com/OpenLabAutomation/adaption-template/-/tree/main/lab_adaption/device_wrappers?ref_type=heads)
 
 ## Important Notes
 

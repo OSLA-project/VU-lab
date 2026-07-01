@@ -8,9 +8,7 @@ requires = ["setuptools>=64.0.0", "setuptools-scm", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-authors = [
-    { name = "Djura Smits", email = "d.smits@esciencecenter.nl" }
-]
+authors = [{ name = "Djura Smits", email = "d.smits@esciencecenter.nl" }]
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Developers",
@@ -25,24 +23,26 @@ classifiers = [
 dependencies = [
     "sila2>=0.12.2",
     "unitelabs-cdk>=0.3.8",
-    "pythonlab @ https://gitlab.com/api/v4/projects/70367030/packages/pypi/files/8343bd3a8ed255c9e47e2cba859bd0545639b02e148993b82c3a4d8c9952ec1a/pythonlab-0.2.3-py3-none-any.whl",
-    "sila2-drv-shaker-thermoscientific-teleshake1536 @ git+https://gitlab.com/sila-driver-group/teleshake.git",
-    "laborchestrator @ https://gitlab.com/api/v4/projects/70366855/packages/pypi/files/1f0c741a0a5b064431522114381bf45b381fe9c1bed72bf2d37f4f843ef6f5ff/laborchestrator-0.3.2-py3-none-any.whl",
-    "labscheduler @ https://gitlab.com/api/v4/projects/70366720/packages/pypi/files/5c79f11d874b379db96f9930f1fcc4f8245dc99fdfc0b83c8f0261c0273fd9b5/labscheduler-0.2.48.tar.gz",
+    "uupythonlab",
+    "sila2-drv-shaker-thermoscientific-teleshake1536@git+https://github.com/OSLA-project/Teleshake-1536.git" ,
+    "uulaborchestrator",
+    "uulabscheduler",
     "ruff>=0.14.1",
     "pytest>=8.4.2",
+    "genericroboticarm @ git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git",
+    "platformstatusdb>=0.3.0",
 ]
 description = "Configuration of openlab for VU lab"
 keywords = [""]
 license = "Apache-2.0"
 name = "openlab_vu"
-readme = {file = "README.md", content-type = "text/markdown"}
+readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = "~=3.12.0"
 version = "0.1.0"
 
 [project.optional-dependencies]
 dev = [
-    "build",  # build is not only used in publishing (below), but also in the template's test suite
+    "build",           # build is not only used in publishing (below), but also in the template's test suite
     "bump-my-version",
     "coverage [toml]",
     "pytest",
@@ -51,15 +51,17 @@ dev = [
     "tox",
     "myst_parser",
 ]
-publishing = [
-    "build",
-    "twine",
-    "wheel",
+docs = [
+    "mike",
+    "mkdocs",
+    "mkdocstrings[python]",
+    "mkdocs-material",
+    "mkdocs-jupyter",
 ]
+publishing = ["build", "twine", "wheel"]
+
 [tool.setuptools.packages.find]
-where = ["."]
-include = ["laborchestrator*"]
-exclude = ["gen5*", "teleshake*"]
+where = ["src"]
 
 [project.urls]
 Repository = "https://github.com/OSLA-project/openlab_vu"
@@ -67,10 +69,9 @@ Issues = "https://github.com/OSLA-project/openlab_vu/issues"
 Changelog = "https://github.com/OSLA-project/openlab_vu/CHANGELOG.md"
 
 [tool.pytest.ini_options]
-testpaths = ["laborchestrator/tests"]
+testpaths = ["src/openlab_vu/laborchestrator/tests"]
 ignore = ["venv", "env", ".venv", ".env"]
-pythonpath = ["laborchestrator"]
-
+pythonpath = ["src/openlab_vu/laborchestrator"]
 
 [tool.coverage.run]
 branch = true
@@ -90,7 +91,7 @@ extras = dev
 [tool.ruff]
 line-length = 120
 output-format = "concise"
-exclude = ["laborchestrator/vu_lab/worker_adaption.py"]
+exclude = ["src/openlab_vu/laborchestrator/vu_lab/worker_adaption.py"]
 
 [tool.ruff.lint]
 # Allow unused variables when underscore-prefixed.
@@ -102,44 +103,47 @@ ignore = [
     "ANN101", # Missing type annotation for `self` in method
     "ANN102", # Missing type annotation for `cls` in classmethod
     "ANN204", # Missing return type annotation for special (dunder) method
-    "FBT",    # Using boolean function arguments
-    "TD",     # TODOs
+    "FBT", # Using boolean function arguments
+    "TD", # TODOs
     "FIX001", # Resolve FIXMEs
     "FIX002", # Resolve TODOs
-    "B028",   # No explicit `stacklevel` keyword argument found in warning
+    "B028", # No explicit `stacklevel` keyword argument found in warning
     # No docstrings required in the following cases
     "D100", # Missing module docstring
     "D104", # Missing public package docstring
     "D105", # Missing docstring in magic method
     "D107", # Missing docstring in `__init__`
+    "INP001", # Implicit namespace packages
+    "D205", # 1 blank line required between summary line and description
+    "COM812", # Missing trailing comma
+    "G004", # Use of f-string  in logging methods
+    "N802"# Function name should be lowercase
+
 ]
 pydocstyle.convention = "google"
 
 [tool.ruff.lint.per-file-ignores]
 # Tests can ignore a few extra rules
-"tests/**.py" = [
+"laborchestrator/tests/**.py" = [
     "ANN201", # Missing return type annotation for public function
-    "PT011",  # Missing `match` parameter in `pytest.raises()`
-    "S101",   # Use of assert is detected
+    "PT011", # Missing `match` parameter in `pytest.raises()`
+    "S101", # Use of assert is detected
 ]
 
 "laborchestrator/start_script.py" = ["PLC0415"]
-"laborchestrator/vu_lab/processes/empty_process.py" = [
-    "ERA001",
-    "D102",
-]
-"laborchestrator/vu_lab/worker_adaption.py" = [
-    "D101",
-    "D419",
-    "D102",
-    "D415"
-]
-
+"laborchestrator/vu_lab/processes/empty_process.py" = ["ERA001", "D102"]
+"laborchestrator/vu_lab/worker_adaption.py" = ["D101", "D419", "D102", "D415"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["openlab_vu"]
 force-single-line = true
-no-lines-before = ["future","standard-library","third-party","first-party","local-folder"]
+no-lines-before = [
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
+]
 
 [tool.bumpversion]
 current_version = "0.1.0"
@@ -152,3 +156,12 @@ filename = "pyproject.toml"
 
 [[tool.bumpversion.files]]
 filename = "CITATION.cff"
+
+[tool.uv.sources]
+genericroboticarm = { git = "git+https://gitlab.com/OpenLabAutomation/device-integration/genericroboticarm.git" }
+sila2-drv-shaker-thermoscientific-teleshake1536 = { git = "https://github.com/OSLA-project/Teleshake-1536.git" }
+
+[tool.uv.workspace]
+members = [
+    "robot_arm/VU-lab-arm",
+]
