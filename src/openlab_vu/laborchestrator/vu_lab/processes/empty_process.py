@@ -1,6 +1,6 @@
 """Duplicate this file and add/modify the missing parts to create new processes."""
 
-from vu_lab.processes.basic_process import BasicProcess
+from openlab_vu.laborchestrator.vu_lab.processes.basic_process import BasicProcess
 from pythonlab.resource import DynamicLabwareResource as ReagentResource  # noqa: F401
 
 

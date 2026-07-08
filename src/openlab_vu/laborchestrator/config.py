@@ -3,7 +3,7 @@
 # Change db_client to None to not use any database or
 # change it to your own implementation of laborchestrator.database_integration.status_db_interface.StatusDBInterface
 from platform_status_db.larastatus.status_db_implementation import StatusDBImplementation
-from vu_lab.worker_adaptation import Worker
+from openlab_vu.laborchestrator.vu_lab.worker_adaptation import Worker
 
 db_client = StatusDBImplementation()
 
@@ -22,6 +22,6 @@ default_scheduling_time = 1  # seconds
 scheduling_algorithm: str | None = "BottleneckPD"
 
 # change this to the module where you save your pythonLab processes
-from vu_lab import processes  # noqa: E402
+from openlab_vu.laborchestrator.vu_lab import processes  # noqa: E402
 
 process_module = processes

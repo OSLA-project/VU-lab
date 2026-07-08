@@ -2,7 +2,7 @@
 import argparse
 import time
 from pathlib import Path
-import config
+from openlab_vu.laborchestrator import config
 import logging
 from laborchestrator.old_dash_app import SMDashApp
 from laborchestrator.orchestrator_implementation import Orchestrator
