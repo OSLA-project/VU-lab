@@ -1,4 +1,4 @@
-from vu_lab.processes.basic_process import BasicProcess
+from openlab_vu.laborchestrator.vu_lab.processes.basic_process import BasicProcess
 
 
 class MiniProcess(BasicProcess):

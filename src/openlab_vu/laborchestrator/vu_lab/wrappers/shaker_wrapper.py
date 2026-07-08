@@ -3,7 +3,7 @@ from laborchestrator.engine.worker_interface import Observable
 from laborchestrator.structures import ContainerInfo
 from laborchestrator.structures import ProcessStep
 from sila2.client import SilaClient
-from vu_lab.wrappers import DeviceInterface
+from openlab_vu.laborchestrator.vu_lab.wrappers import DeviceInterface
 
 
 class ShakerWrapper(DeviceInterface):
