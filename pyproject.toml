@@ -59,6 +59,7 @@ docs = [
     "mkdocstrings[python]",
     "mkdocs-material",
     "mkdocs-jupyter",
+    "mkdocs-include-markdown-plugin",
 ]
 publishing = ["build", "twine", "wheel"]
 
