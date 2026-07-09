@@ -48,25 +48,25 @@ All bind mounts in this repository are already configured with `:z` flags. The p
 ### Testing and Linting
 ```bash
 # Install development dependencies
-python -m pip install .[dev,publishing]
+uv sync --extra dev --extra publishing
 
 # Run tests
-pytest
-pytest -v  # verbose output
+uv run pytest
+uv run pytest -v  # verbose output
 
 # Lint code
-ruff check
-ruff format --check
+uv run ruff check
+uv run ruff format --check
 
 # Format code
-ruff format
+uv run ruff format
 
 # Run full build
-python -m build
+uv run python -m build
 ```
 
 ### Python Environment
-Python 3.11+ required. Uses `uv.lock` for dependency management.
+Python 3.11+ required. Dependency management uses `uv` (not pip directly) — e.g. `uv sync --extra docs` to install extras, `uv run <cmd>` to run commands in the environment. Uses `uv.lock` for the lockfile.
 
 ## Architecture
 

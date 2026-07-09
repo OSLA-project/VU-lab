@@ -14,11 +14,9 @@ See [Robot Arm](components/robot_arm.md) for full setup and configuration.
 
 **Hardware:** [Agilent BioTek Synergy HTX Multimode Reader](https://www.agilent.com/en/product/microplate-instrumentation/microplate-readers/multimode-microplate-readers/biotek-synergy-htx-multimode-reader-1623207)
 
-**SiLA server source:** Gen5 private connector (not publicly available)
+**SiLA server source:** [`src/openlab_vu/platereader`](https://github.com/OSLA-project/VU-lab/tree/main/src/openlab_vu/platereader)
 
-**Docker service:** `gen5` (port 50053)
-
-The Gen5 connector requires environment configuration before use. Copy `gen5/.env.example` to `gen5/.env` and fill in the values specific to your plate reader setup.
+See [Plate Reader](components/platereader.md) for full setup and configuration.
 
 ## Magnetic Shaker
 

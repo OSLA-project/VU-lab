@@ -8,6 +8,7 @@ nav:
       - Overview: components.md
       - Robot Arm: components/robot_arm.md
       - Teleshake 1536: components/teleshake.md
+      - Plate Reader: components/platereader.md
   - Lab Configuration: lab-configuration.md
   - Orchestrator: orchestrator.md
   - About: about.md
