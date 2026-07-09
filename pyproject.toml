@@ -57,7 +57,7 @@ docs = [
     "mike",
     "mkdocs",
     "mkdocstrings[python]",
-    "mkdocs-material",
+    "mkdocs-material[imaging]",
     "mkdocs-jupyter",
     "mkdocs-include-markdown-plugin",
 ]

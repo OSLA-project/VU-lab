@@ -39,6 +39,7 @@ markdown_extensions:
 
 plugins:
   - search
+  - optimize
   - include-markdown
   - mkdocstrings:
       handlers:
