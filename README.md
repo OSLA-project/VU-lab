@@ -6,7 +6,7 @@ This is the documentation for the software repository for automating the VU lab.
 This repo integrates the following hardware:
 
 - [Teleshake magnetic shaker](./components/teleshake)
-- Synergy HTX platereader
+- [Synergy HTX platereader](.components/platereader)
 - [Unitelabs robotic arm](./components/robot_arm)
 
 More info on the hardware can be find in [components](./components)
