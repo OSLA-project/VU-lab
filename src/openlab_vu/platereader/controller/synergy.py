@@ -13,12 +13,23 @@ class SynergyHTXController(SynergyHTBackend):
 
     def __init__(
         self,
-        timeout: int = 20,
         device_id: int = None,
+        timeout: int = 20,
         save_dir: str | Path | None = None,
         timestamp: str | None = None,
         tz: str = "Europe/Amsterdam",
     ):
+        """
+        A SynergyHTX controller with some convenience functions
+
+        Args:
+            device_id: The device ID.
+            timeout: Timeout in seconds.
+            save_dir: Destination directory for acquired data.
+            timestamp: Timestamp to use for the saved data file.
+            tz: Timezone for constructing a default timestamp (TODO).
+        """
+
         super().__init__(timeout, device_id)
 
         self.tray_state = T.TrayState.Unknown

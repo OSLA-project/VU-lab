@@ -41,9 +41,6 @@ class SynergyHTXImpl(SynergyHTXBase):
     def __init__(
         self,
         parent_server: Server | None = None,
-        tz: str | None = None,
-        save_dir: str | Path | None = None,
-        timestamp: str | None = None,
     ) -> None:
         super().__init__(parent_server=parent_server)
         self.controller = SynergyHTXController()
